@@ -14,6 +14,9 @@ type EmailRecord = {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const STORAGE_PATH = path.join(process.cwd(), "data", "launch-notify-emails.json");
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 async function readRecords(): Promise<EmailRecord[]> {
   try {
     const content = await fs.readFile(STORAGE_PATH, "utf8");
@@ -27,10 +30,21 @@ async function readRecords(): Promise<EmailRecord[]> {
   }
 }
 
+async function readEmail(request: Request): Promise<string> {
+  const contentType = request.headers.get("content-type") ?? "";
+
+  if (contentType.includes("application/json")) {
+    const body = (await request.json()) as NotifyPayload;
+    return String(body.email ?? "").trim().toLowerCase();
+  }
+
+  const formData = await request.formData();
+  return String(formData.get("email") ?? "").trim().toLowerCase();
+}
+
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as NotifyPayload;
-    const email = (body.email ?? "").trim().toLowerCase();
+    const email = await readEmail(request);
 
     if (!EMAIL_PATTERN.test(email)) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });

@@ -43,7 +43,7 @@ export function SisterPlatforms() {
                 quality education should be accessible and affordable for everyone.
               </p>
               <p>
-                Our <ExternalLink href={STUDIELY_URL}>sister platform</ExternalLink>,{" "}
+                Our sister platform,{" "}
                 <ExternalLink href={STUDIELY_URL}>Studiely</ExternalLink>, is an AI-powered study platform built for
                 students across the same curriculum systems Make My Lesson serves. Where Make My Lesson supports the
                 teacher preparing the lesson, <ExternalLink href={STUDIELY_URL}>Studiely</ExternalLink> supports the

@@ -73,13 +73,14 @@ export function EmailForm({ variant, id }: EmailFormProps) {
     >
       <form
         id={id}
+        action="/api/notify"
+        method="post"
         onSubmit={handleSubmit}
         className={
           isHero
             ? "mx-auto flex w-full max-w-lg flex-col items-stretch gap-3 sm:max-w-2xl sm:flex-row sm:items-stretch sm:justify-center sm:gap-3"
             : "mx-auto flex w-full max-w-lg flex-col items-stretch gap-3 sm:flex-row sm:items-stretch sm:justify-center sm:gap-3"
         }
-        noValidate
       >
         <label htmlFor={`email-${variant}`} className="sr-only">
           Email address
