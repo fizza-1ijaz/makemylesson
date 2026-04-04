@@ -7,6 +7,12 @@ export type SiteResolveResponse = {
   id?: string;
 };
 
+export type BlogCategorySummary = {
+  id: string;
+  name: string;
+  slug: string | null;
+};
+
 export type BlogPostListItem = {
   id: string;
   slug: string;
@@ -19,6 +25,7 @@ export type BlogPostListItem = {
   publishedAt?: string | null;
   /** FK to `blog_categories` when present */
   category_id?: string | null;
+  category?: BlogCategorySummary | null;
 };
 
 /** Blog index page copy from `sites` (admin-managed). */

@@ -11,12 +11,14 @@ export function EmailForm({ variant, id }: EmailFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [status, setStatus] = useState<"success" | "error" | null>(null);
+  const isHero = variant === "hero";
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
     const formData = new FormData(form);
-    const email = String(formData.get("email") ?? "").trim();
+    const email = String(formData.get("Email") ?? "").trim();
 
     if (!email) {
       setStatus("error");
@@ -25,35 +27,37 @@ export function EmailForm({ variant, id }: EmailFormProps) {
     }
 
     setIsSubmitting(true);
-    setMessage(null);
     setStatus(null);
+    setMessage(null);
 
     try {
-      const res = await fetch("/api/notify", {
+      const response = await fetch("/api/notify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          email,
+        }),
       });
 
-      if (!res.ok) {
-        const data = (await res.json()) as { error?: string };
-        throw new Error(data.error ?? "Unable to save your email right now.");
+      if (!response.ok) {
+        throw new Error("Unable to submit right now.");
       }
 
       form.reset();
       setStatus("success");
-      setMessage("Thanks! You are on the launch notification list.");
-    } catch (error) {
+      setMessage(
+        "Thank you! Your email has been added to our waitlist. You will hear from us when the app is ready to launch.",
+      );
+    } catch {
       setStatus("error");
-      setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+      setMessage("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   }
-
-  const isHero = variant === "hero";
 
   const inputClassName = isHero
     ? "ui-input min-h-12 min-w-0 w-full flex-1 border border-white/15 bg-white/10 px-4 py-3 text-base text-white placeholder:text-white/50 outline-none transition focus:border-mm-primary focus:ring-2 focus:ring-mm-primary/40 sm:min-h-[52px]"
@@ -87,14 +91,16 @@ export function EmailForm({ variant, id }: EmailFormProps) {
         </label>
         <input
           id={`email-${variant}`}
-          name="email"
+          name="Email"
           type="email"
           autoComplete="email"
           placeholder="you@school.edu"
           required
           className={inputClassName}
-          disabled={isSubmitting}
         />
+        <input type="hidden" name="_subject" value="New Waitlist Signup - Make my lesson" />
+        <input type="hidden" name="Source" value="Landing page waitlist" />
+        <input type="hidden" name="_captcha" value="false" />
         <button type="submit" className={buttonClassName} disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Notify Me"}
         </button>

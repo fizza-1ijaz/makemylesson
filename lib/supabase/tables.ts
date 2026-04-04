@@ -21,5 +21,5 @@
 export const DEFAULT_SITES_TABLE = "sites";
 /** Default matches Studiely: `blogs`, not `blog_posts`. */
 export const DEFAULT_BLOG_POSTS_TABLE = "blogs";
-/** Shared category list for all connected sites (no `site_id` on this table). */
+/** Site-scoped blog categories. Filter with `site_id` for public sites. */
 export const DEFAULT_BLOG_CATEGORIES_TABLE = "blog_categories";

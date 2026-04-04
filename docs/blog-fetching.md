@@ -28,16 +28,16 @@ Implementation: `lib/cms/site.ts`.
 
 ## 3. Load blogs by `site_id`
 
-- **`getBlogsForSite(siteId)`** — `blogs` filtered by `site_id`, ordered by `display_date` desc, narrow `select` (not `*` in code). **Throws** on PostgREST error.
-- **`getBlogBySlugForSite(siteId, slug)`** — Single row; **throws** on error, **`null`** if not found.
+- **`getBlogsForSite(siteId, categoryId?)`** — `blogs` filtered by `site_id`, optionally `category_id`, ordered by `display_date` desc, narrow `select` with joined `category:blog_categories (...)`. **Throws** on PostgREST error.
+- **`getBlogBySlugForSite(siteId, slug)`** — Single row with joined category; **throws** on error, **`null`** if not found.
 
 Convenience (never throws; good for pages):
 
-- **`getBlogPosts(siteId)`** / **`getBlogPostBySlug(siteId, slug)`** — Wrap the above + catch for graceful empty states.
+- **`getBlogPosts(siteId, categoryId?)`** / **`getBlogPostBySlug(siteId, slug)`** — Wrap the above + catch for graceful empty states.
 
-- **`getBlogIndexPageData()`** — Cached per request: `site_id`, copy from `sites` (blog index meta/hero/empty state), global **`blog_categories`**, and posts. Use on the blog index route.
+- **`getBlogIndexPageData()`** — Cached per request: `site_id`, copy from `sites` (blog index meta/hero/empty state), site-scoped **`blog_categories`**, and posts. Use on the blog index route.
 
-- **`getBlogPageCopyForSite(siteId)`** / **`getBlogCategories()`** — Building blocks if you don’t use the composed helper.
+- **`getBlogPageCopyForSite(siteId)`** / **`getBlogCategories(siteId)`** — Building blocks if you don’t use the composed helper.
 
 Implementation: `lib/cms/blogs.ts`.
 
@@ -53,7 +53,7 @@ The anon key is public. **Row Level Security** must allow `SELECT` on:
 
 - `blogs` — only rows visitors should see (e.g. published-only if you add a flag).
 
-- `blog_categories` — shared list; **no** `site_id` on this table.
+- `blog_categories` — site-scoped; filter by `site_id`.
 
 Admin/dashboard writes use the **service role**; public sites rely on **anon + RLS** for reads.
 

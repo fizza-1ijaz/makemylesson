@@ -27,6 +27,7 @@ export type {
   BlogIndexPageData,
   BlogPageCopy,
   BlogCategory,
+  BlogCategorySummary,
   BlogPostListItem,
   BlogPostDetail,
 } from "@/lib/cms";

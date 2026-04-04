@@ -82,6 +82,8 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  const categoryName = post.category?.name ?? "Uncategorized";
+
   const html = post.content ?? post.content_html ?? post.contentHtml ?? post.body ?? "";
 
   return (
@@ -145,6 +147,9 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="mx-auto w-full max-w-[48rem] lg:max-w-[52rem]">
           <header className="border-b border-mm-primary/12 pb-8 sm:pb-10">
             <h1 className="ds-h1 text-balance font-extrabold leading-tight text-mm-navy">{post.title}</h1>
+            <p className="mt-4 inline-flex rounded-full bg-mm-sky/50 px-3 py-1 text-sm font-semibold text-mm-navy">
+              {categoryName}
+            </p>
             {formatDate(post.published_at ?? post.publishedAt) ? (
               <p className="mt-4 text-sm font-medium text-mm-muted sm:text-base">
                 {formatDate(post.published_at ?? post.publishedAt)}

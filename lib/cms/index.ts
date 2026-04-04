@@ -10,6 +10,7 @@ export {
   getBlogCategories,
 } from "./blogs";
 export type {
+  BlogCategorySummary,
   BlogPostDetail,
   BlogPostListItem,
   SiteResolveResponse,

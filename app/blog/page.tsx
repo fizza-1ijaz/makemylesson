@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getBlogIndexPageData, isCmsConfigured } from "@/lib/cms";
+import { getBlogCategories, getBlogPageCopyForSite, getBlogPosts, getSiteId, isCmsConfigured } from "@/lib/cms";
 
 export const revalidate = 60;
 
@@ -29,6 +29,20 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+type BlogPageProps = {
+  searchParams?: Promise<{
+    category?: string | string[];
+  }>;
+};
+
+function normalizeQueryValue(value: string | string[] | undefined): string {
+  if (Array.isArray(value)) {
+    return String(value[0] ?? "").trim();
+  }
+
+  return String(value ?? "").trim();
+}
+
 function formatDate(iso: string | null | undefined) {
   if (!iso) {
     return null;
@@ -40,13 +54,38 @@ function formatDate(iso: string | null | undefined) {
   }
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({ searchParams }: BlogPageProps) {
   const configured = isCmsConfigured();
-  const { siteId, categories, posts } = configured
-    ? await getBlogIndexPageData()
-    : { siteId: null, categories: [], posts: [] };
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const selectedCategoryValue = normalizeQueryValue(resolvedSearchParams.category);
 
-  const categoryNameById = new Map(categories.map((c) => [c.id, c.name]));
+  const siteId = configured ? await getSiteId() : null;
+  let copy: Awaited<ReturnType<typeof getBlogPageCopyForSite>> = null;
+  let categories: Awaited<ReturnType<typeof getBlogCategories>> = [];
+
+  if (siteId) {
+    [copy, categories] = await Promise.all([getBlogPageCopyForSite(siteId), getBlogCategories(siteId)]);
+  }
+
+  const categoryById = new Map(categories.map((category) => [category.id, category]));
+  const categoryBySlugOrId = new Map<string, (typeof categories)[number]>();
+  for (const category of categories) {
+    const key = category.slug?.trim() || category.id;
+    if (key) {
+      categoryBySlugOrId.set(key, category);
+    }
+  }
+
+  const selectedCategory = selectedCategoryValue ? categoryBySlugOrId.get(selectedCategoryValue) ?? null : null;
+  const posts = siteId ? await getBlogPosts(siteId, selectedCategory?.id ?? null) : [];
+
+  const headline = copy?.headline ?? BLOG_INDEX_HEADLINE;
+  const subheadline = copy?.subheadline ?? BLOG_INDEX_SUBHEADLINE;
+  const emptyMessage = selectedCategory
+    ? `No posts found in ${selectedCategory.name} yet.`
+    : copy?.empty_state_message ?? BLOG_INDEX_EMPTY_MESSAGE;
+
+  const categoryLinkValue = (category: { slug: string | null; id: string }) => category.slug?.trim() || category.id;
 
   return (
     <main id="main" className="flex min-h-0 w-full min-w-0 flex-1 flex-col bg-mm-light">
@@ -75,8 +114,8 @@ export default async function BlogPage() {
       <header className="w-full border-b border-mm-primary/10 bg-gradient-to-br from-white via-mm-light to-mm-sky/25">
         <div className="site-container py-10 sm:py-14 lg:py-16">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mm-primary">Resources</p>
-          <h1 className="ds-h2 mt-3 max-w-3xl font-extrabold text-mm-navy">{BLOG_INDEX_HEADLINE}</h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-mm-muted sm:text-lg">{BLOG_INDEX_SUBHEADLINE}</p>
+          <h1 className="ds-h2 mt-3 max-w-3xl font-extrabold text-mm-navy">{headline}</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-mm-muted sm:text-lg">{subheadline}</p>
         </div>
       </header>
 
@@ -108,86 +147,118 @@ export default async function BlogPage() {
               <code className="rounded bg-mm-sky/40 px-1.5 py-0.5">SITE_KEY</code>, or check your REST resolve endpoint.
             </p>
           </div>
-        ) : posts.length === 0 ? (
-          <p className="mx-auto max-w-2xl text-center text-base leading-relaxed text-mm-muted sm:text-left">
-            {BLOG_INDEX_EMPTY_MESSAGE}
-          </p>
         ) : (
-          <ul className="grid list-none grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10">
-            {posts.map((post) => {
-              const categoryLabel = post.category_id
-                ? categoryNameById.get(post.category_id)
-                : undefined;
-              return (
-                <li key={post.id} className="flex h-full min-h-0">
-                  <article className="group flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-mm-primary/15 bg-mm-surface shadow-[0_4px_24px_rgba(20,40,75,0.06)] transition hover:border-mm-primary/30 hover:shadow-[0_12px_40px_rgba(20,40,75,0.1)]">
+          <>
+            {categories.length > 0 ? (
+              <div className="mb-8 flex flex-wrap gap-2">
+                <Link
+                  href="/blog"
+                  className={[
+                    "rounded-full border px-3.5 py-1.5 text-sm font-semibold transition",
+                    selectedCategory
+                      ? "border-mm-primary/15 bg-mm-surface text-mm-navy hover:border-mm-primary/30 hover:text-mm-primary"
+                      : "border-mm-primary bg-mm-primary text-white",
+                  ].join(" ")}
+                >
+                  All
+                </Link>
+                {categories.map((category) => {
+                  const isActive = selectedCategory?.id === category.id;
+                  const href = `/blog?category=${encodeURIComponent(categoryLinkValue(category))}`;
+                  return (
                     <Link
-                      href={`/blog/${post.slug}`}
-                      className="relative block w-full shrink-0 overflow-hidden bg-gradient-to-br from-mm-sky/40 to-mm-primary/10"
-                      aria-label={`View article: ${post.title}`}
+                      key={category.id}
+                      href={href}
+                      className={[
+                        "rounded-full border px-3.5 py-1.5 text-sm font-semibold transition",
+                        isActive
+                          ? "border-mm-primary bg-mm-primary text-white"
+                          : "border-mm-primary/15 bg-mm-surface text-mm-navy hover:border-mm-primary/30 hover:text-mm-primary",
+                      ].join(" ")}
                     >
-                      <div className="aspect-[16/10] w-full">
-                        {post.cover_image_url ? (
-                          <>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={post.cover_image_url}
-                              alt=""
-                              className="h-full w-full object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
-                            />
-                          </>
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center bg-mm-sky/20">
-                            <span className="text-sm font-medium text-mm-muted">Make My Lesson</span>
-                          </div>
-                        )}
-                      </div>
+                      {category.name}
                     </Link>
+                  );
+                })}
+              </div>
+            ) : null}
 
-                    <div className="flex min-h-0 flex-1 flex-col p-6 sm:p-7">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {formatDate(post.published_at ?? post.publishedAt) ? (
-                          <time
-                            dateTime={post.published_at ?? post.publishedAt ?? undefined}
-                            className="text-xs font-semibold uppercase tracking-wide text-mm-primary"
-                          >
-                            {formatDate(post.published_at ?? post.publishedAt)}
-                          </time>
-                        ) : null}
-                        {categoryLabel ? (
-                          <span className="rounded-full bg-mm-sky/50 px-2.5 py-0.5 text-xs font-semibold text-mm-navy">
-                            {categoryLabel}
-                          </span>
-                        ) : null}
-                      </div>
-                      <h2 className="mt-2 text-lg font-bold leading-snug text-mm-navy sm:text-xl">
+            {posts.length === 0 ? (
+              <p className="mx-auto max-w-2xl text-center text-base leading-relaxed text-mm-muted sm:text-left">
+                {emptyMessage}
+              </p>
+            ) : (
+              <ul className="grid list-none grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-10">
+                {posts.map((post) => {
+                  const categoryLabel = post.category?.id ? categoryById.get(post.category.id)?.name : null;
+                  const resolvedCategory = categoryLabel ?? "Uncategorized";
+                  return (
+                    <li key={post.id} className="flex h-full min-h-0">
+                      <article className="group flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-mm-primary/15 bg-mm-surface shadow-[0_4px_24px_rgba(20,40,75,0.06)] transition hover:border-mm-primary/30 hover:shadow-[0_12px_40px_rgba(20,40,75,0.1)]">
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="transition hover:text-mm-primary"
+                          className="relative block w-full shrink-0 overflow-hidden bg-gradient-to-br from-mm-sky/40 to-mm-primary/10"
+                          aria-label={`View article: ${post.title}`}
                         >
-                          {post.title}
+                          <div className="aspect-[16/10] w-full">
+                            {post.cover_image_url ? (
+                              <>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={post.cover_image_url}
+                                  alt=""
+                                  className="h-full w-full object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                                />
+                              </>
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center bg-mm-sky/20">
+                                <span className="text-sm font-medium text-mm-muted">Make My Lesson</span>
+                              </div>
+                            )}
+                          </div>
                         </Link>
-                      </h2>
-                      {post.excerpt ? (
-                        <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-mm-muted">
-                          {post.excerpt}
-                        </p>
-                      ) : null}
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="mt-5 inline-flex items-center text-sm font-bold text-mm-primary transition hover:text-mm-primary-dark"
-                      >
-                        Read article
-                        <span className="ml-1.5 transition group-hover:translate-x-0.5" aria-hidden>
-                          →
-                        </span>
-                      </Link>
-                    </div>
-                  </article>
-                </li>
-              );
-            })}
-          </ul>
+
+                        <div className="flex min-h-0 flex-1 flex-col p-6 sm:p-7">
+                          <div className="flex flex-wrap items-center gap-2">
+                            {formatDate(post.published_at ?? post.publishedAt) ? (
+                              <time
+                                dateTime={post.published_at ?? post.publishedAt ?? undefined}
+                                className="text-xs font-semibold uppercase tracking-wide text-mm-primary"
+                              >
+                                {formatDate(post.published_at ?? post.publishedAt)}
+                              </time>
+                            ) : null}
+                            <span className="rounded-full bg-mm-sky/50 px-2.5 py-0.5 text-xs font-semibold text-mm-navy">
+                              {resolvedCategory}
+                            </span>
+                          </div>
+                          <h2 className="mt-2 text-lg font-bold leading-snug text-mm-navy sm:text-xl">
+                            <Link href={`/blog/${post.slug}`} className="transition hover:text-mm-primary">
+                              {post.title}
+                            </Link>
+                          </h2>
+                          {post.excerpt ? (
+                            <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-mm-muted">
+                              {post.excerpt}
+                            </p>
+                          ) : null}
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="mt-5 inline-flex items-center text-sm font-bold text-mm-primary transition hover:text-mm-primary-dark"
+                          >
+                            Read article
+                            <span className="ml-1.5 transition group-hover:translate-x-0.5" aria-hidden>
+                              →
+                            </span>
+                          </Link>
+                        </div>
+                      </article>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </>
         )}
       </div>
     </main>

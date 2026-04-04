@@ -28,10 +28,10 @@ Only deployments you configure with a matching `SITE_KEY` or `SITE_ID` load that
 |------|--------|
 | Blog index copy (title, meta, hero, empty state) | `sites`: `blog_page_meta_title`, `blog_page_meta_description`, `blog_page_headline`, `blog_page_subheadline`, `blog_empty_state_message` filtered by `id = site_id` |
 | Posts for this site only | `blogs`: narrow `select`, `eq('site_id', siteId)`, `order('display_date', { ascending: false })` |
-| Categories (shared for all sites) | `blog_categories`: `order('sort_order')` — **no** `site_id` filter |
+| Categories (site-scoped) | `blog_categories`: `eq('site_id', siteId)`, `order('sort_order')` |
 | One post | `blogs`: `eq('site_id', siteId)`, `eq('slug', slug)`, `maybeSingle()` |
 
-Post labels use **`blogs.category_id`** + **`blog_categories`**.
+Post labels use **`blogs.category_id`** + **`blog_categories`** filtered by the current `site_id`.
 
 ## 4. Reference in this repo
 

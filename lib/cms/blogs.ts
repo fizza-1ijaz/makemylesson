@@ -1,6 +1,7 @@
 import { cache } from "react";
 import type {
   BlogCategory,
+  BlogCategorySummary,
   BlogIndexPageData,
   BlogPageCopy,
   BlogPostDetail,
@@ -16,13 +17,39 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 const BLOG_SEO_FIELDS =
   "slug, title, description, meta_title, meta_description, cover_image_url, display_date, author_name, keywords, article_section, category_id";
 
-const BLOG_LIST_SELECT = `id, ${BLOG_SEO_FIELDS}`;
-const BLOG_DETAIL_SELECT = `id, content, ${BLOG_SEO_FIELDS}`;
+const CATEGORY_SUMMARY_SELECT = "id, name, slug";
+
+const BLOG_LIST_SELECT = `id, ${BLOG_SEO_FIELDS}, category:blog_categories (${CATEGORY_SUMMARY_SELECT})`;
+const BLOG_DETAIL_SELECT = `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories (${CATEGORY_SUMMARY_SELECT})`;
 
 const SITE_BLOG_INDEX_SELECT =
   "blog_page_meta_title, blog_page_meta_description, blog_page_headline, blog_page_subheadline, blog_empty_state_message";
 
 const CATEGORY_SELECT = "id, name, slug, sort_order";
+
+function mapCategorySummary(value: unknown): BlogCategorySummary | null {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
+
+  const row = value as Record<string, unknown>;
+  const id = row.id != null ? String(row.id) : "";
+  const name = String(row.name ?? "");
+
+  if (!id || !name) {
+    return null;
+  }
+
+  return {
+    id,
+    name,
+    slug: (row.slug as string | null | undefined) ?? null,
+  };
+}
+
+function getJoinedCategory(row: Record<string, unknown>): BlogCategorySummary | null {
+  return mapCategorySummary(row.category ?? row.blog_categories ?? null);
+}
 
 function mapSupabaseListRow(row: Record<string, unknown>): BlogPostListItem {
   const id = row.id != null ? String(row.id) : String(row.slug ?? "");
@@ -36,6 +63,7 @@ function mapSupabaseListRow(row: Record<string, unknown>): BlogPostListItem {
     published_at: (row.display_date as string | null | undefined) ?? null,
     publishedAt: null,
     category_id: cat != null ? String(cat) : null,
+    category: getJoinedCategory(row),
   };
 }
 
@@ -61,6 +89,8 @@ function mapRowToListItem(row: Record<string, unknown>): BlogPostListItem {
     cover_image_url: (row.cover_image_url as string | null | undefined)?.trim() || null,
     published_at: (row.published_at as string | null | undefined) ?? (row.display_date as string | null | undefined) ?? null,
     publishedAt: (row.publishedAt as string | null | undefined) ?? null,
+    category_id: (row.category_id as string | null | undefined) ?? null,
+    category: getJoinedCategory(row),
   };
 }
 
@@ -90,7 +120,7 @@ function mapRowToDetail(row: Record<string, unknown>): BlogPostDetail {
  * Load all blogs for a resolved `site_id` from Supabase.
  * Throws on PostgREST error — callers that need a soft UI should catch.
  */
-export async function getBlogsForSite(siteId: string): Promise<BlogPostListItem[]> {
+export async function getBlogsForSite(siteId: string, categoryId?: string | null): Promise<BlogPostListItem[]> {
   const env = getCmsEnv();
   if (!isSupabaseConfigured()) {
     throw new Error(
@@ -99,11 +129,17 @@ export async function getBlogsForSite(siteId: string): Promise<BlogPostListItem[
   }
 
   const supabase = createSupabaseServerClient();
-  const { data, error } = await supabase
+  let query = supabase
     .from(env.postsTable)
     .select(BLOG_LIST_SELECT)
     .eq("site_id", siteId)
     .order("display_date", { ascending: false });
+
+  if (categoryId) {
+    query = query.eq("category_id", categoryId);
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     throw error;
@@ -143,10 +179,10 @@ export async function getBlogBySlugForSite(siteId: string, slug: string): Promis
  * List posts for a resolved `site_id` — Supabase via {@link getBlogsForSite}, or legacy REST.
  * Never throws; returns `[]` on failure so pages can degrade gracefully.
  */
-export async function getBlogPosts(siteId: string): Promise<BlogPostListItem[]> {
+export async function getBlogPosts(siteId: string, categoryId?: string | null): Promise<BlogPostListItem[]> {
   if (isSupabaseConfigured()) {
     try {
-      return await getBlogsForSite(siteId);
+      return await getBlogsForSite(siteId, categoryId);
     } catch (e) {
       if (process.env.NODE_ENV === "development") {
         console.error("[cms] getBlogPosts:", e);
@@ -272,9 +308,9 @@ export async function getBlogPageCopyForSite(siteId: string): Promise<BlogPageCo
 }
 
 /**
- * Global category list (no `site_id` filter). Labels on posts use `blogs.category_id` + this table.
+ * Site-scoped category list. Labels on posts use `blogs.category_id` + this table.
  */
-export async function getBlogCategories(): Promise<BlogCategory[]> {
+export async function getBlogCategories(siteId: string): Promise<BlogCategory[]> {
   if (!isSupabaseConfigured()) {
     return [];
   }
@@ -284,6 +320,7 @@ export async function getBlogCategories(): Promise<BlogCategory[]> {
     const { data, error } = await supabase
       .from(env.blogCategoriesTable)
       .select(CATEGORY_SELECT)
+      .eq("site_id", siteId)
       .order("sort_order", { ascending: true });
 
     if (error) {
@@ -317,7 +354,7 @@ export const getBlogIndexPageData = cache(async (): Promise<BlogIndexPageData> =
 
   const [copy, categories, posts] = await Promise.all([
     getBlogPageCopyForSite(siteId),
-    getBlogCategories(),
+    getBlogCategories(siteId),
     getBlogPosts(siteId),
   ]);
 

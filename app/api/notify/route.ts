@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 type NotifyPayload = {
   email?: string;
+  Email?: string;
 };
 
 type EmailRecord = {
@@ -13,6 +14,7 @@ type EmailRecord = {
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const STORAGE_PATH = path.join(process.cwd(), "data", "launch-notify-emails.json");
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/hello@makemylesson.ai";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,11 +37,39 @@ async function readEmail(request: Request): Promise<string> {
 
   if (contentType.includes("application/json")) {
     const body = (await request.json()) as NotifyPayload;
-    return String(body.email ?? "").trim().toLowerCase();
+    return String(body.email ?? body.Email ?? "").trim().toLowerCase();
   }
 
   const formData = await request.formData();
-  return String(formData.get("email") ?? "").trim().toLowerCase();
+  return String(formData.get("email") ?? formData.get("Email") ?? "").trim().toLowerCase();
+}
+
+async function sendToFormSubmit(email: string) {
+  const response = await fetch(FORMSUBMIT_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      Email: email,
+      _subject: "New Waitlist Signup - Make my Lesson",
+      Source: "Landing page waitlist",
+      _captcha: "false",
+    }),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Unable to forward notify request.");
+  }
+
+  const data = (await response.json()) as { success?: string | boolean; message?: string };
+  const isSuccess = data.success === true || data.success === "true";
+
+  if (!isSuccess) {
+    throw new Error(data.message ?? "FormSubmit rejected the request.");
+  }
 }
 
 export async function POST(request: Request) {
@@ -54,6 +84,8 @@ export async function POST(request: Request) {
     if (existing.some((item) => item.email === email)) {
       return NextResponse.json({ ok: true, alreadySubscribed: true });
     }
+
+    await sendToFormSubmit(email);
 
     const updated: EmailRecord[] = [
       ...existing,
