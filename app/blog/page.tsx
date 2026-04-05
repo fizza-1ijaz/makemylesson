@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getBlogCategories, getBlogPageCopyForSite, getBlogPosts, getSiteId, isCmsConfigured } from "@/lib/cms";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 /** Section 2.1 — Blog index SEO (fixed copy; CMS fetch unchanged). */
 const BLOG_INDEX_PAGE_TITLE =

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getSiteId, isCmsConfigured } from "@/lib/cms";
 import { absoluteUrl, DEFAULT_OG_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ slug: string }> };
 

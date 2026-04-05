@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CookieBanner } from "@/components/CookieBanner";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { ScrollToTopOnRoute } from "@/components/ScrollToTopOnRoute";
@@ -48,6 +49,7 @@ export default function RootLayout({
         <ScrollToTopOnRoute />
         <div className="flex min-h-0 flex-1 flex-col">{children}</div>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

@@ -30,7 +30,7 @@ export function Footer() {
     >
       <div className="site-container py-6 sm:py-7">
         <div className="flex flex-col gap-4 sm:gap-5">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:text-left">
             <Link
               href="/"
               className="group flex w-fit min-w-0 shrink-0 items-center gap-2 sm:gap-2.5"
@@ -48,7 +48,7 @@ export function Footer() {
             </Link>
 
             <nav
-              className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-mm-primary sm:justify-end"
+              className="flex w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium text-mm-primary lg:w-auto lg:justify-end"
               aria-label="Legal"
             >
               <Link

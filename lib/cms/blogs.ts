@@ -200,11 +200,11 @@ export async function getBlogPosts(siteId: string, categoryId?: string | null): 
 
   try {
     const res = await fetch(url, {
+      cache: "no-store",
       headers: {
         Accept: "application/json",
         ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
       },
-      next: { revalidate: 60 },
     });
 
     if (!res.ok) {
@@ -243,11 +243,11 @@ export async function getBlogPostBySlug(siteId: string, slug: string): Promise<B
 
   try {
     const res = await fetch(url, {
+      cache: "no-store",
       headers: {
         Accept: "application/json",
         ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
       },
-      next: { revalidate: 60 },
     });
 
     if (!res.ok) {

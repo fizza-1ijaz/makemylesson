@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/hello@makemylesson.ai";
+
 type EmailFormProps = {
   variant: "hero" | "cta";
   id?: string;
@@ -31,14 +33,17 @@ export function EmailForm({ variant, id }: EmailFormProps) {
     setMessage(null);
 
     try {
-      const response = await fetch("/api/notify", {
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          email,
+          Email: email,
+          _subject: "New Waitlist Signup - Make my Lesson",
+          Source: "Landing page waitlist",
+          _captcha: "false",
         }),
       });
 
@@ -77,7 +82,7 @@ export function EmailForm({ variant, id }: EmailFormProps) {
     >
       <form
         id={id}
-        action="/api/notify"
+        action="https://formsubmit.co/hello@makemylesson.ai"
         method="post"
         onSubmit={handleSubmit}
         className={
