@@ -20,7 +20,7 @@ const regions = [
     detail: "All provinces and territory groups, elementary through senior grades",
   },
   {
-    logo: "/IB.jpeg",
+    logo: "/US.png",
     logoAlt: "International Baccalaureate",
     name: "International Baccalaureate",
     detail: "IB PYP, IB MYP, and IB Diploma Programme",

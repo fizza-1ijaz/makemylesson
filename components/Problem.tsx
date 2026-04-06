@@ -37,7 +37,7 @@ export function Problem() {
               The problem is not that teachers lack skill or commitment. The problem is that the time available for
               preparation rarely matches what thorough, curriculum-faithful planning actually requires.
             </p>
-            <p className="mt-4 text-lg font-bold text-mm-navy">
+            <p className="mt-4 text-center text-lg font-bold text-mm-navy">
               Make My Lesson is being built to address exactly that.
             </p>
           </article>
