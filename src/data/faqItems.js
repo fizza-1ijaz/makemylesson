@@ -8,11 +8,7 @@ export const faqItems = [
     cat: 'cat1',
     catTitle: 'Category 1 — What Is Make My Lesson?',
     q: 'What is Make My Lesson?',
-    a: `Make My Lesson is an AI-powered lesson planning platform built specifically for classroom teachers. It generates complete, curriculum-aligned teaching packs from a single curriculum selection and a single topic — covering a lesson plan, a classroom presentation, a student activity with teacher answer key, and a summative assessment with mark scheme.
-
-Unlike generic AI writing tools, Make My Lesson is a purpose-built teacher planning platform. Every output is calibrated to your exact curriculum route, grade level, subject, and teaching method — not a generic template that ignores your exam board's language, your state's syllabus authority, or your programme's assessment conventions.
-
-In one sentence: Select your curriculum. Type your topic. Receive a complete, classroom-ready teaching pack in minutes.`,
+    a: `Make My Lesson is an AI-powered lesson planning platform built specifically for teachers. It generates complete, curriculum-aligned teaching packs across four stages — a lesson plan, a classroom presentation, a student activity with teacher answer key, and a summative assessment with mark scheme — from a single topic selection. It supports 71 curriculum routes across Australia, the United Kingdom, Canada, International Baccalaureate programmes, and the United States.`,
   },
   {
     id: 2,
@@ -73,26 +69,15 @@ All four stages. One curriculum selection. Under 10 minutes. Every document cohe
     id: 6,
     cat: 'cat1',
     catTitle: 'Category 1 — What Is Make My Lesson?',
-    q: 'Do I have to generate all four stages every time?',
-    a: `No. Every stage is fully independent. You can generate any single stage without using the others:
-
-Generate only a lesson plan (Stage 1) if that is all you need
-Generate only a presentation (Stage 2) using your own existing lesson plan
-Generate only a classroom activity (Stage 3) for any topic
-Generate only a summative assessment (Stage 4) without completing the other stages
-
-When you use stages in sequence — for example, generating a presentation after a lesson plan — the curriculum context carries over automatically. You never have to re-select your curriculum, grade, or subject between stages.`,
+    q: 'Can I use just one stage without generating all four?',
+    a: `Yes. Every stage is fully independent. You can generate any stage on its own — a lesson plan only, a presentation only, a classroom activity only, or an assessment only — without requiring the other stages.`,
   },
   {
     id: 7,
     cat: 'cat1',
     catTitle: 'Category 1 — What Is Make My Lesson?',
-    q: 'What makes Make My Lesson different from ChatGPT or other generic AI tools?',
-    a: `Generic AI tools generate text. Make My Lesson generates structured, curriculum-specific teaching resources. The difference is significant.
-
-A generic AI tool gives you a lesson plan-shaped paragraph — content that sounds educational but is not calibrated to your curriculum authority, your grade level's expected language, your exam board's command words, or your assessment conventions. Make My Lesson generates content specifically built for your route: a NSW HSC output uses NESA language, a GCSE output applies your exam board's assessment objectives, an IB DP output maintains programme-specific pedagogy.
-
-Make My Lesson also generates four connected documents in a structured workflow — lesson plan, presentation, activity and assessment — and always produces two separate documents for Stages 3 and 4: a student-facing sheet and a teacher-only answer key or mark scheme. No generic AI tool does this.`,
+    q: 'How is Make My Lesson different from ChatGPT or other AI tools?',
+    a: `Generic AI tools generate text. Make My Lesson generates structured, curriculum-specific teaching resources calibrated to your exact curriculum route, exam board's language, and assessment conventions. It generates four connected documents — lesson plan, presentation, activity and assessment — and always produces separate student and teacher documents for Stages 3 and 4.`,
   },
   {
     id: 8,
@@ -228,17 +213,7 @@ No two curriculum routes share a generic output. This is the core reason Make My
     cat: 'cat3',
     catTitle: 'Category 3 — Curriculum Coverage',
     q: 'Which curricula does Make My Lesson support?',
-    a: `Make My Lesson supports 71 curriculum routes across five curriculum families:
-
-Australia — 23 routes: NSW Primary and Secondary, NSW HSC, Victoria Primary and Secondary, VCE, Queensland Primary and Secondary, QCE, WA Primary and Secondary, WACE, SA Primary and Secondary, SACE, Tasmania Primary and Secondary, TCE, ACT Primary, ACT Senior Secondary, NT Primary and Secondary, NTCET
-
-United Kingdom — 14 routes: UK National Curriculum KS1/KS2, KS3, KS4/GCSE, KS5/A Level; Cambridge International Primary, Primary Checkpoint, Lower Secondary, Lower Secondary Checkpoint, IGCSE, AS & A Level; Pearson Edexcel KS1/KS2, KS3, KS4, KS5
-
-Canada — 24 routes: Ontario, British Columbia, Alberta, Quebec, Manitoba, Saskatchewan, Atlantic Canada (NB/NS/PEI APEF), Northern Territories — each across Elementary, Grades 7–10, and Senior levels
-
-International Baccalaureate — 3 routes: PYP, MYP, Diploma Programme
-
-United States — 4 routes: Elementary CCSS/NGSS, Middle School, High School Standard, Advanced Placement/AP Pathway`,
+    a: `Make My Lesson supports 71 curriculum routes across Australia (23 routes including HSC, VCE, QCE, WACE, SACE), United Kingdom (14 routes including GCSE, A Level, Cambridge and Edexcel), Canada (24 routes across all provinces), International Baccalaureate (PYP, MYP, DP), and United States (Elementary, Middle School, High School, AP).`,
   },
   {
     id: 19,
@@ -354,8 +329,8 @@ Ayla does not generate a new stage — she helps you refine what has already bee
     id: 30,
     cat: 'cat5',
     catTitle: 'Category 5 — Credits, Pricing & Plans',
-    q: 'How many free credits do new users receive?',
-    a: `Every new account receives 5 free generation credits with no credit card required. That covers one complete four-stage teaching pack (4 credits) plus one additional standalone stage generation — or up to 5 individual stage generations in any combination.`,
+    q: 'How many free credits do I get?',
+    a: `Every new account receives 10 free generation credits with no credit card required. Each stage generation costs 1 credit. A complete four-stage teaching pack costs 4 credits. Subscribers receive 30 credits per month.`,
   },
   {
     id: 31,

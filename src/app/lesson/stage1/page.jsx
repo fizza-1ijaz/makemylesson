@@ -1,4 +1,10 @@
-import Stage1Page from '@/pages/Stage1Page'
+import Stage1Page from '@/views/Stage1Page'
+
+export const metadata = {
+  title: 'Lesson plan — Make My Lesson',
+  description: 'Edit and export your AI-generated lesson plan.',
+  robots: { index: false, follow: true },
+}
 
 export default function LessonStage1Page() {
   return <Stage1Page />

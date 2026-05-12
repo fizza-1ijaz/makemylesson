@@ -1,0 +1,60 @@
+import Link from 'next/link'
+import { Reveal } from '../shared'
+
+const PLANS = [
+  {
+    title: 'Free trial',
+    blurb: 'Try the full workflow with free generation credits — no credit card required.',
+  },
+  {
+    title: 'Individual',
+    blurb: 'Monthly or annual subscription for solo teachers who plan lessons every week.',
+  },
+  {
+    title: 'Add-on credits',
+    blurb: 'One-time credit packs when you need extra generations beyond your plan.',
+  },
+  {
+    title: 'School & department',
+    blurb: 'Multi-seat annual plans for teams, with admin controls and per-teacher accounts.',
+  },
+]
+
+export default function PricingSection() {
+  return (
+    <section className="pricing" id="pricing">
+      <div className="W pricing-inner">
+        <Reveal className="pricing-head">
+          <span className="section-eyebrow">Pricing</span>
+          <h2 className="pricing-head-title">Plans for every teacher and team</h2>
+          <p className="section-intro pricing-intro">
+            From a free trial to school-wide rollout — pick what fits. Full prices, currencies, and credit rules live on
+            our pricing page.
+          </p>
+        </Reveal>
+
+        <div className="pricing-grid pricing-grid--plans">
+          {PLANS.map((plan, i) => (
+            <Reveal key={plan.title} delay={i * 60} className="price-card price-card--summary">
+              <div className="plan-name">{plan.title}</div>
+              <p className="plan-blurb">{plan.blurb}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={260} className="pricing-view-cta">
+          <p className="pricing-view-cta-lead">See full pricing, currencies, add-ons, and school tiers.</p>
+          <Link href="/pricing" className="btn btn-teal btn-lg pricing-view-cta-btn">
+            View pricing
+          </Link>
+          <p className="pricing-view-cta-note">
+            Questions?{' '}
+            <a href="mailto:hello@makemylesson.ai" className="pricing-view-cta-mail">
+              hello@makemylesson.ai
+            </a>
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  )
+}

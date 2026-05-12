@@ -1,15 +1,13 @@
-import LegalPolicyPage from '@/pages/LegalPolicyPage'
+import PrivacyPolicyPage from '@/components/legal/PrivacyPolicyPage'
 
 export const metadata = {
-  title: 'Privacy Policy — Make My Lesson',
-  description: 'Privacy policy for Make My Lesson by Skyen Solutions / Qismat Ventures W.L.L.',
+  title: 'Privacy Policy | Make My Lesson',
+  description:
+    'Web Privacy Policy for Make My Lesson — data collection, Firebase, cookies, retention, user rights, and Qismat Ventures W.L.L contact.',
+  alternates: { canonical: '/privacy-policy' },
+  robots: { index: true, follow: true },
 }
 
 export default function PrivacyPolicyRoutePage() {
-  return (
-    <LegalPolicyPage
-      title="Privacy Policy"
-      lead="Full policy text will be published here. For privacy enquiries, contact the team at Skyen Solutions / Make My Lesson."
-    />
-  )
+  return <PrivacyPolicyPage />
 }

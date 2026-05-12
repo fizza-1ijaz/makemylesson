@@ -4,21 +4,23 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/cn'
-import { Star, Menu, X } from 'lucide-react'
+import BrandMark from '@/components/BrandMark'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/#features', label: 'Features' },
-  { href: '/#pricing', label: 'Pricing' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQs' },
   { href: '/blog', label: 'Blogs' },
   { href: '/#ayla-ai', label: 'Ayla AI' },
-  { href: '/#contact', label: 'Contact Us' },
+  { href: '/contact', label: 'Contact Us' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
+  const hideBrandLogo = pathname?.startsWith('/blog')
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10)
@@ -40,10 +42,18 @@ export default function Navbar() {
       )}
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-5 max-[480px]:px-4">
-        <Link href="/" className="flex shrink-0 items-center gap-1.5 no-underline">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-mml-teal/15 text-mml-teal">
-            <Star size={14} fill="currentColor" />
-          </span>
+        <Link
+          href="/#hero"
+          className={cn('flex shrink-0 items-center no-underline', hideBrandLogo ? 'gap-0' : 'gap-1.5')}
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault()
+              document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              window.history.replaceState(null, '', '/#hero')
+            }
+          }}
+        >
+          {!hideBrandLogo && <BrandMark className="h-7 w-7 shrink-0 object-contain" />}
           <span className="font-display text-[14px] font-normal text-white">
             Make My <strong className="font-bold text-mml-teal">Lesson</strong>
           </span>

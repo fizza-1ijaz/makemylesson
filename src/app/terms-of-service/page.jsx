@@ -1,15 +1,13 @@
-import LegalPolicyPage from '@/pages/LegalPolicyPage'
+import TermsOfServicePage from '@/components/legal/TermsOfServicePage'
 
 export const metadata = {
-  title: 'Terms of Service — Make My Lesson',
-  description: 'Terms of service for Make My Lesson.',
+  title: 'Terms of Service | Make My Lesson',
+  description:
+    'Terms of Service for Make My Lesson — eligibility, accounts, AI content, credits, liability, and contact for Qismat Ventures W.L.L.',
+  alternates: { canonical: '/terms-of-service' },
+  robots: { index: true, follow: true },
 }
 
-export default function TermsOfServicePage() {
-  return (
-    <LegalPolicyPage
-      title="Terms of Service"
-      lead="Full terms will be published here. This page is a placeholder until legal copy is added."
-    />
-  )
+export default function TermsOfServiceRoutePage() {
+  return <TermsOfServicePage />
 }

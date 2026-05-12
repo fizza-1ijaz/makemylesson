@@ -1,15 +1,13 @@
-import LegalPolicyPage from '@/pages/LegalPolicyPage'
+import DisclaimerPage from '@/components/legal/DisclaimerPage'
 
 export const metadata = {
-  title: 'Disclaimer — Make My Lesson',
-  description: 'Disclaimer for Make My Lesson.',
+  title: 'Disclaimer | Make My Lesson',
+  description:
+    'Disclaimer for Make My Lesson — AI content, assessments, liability, third-party services, and contact for Qismat Ventures W.L.L.',
+  alternates: { canonical: '/disclaimer' },
+  robots: { index: true, follow: true },
 }
 
-export default function DisclaimerPage() {
-  return (
-    <LegalPolicyPage
-      title="Disclaimer"
-      lead="Full disclaimer will be published here. This page is a placeholder until legal copy is added."
-    />
-  )
+export default function DisclaimerRoutePage() {
+  return <DisclaimerPage />
 }

@@ -1,17 +1,21 @@
 import FaqPage from '@/components/faq/FaqPage'
 import { faqItems } from '@/data/faqItems'
-import { FAQ_SCHEMA_IDS, FAQ_PAGE_URL } from '@/data/faqMeta'
+import { FAQ_SCHEMA_IDS } from '@/data/faqMeta'
 import { buildFaqJsonLd } from '@/lib/faqJsonLd'
+import { SITE_URL } from '@/lib/siteUrl'
+
+const faqCanonical = `${SITE_URL.replace(/\/$/, '')}/faq`
 
 export const metadata = {
-  title: 'FAQ — Make My Lesson | AI Lesson Planner & Curriculum-Aligned Teaching Packs',
+  title: 'Frequently Asked Questions — Make My Lesson',
   description:
-    'Frequently asked questions about Make My Lesson: AI lesson planner, four-stage teaching packs, curriculum routes, credits, pricing, Ayla AI assistant, library and export.',
-  alternates: { canonical: '/faq' },
+    'Everything you need to know about Make My Lesson — how it works, which curricula are supported, free credits, stages, and how to get started.',
+  alternates: { canonical: faqCanonical },
+  robots: { index: true, follow: true },
 }
 
 export default function FaqRoutePage() {
-  const jsonLd = buildFaqJsonLd(faqItems, FAQ_SCHEMA_IDS, FAQ_PAGE_URL)
+  const jsonLd = buildFaqJsonLd(faqItems, FAQ_SCHEMA_IDS, faqCanonical)
 
   return (
     <>

@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { Check, Sparkles } from 'lucide-react'
+import BrandMark from '@/components/BrandMark'
+import AylaIcon from '@/components/AylaIcon'
+import { Check } from 'lucide-react'
 import { cn } from '@/lib/cn'
 
 const STAGES = [
@@ -15,13 +17,18 @@ export default function StageLayout({ children, currentStage }) {
     <div className="flex min-h-[calc(100vh-56px)] flex-col bg-mml-navy">
       <div className="border-b border-white/[0.06] bg-mml-navy-mid text-white">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-5 px-6 py-3 max-md:gap-2.5 max-md:py-2.5">
-          <div className="flex shrink-0 items-center gap-1.5 font-display text-[13px] font-bold text-mml-teal">
-            <Sparkles size={14} />
-            <span>Make My Lesson</span>
-          </div>
+          <Link
+            href="/"
+            className="flex shrink-0 items-center gap-1.5 no-underline font-display text-[13px] font-normal text-white"
+          >
+            <BrandMark className="h-6 w-6 shrink-0 object-contain" />
+            <span>
+              Make My <strong className="font-bold text-mml-teal">Lesson</strong>
+            </span>
+          </Link>
           <div className="flex shrink-0 items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.04] px-3.5 py-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-mml-teal to-mml-teal-dark text-mml-navy">
-              <Sparkles size={12} />
+            <div className="flex h-7 w-7 shrink-0 overflow-hidden rounded-full border border-mml-teal/30 bg-mml-navy-mid ring-1 ring-white/5">
+              <AylaIcon width={28} height={28} alt="" className="h-full w-full" />
             </div>
             <div>
               <p className="text-xs font-semibold text-white">Ayla</p>

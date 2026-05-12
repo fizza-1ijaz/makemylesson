@@ -4,7 +4,7 @@ export default function AcceptableUsePolicyPage() {
       <article className="mx-auto max-w-3xl">
         <header className="border-b border-white/10 pb-8 text-center">
           <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
-            Make My Lesson Acceptable Use Policy
+            Acceptable Use Policy
           </h1>
           <p className="mt-4 text-sm font-medium text-mml-teal">Operated by Qismat Ventures W.L.L</p>
           <p className="mt-6 text-[13px] leading-relaxed text-white">
