@@ -7,7 +7,7 @@ import {
   SITE_URL,
 } from '@/lib/siteUrl'
 
-/** Homepage technical SEO — title ≤60 chars. */
+/** Homepage technical SEO — title ≤60 chars.*/
 const homeTitle = 'Make My Lesson — AI Lesson Planner for Teachers'
 
 const homeMetaDescription =
