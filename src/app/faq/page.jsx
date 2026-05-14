@@ -9,7 +9,7 @@ const faqCanonical = `${SITE_URL.replace(/\/$/, '')}/faq`
 export const metadata = {
   title: 'Frequently Asked Questions — Make My Lesson',
   description:
-    'Everything you need to know about Make My Lesson — how it works, which curricula are supported, free credits, stages, and how to get started.',
+    'Everything you need to know about Make My Lesson — how it works, which curriculas are supported, free credits, stages, and how to get started.',
   alternates: { canonical: faqCanonical },
   robots: { index: true, follow: true },
 }
