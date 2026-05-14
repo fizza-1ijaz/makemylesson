@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 
 import { AylaHeaderAvatar, AylaMsgAvatar, TypingDots } from '../AylaChatUi'
 import { CheckItem, Label, Reveal } from '../shared'
+import { MML_APP } from '@/lib/appUrls'
 
 export default function AylaSection() {
   const [typed, setTyped] = useState(false)
@@ -199,7 +200,7 @@ export default function AylaSection() {
               <CheckItem>Available on every page plan, present, assess, quiz</CheckItem>
             </ul>
             <div className="ayla-ctas">
-              <a href="#" className="btn btn-teal btn-lg">
+              <a href={MML_APP.ayla} className="btn btn-teal btn-lg">
                 Chat with Ayla →
               </a>
               <a href="#" className="btn btn-ghost btn-lg">

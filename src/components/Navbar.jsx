@@ -1,22 +1,29 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/cn'
+import { MML_APP } from '@/lib/appUrls'
 import BrandMark from '@/components/BrandMark'
 import { Menu, X } from 'lucide-react'
 
-const navLinks = [
-  { href: '/#features', label: 'Features' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/faq', label: 'FAQs' },
-  { href: '/blog', label: 'Blogs' },
-  { href: '/#ayla-ai', label: 'Ayla AI' },
-  { href: '/contact', label: 'Contact Us' },
-]
+function useNavLinks() {
+  return useMemo(
+    () => [
+      { href: '/#features', label: 'Features', flutter: false },
+      { href: MML_APP.pricing, label: 'Pricing', flutter: true },
+      { href: '/faq', label: 'FAQs', flutter: false },
+      { href: '/blog', label: 'Blogs', flutter: false },
+      { href: '/#ayla-ai', label: 'Ayla AI', flutter: false },
+      { href: '/contact', label: 'Contact Us', flutter: false },
+    ],
+    [],
+  )
+}
 
 export default function Navbar() {
+  const navLinks = useNavLinks()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
@@ -60,15 +67,25 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto min-[901px]:flex">
-          {navLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.flutter ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
 
         <button
@@ -88,15 +105,25 @@ export default function Navbar() {
         )}
       >
         <div className="flex flex-col px-4 py-3">
-          {navLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.flutter ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
       </div>
     </nav>
