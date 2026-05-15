@@ -17,7 +17,6 @@ export const CTA_LINKS = {
     appStore: '#',
     googlePlay: '#',
   },
-  qrImage: null, // optional: string URL to QR image, e.g. '/images/cta-qr.png'
 }
 
 function TikTokIcon({ className, size = 20 }) {
@@ -122,20 +121,6 @@ export default function CtaBandSection() {
               <GooglePlayIcon className="final-cta-app-ico" />
               Google Play
             </a>
-          </div>
-
-          <hr className="final-cta-rule" aria-hidden />
-
-          <p className="final-cta-section-label">Scan QR</p>
-          <div className="final-cta-qr-wrap">
-            {CTA_LINKS.qrImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={CTA_LINKS.qrImage} alt="Download app QR code" className="final-cta-qr-img" />
-            ) : (
-              <div className="final-cta-qr-placeholder" aria-hidden>
-                <span className="final-cta-qr-placeholder-text">Add QR </span>
-              </div>
-            )}
           </div>
         </Reveal>
       </div>

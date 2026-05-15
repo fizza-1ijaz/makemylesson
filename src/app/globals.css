@@ -2085,32 +2085,32 @@
 }
 @media (min-width: 640px) {
   .curr-card.curr-wide {
-    grid-template-columns: auto 1fr;
-    column-gap: 24px;
-    row-gap: 10px;
+    grid-template-columns: 1fr;
+    row-gap: 0;
     padding: 24px 28px 22px;
   }
   .curr-card.curr-wide .curr-flag {
     grid-column: 1;
-    grid-row: 1 / -1;
+    grid-row: 1;
     margin-bottom: 0;
-    align-self: start;
+    align-self: center;
+    justify-self: center;
   }
   .curr-card.curr-wide h3 {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: left;
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
     font-size: clamp(17px, 1.65vw, 19px);
   }
   .curr-card.curr-wide .curr-body {
-    grid-column: 2;
-    grid-row: 2;
-    text-align: left;
+    grid-column: 1;
+    grid-row: 3;
+    text-align: center;
   }
   .curr-card.curr-wide .curr-tags {
-    grid-column: 2;
-    grid-row: 3;
-    justify-content: flex-start;
+    grid-column: 1;
+    grid-row: 4;
+    justify-content: center;
   }
 }
 .curr-flag {
@@ -2118,6 +2118,7 @@
   margin-bottom: 12px;
   display: block;
   align-self: center;
+  justify-self: center;
 }
 .curr-flag-img {
   width: auto;
@@ -2125,6 +2126,8 @@
   max-width: 100%;
   object-fit: contain;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
@@ -2897,6 +2900,8 @@
   align-items: stretch;
 }
 .sister-card {
+  display: flex;
+  flex-direction: column;
   padding: 26px 24px 28px;
   border-radius: 16px;
   border: 1px solid var(--border);
@@ -2907,6 +2912,7 @@
 .sister-platform-name-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin: 0 0 10px;
 }
@@ -2927,6 +2933,7 @@
 .sister-platform-name-row .sister-platform-name {
   margin: 0;
   min-width: 0;
+  text-align: center;
 }
 .sister-card-headline {
   font-family: var(--serif);
@@ -2936,6 +2943,15 @@
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 0 0 16px;
+  text-align: center;
+}
+@media (min-width: 901px) {
+  .sister-platform-name-row {
+    min-height: 44px;
+  }
+  .sister-card-headline {
+    min-height: calc(1.2em * 3);
+  }
 }
 .sister-card-body p {
   font-size: 15px;
