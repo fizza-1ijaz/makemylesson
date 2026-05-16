@@ -1,6 +1,7 @@
 'use client'
 
 import AylaIcon from '@/components/AylaIcon'
+import { MML_APP } from '@/lib/appUrls'
 import AylaSection from '@/landing/sections/AylaSection'
 import CtaBandSection from '@/landing/sections/CtaBandSection'
 import SisterPlatformsSection from '@/landing/sections/SisterPlatformsSection'
@@ -36,9 +37,8 @@ export default function LandingPage() {
       <SisterPlatformsSection />
       <CtaBandSection />
 
-      {/* Replace href when you have the target URL */}
       <a
-        href="#"
+        href={MML_APP.ayla}
         className="landing-fab"
         aria-label="Open Ayla or help"
         title="Ayla"

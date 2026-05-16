@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Label, Reveal } from '../shared'
 import { MML_APP } from '@/lib/appUrls'
 
@@ -46,12 +45,12 @@ export default function HeroSection() {
 
             <Reveal delay={220}>
               <div className="hero-ctas">
-                <Link href={MML_APP.stage1} className="btn btn-teal btn-lg">
+                <a href={MML_APP.stage1} className="btn btn-teal btn-lg">
                   Build Your First Teaching Pack Free
                   <svg width={16} height={16} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
-                </Link>
+                </a>
                 <a href="#how-it-works" className="btn btn-ghost btn-lg">
                   See how it works ↓
                 </a>

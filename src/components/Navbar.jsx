@@ -15,7 +15,7 @@ function useNavLinks() {
       { href: MML_APP.pricing, label: 'Pricing', flutter: true },
       { href: '/faq', label: 'FAQs', flutter: false },
       { href: '/blog', label: 'Blogs', flutter: false },
-      { href: '/#ayla-ai', label: 'Ayla AI', flutter: false },
+      { href: MML_APP.ayla, label: 'Ayla AI', flutter: true },
       { href: '/contact', label: 'Contact Us', flutter: false },
     ],
     [],

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 
+import { MML_APP } from '@/lib/appUrls'
 import { Reveal } from '../shared'
 
 /** Replace `#` with real URLs when ready. */
@@ -69,12 +70,12 @@ export default function CtaBandSection() {
             Join teachers across Australia, the UK, Canada, and internationally who are spending less time preparing and
             more time teaching.
           </p>
-          <Link href="/lesson/stage1" className="btn btn-teal btn-lg final-cta-btn final-cta-btn--primary">
+          <a href={MML_APP.stage1} className="btn btn-teal btn-lg final-cta-btn final-cta-btn--primary">
             Build Your First Teaching Pack Free
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </Link>
+          </a>
           <p className="final-cta-sub">10 free credits · No credit card required · Cancel anytime</p>
 
           <hr className="final-cta-rule" aria-hidden />

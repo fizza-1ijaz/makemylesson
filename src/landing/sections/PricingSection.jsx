@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { MML_APP } from '@/lib/appUrls'
 import { Reveal } from '../shared'
 
 const PLANS = [
@@ -44,9 +44,9 @@ export default function PricingSection() {
 
         <Reveal delay={260} className="pricing-view-cta">
           <p className="pricing-view-cta-lead">See full pricing, currencies, add-ons, and school tiers.</p>
-          <Link href="/pricing" className="btn btn-teal btn-lg pricing-view-cta-btn">
+          <a href={MML_APP.pricing} className="btn btn-teal btn-lg pricing-view-cta-btn">
             View pricing
-          </Link>
+          </a>
           <p className="pricing-view-cta-note">
             Questions?{' '}
             <a href="mailto:hello@makemylesson.ai" className="pricing-view-cta-mail">

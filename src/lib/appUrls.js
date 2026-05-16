@@ -1,12 +1,12 @@
 /**
- * Flutter web app (deep links under `/app/…`).
- * Override origin for local/staging: NEXT_PUBLIC_MML_APP_ORIGIN=http://localhost:8080
+ * Flutter web app deep links on the same host as the marketing site.
+ * Next.js rewrites `/app/*` to Flutter on Firebase (`makemylesson.app`) — see next.config.mjs.
+ *
+ * Use these relative paths for in-site CTAs so localhost and production both proxy correctly.
+ * Proxy target for local Flutter: MML_FLUTTER_HOSTING_ORIGIN=http://localhost:8080
  */
-export const MML_APP_ORIGIN =
-  process.env.NEXT_PUBLIC_MML_APP_ORIGIN?.replace(/\/$/, '') ?? 'https://makemylesson.ai'
-
 export const MML_APP = {
-  pricing: `${MML_APP_ORIGIN}/app/pricing`,
-  stage1: `${MML_APP_ORIGIN}/app/stage1`,
-  ayla: `${MML_APP_ORIGIN}/app/ayla`,
+  pricing: '/app/pricing',
+  stage1: '/app/stage1',
+  ayla: '/app/ayla',
 }
