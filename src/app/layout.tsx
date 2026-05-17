@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Sans, DM_Serif_Display } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import CookieConsent from '@/components/CookieConsent'
 import {
   DEFAULT_OG_IMAGE_ALT,
   DEFAULT_OG_IMAGE_HEIGHT,
@@ -90,6 +91,7 @@ export default function RootLayout({
           <Navbar />
           <main className="main-content flex-1 pt-14">{children}</main>
           <Footer />
+          <CookieConsent />
         </div>
       </body>
     </html>
