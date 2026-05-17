@@ -505,16 +505,17 @@
    HERO
 ───────────────────────────────────────── */
 .hero {
-  min-height: calc(100svh - 56px);
-  min-height: calc(100dvh - 56px);
-  padding: 24px 0 48px;
+  min-height: auto;
+  padding: 28px 0 36px;
   background: var(--bg);
   position: relative;
   overflow-x: hidden;
   overflow-y: visible;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+}
+.hero-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 .hero-glow {
   position: absolute; top: -120px; right: -80px;
@@ -531,10 +532,28 @@
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
 }
 .hero-inner {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-  gap: clamp(20px, 3vw, 42px); align-items: center;
-  min-height: 100%;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(20px, 3vw, 42px);
+  align-items: center;
+}
+@media (min-width: 961px) {
+  .hero {
+    min-height: calc(100svh - 56px);
+    min-height: calc(100dvh - 56px);
+    padding: 24px 0 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-shell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 .hero-inner > * {
   min-width: 0;
@@ -943,8 +962,21 @@
 
 @media (max-width: 960px) {
   .hero {
-    min-height: auto;
-    padding: 28px 0 40px;
+    min-height: unset;
+    height: auto;
+    padding: 20px 0 28px;
+  }
+  .hero-inner {
+    min-height: unset;
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .hero-right-wrap.lp-reveal,
+  .hero-right-wrap.lp-reveal.lp-vis {
+    opacity: 1;
+    transform: none;
   }
   .hero-glow {
     width: min(420px, 90vw);
@@ -952,11 +984,6 @@
     top: -80px;
     right: -40px;
     opacity: 0.85;
-  }
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    align-items: stretch;
   }
   .hero-left {
     order: 1;
