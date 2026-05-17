@@ -1,8 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 
+const DEFAULT_IN_VIEW_OPTIONS = {
+  threshold: 0.07,
+  rootMargin: '0px 0px -24px 0px',
+}
+
 export function useInView(options = {}) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
+  const optionsRef = useRef(options)
+  optionsRef.current = options
 
   useEffect(() => {
     const el = ref.current
@@ -15,7 +22,7 @@ export function useInView(options = {}) {
           obs.unobserve(el)
         }
       },
-      { threshold: 0.07, rootMargin: '0px 0px -24px 0px', ...options },
+      { ...DEFAULT_IN_VIEW_OPTIONS, ...optionsRef.current },
     )
 
     obs.observe(el)

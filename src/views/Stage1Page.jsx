@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Sparkles, ChevronDown, Plus, Info, ArrowRight, Check } from 'lucide-react'
+import { Sparkles, ChevronDown, Info, ArrowRight, Check } from 'lucide-react'
 import { cn } from '@/lib/cn'
 import StageLayout from '../components/StageLayout'
 

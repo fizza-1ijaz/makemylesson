@@ -3,3 +3,33 @@ node_modules
 out
 *.log
 .env*.local
+
+# Build artifacts
+dist/
+.turbo/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+
+# Next.js
+.next/
+out/
+.env.*.local
+
+# PM2 logs
+logs/
+pm2.log
+
+# Generated files
+# Note: next-env.d.ts should be committed to git if using TypeScript

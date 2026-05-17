@@ -90,7 +90,10 @@ function attachCategoryToPost(row, catById) {
     const c = catById[cid]
     category = { id: c.id, name: c.name, slug: c.slug }
   }
-  const { category: _c, category_id: _cid, blog_category_id: _bc, ...rest } = row
+  const rest = { ...row }
+  delete rest.category
+  delete rest.category_id
+  delete rest.blog_category_id
   return { ...rest, category }
 }
 

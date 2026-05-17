@@ -1,3 +1,5 @@
+import type { Metadata, Viewport } from 'next'
+import { DM_Sans, DM_Serif_Display } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import {
@@ -7,7 +9,6 @@ import {
   DEFAULT_OG_IMAGE_WIDTH,
   SITE_URL,
 } from '@/lib/siteUrl'
-import { DM_Sans, DM_Serif_Display } from 'next/font/google'
 import './globals.css'
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -15,6 +16,7 @@ const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
   variable: '--font-dm-serif',
   display: 'swap',
+  adjustFontFallback: true,
 })
 
 const dmSans = DM_Sans({
@@ -22,17 +24,16 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+  adjustFontFallback: true,
 })
 
 const defaultTitle = 'Make My Lesson — AI Lesson Planner for Teachers'
-/** HTML meta description (full). */
 const defaultDescription =
   'Generate complete, curriculum-aligned teaching packs in minutes. Lesson plan, presentation, activity and assessment — built for your exact curriculum. 71 routes. Free to try.'
-/** Shorter line for Open Graph / Twitter cards (matches share preview spec). */
 const defaultOgTwitterDescription =
   'Generate complete, curriculum-aligned teaching packs in minutes. Lesson plan, presentation, activity and assessment — built for your exact curriculum.'
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: defaultTitle,
   description: defaultDescription,
@@ -72,12 +73,19 @@ export const metadata = {
   },
 }
 
-export default function RootLayout({ children }) {
-  const fontVars = [dmSerifDisplay.variable, dmSans.variable].join(' ')
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <html lang="en" className={fontVars}>
-      <body className="flex min-h-screen flex-col">
+    <html lang="en" className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
+      <body className="flex min-h-screen flex-col bg-mml-navy font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="main-content flex-1 pt-14">{children}</main>

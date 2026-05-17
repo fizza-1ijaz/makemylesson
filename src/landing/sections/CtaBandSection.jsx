@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 
 import { MML_APP } from '@/lib/appUrls'
