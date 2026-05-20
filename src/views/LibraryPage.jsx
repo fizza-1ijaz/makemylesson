@@ -49,7 +49,7 @@ export default function LibraryPage() {
 
   return (
     <StageLayout currentStage={null}>
-      <div className="mx-auto grid w-full max-w-[1120px] animate-lib-rise grid-cols-1 gap-5 pb-12 lg:grid-cols-[minmax(0,390px)_1fr]">
+      <div className="grid w-full min-w-0 animate-lib-rise grid-cols-1 gap-4 pb-12 md:gap-6 lg:grid-cols-[minmax(0,390px)_1fr] lg:gap-8">
         <aside className="flex min-w-0 flex-col gap-3.5">
           <div className="flex items-start justify-between gap-2.5">
             <div>

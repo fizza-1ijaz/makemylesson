@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, HelpCircle } from 'lucide-react'
 import { cn } from '@/lib/cn'
+import Container, { pageShellClass, sectionYClass } from '@/components/layout/Container'
 
 import { faqItems } from '@/data/faqItems'
 import { FAQ_META, AYLA_CATEGORY_INTRO } from '@/data/faqMeta'
@@ -75,8 +76,8 @@ export default function FaqPage() {
   const [openId, setOpenId] = useState(null)
 
   return (
-    <div className="min-h-[calc(100vh-56px)] border-t border-slate-200 bg-white">
-      <div className="relative mx-auto max-w-4xl px-4 pb-20 pt-10 sm:px-6 lg:px-8 lg:pb-28 lg:pt-14">
+    <div className={cn(pageShellClass, 'border-slate-200 bg-white')}>
+      <Container variant="content" className={cn(sectionYClass, 'relative pb-20 lg:pb-28')}>
         <header className="text-center">
           <h1 className="font-display text-[clamp(28px,5vw,44px)] font-normal leading-[1.1] tracking-tight text-slate-900">
             {FAQ_META.title}
@@ -145,7 +146,7 @@ export default function FaqPage() {
           </Link>
           .
         </p>
-      </div>
+      </Container>
     </div>
   )
 }

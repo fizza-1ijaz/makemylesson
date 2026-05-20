@@ -89,7 +89,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-mml-navy font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main className="main-content flex-1 pt-14">{children}</main>
+          <main className="main-content flex min-h-0 flex-1 flex-col pt-14">{children}</main>
           <Footer />
           <CookieConsent />
         </div>

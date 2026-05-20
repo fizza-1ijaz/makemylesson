@@ -1,5 +1,9 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import BrandMark from '@/components/BrandMark'
+import Container from '@/components/layout/Container'
 
 const STUDIELY_URL = 'https://www.studiely.com'
 const LINGUATUDE_URL = 'https://linguatude.ai'
@@ -17,11 +21,16 @@ const FOOTER_NAV = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
   const year = new Date().getFullYear()
 
+  if (pathname?.startsWith('/app')) {
+    return null
+  }
+
   return (
-    <footer id="contact" className="mt-auto w-full border-t border-white/10 bg-mml-navy text-white">
-      <div className="w-full px-4 pb-6 pt-6 sm:px-6 sm:pb-7 sm:pt-7 lg:px-10 xl:px-14 2xl:px-20">
+    <footer id="contact" className="mt-auto w-full min-w-0 border-t border-white/10 bg-mml-navy text-white">
+      <Container className="py-6 sm:py-7">
         <div className="flex w-full flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:pb-5">
           <Link
             href="/"
@@ -50,7 +59,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mx-auto mt-4 grid w-full max-w-7xl grid-cols-1 gap-x-10 gap-y-2 text-[13px] leading-6 text-white sm:mt-5 sm:text-[13.5px] sm:leading-[1.55] lg:grid-cols-2 lg:gap-y-0">
+        <div className="mt-4 grid w-full grid-cols-1 gap-x-10 gap-y-2 text-[13px] leading-6 text-white sm:mt-5 sm:text-[13.5px] sm:leading-[1.55] lg:grid-cols-2 lg:gap-y-0">
           <div className="space-y-2 text-center lg:text-left">
             <p>
               AI-powered lesson planning for teachers across Australia, United Kingdom, Canada, International Baccalaureate and
@@ -101,7 +110,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-4 text-center text-[11px] text-white sm:mt-5 sm:text-xs">© {year} Qismat Ventures W.L.L. All rights reserved.</p>
-      </div>
+      </Container>
     </footer>
   )
 }

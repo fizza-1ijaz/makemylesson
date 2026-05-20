@@ -26,7 +26,7 @@ export default function Stage2Page() {
 
   return (
     <StageLayout currentStage={2}>
-      <div className="max-w-[1200px] animate-fade-in-up">
+      <div className="w-full min-w-0 animate-fade-in-up">
         <div className="mb-7">
           <p className="section-label">Stage 2 of 4</p>
           <h2 className="my-1.5 font-display text-[clamp(22px,3vw,30px)] font-bold">

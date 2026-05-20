@@ -1,9 +1,8 @@
 /**
- * Flutter web app deep links on the same host as the marketing site.
- * Next.js rewrites `/app/*` to Flutter on Firebase (`makemylesson.app`) — see next.config.mjs.
+ * Flutter web app routes under /app/*.
+ * Served by Next.js (Navbar + iframe) — see src/app/app/[[...path]]/page.jsx.
  *
- * Use these relative paths for in-site CTAs so localhost and production both proxy correctly.
- * Proxy target for local Flutter: MML_FLUTTER_HOSTING_ORIGIN=http://localhost:8080
+ * Set NEXT_PUBLIC_MML_FLUTTER_HOSTING_ORIGIN for the iframe target (e.g. http://localhost:8080 in dev).
  */
 export const MML_APP = {
   pricing: '/app/pricing',

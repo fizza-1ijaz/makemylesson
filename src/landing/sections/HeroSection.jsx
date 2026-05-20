@@ -7,7 +7,7 @@ export default function HeroSection() {
       <div className="hero-glow" />
       <div className="hero-grid-bg" />
 
-      <div className="hero-shell mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-10">
+      <div className="hero-shell W">
         <div className="hero-inner">
           
           {/* LEFT */}

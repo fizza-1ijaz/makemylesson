@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import BrandMark from '@/components/BrandMark'
 import AylaIcon from '@/components/AylaIcon'
 import { Check } from 'lucide-react'
 import { cn } from '@/lib/cn'
+import { containerClass } from '@/components/layout/Container'
 
 const STAGES = [
   { num: 1, label: 'Plan', path: '/lesson/stage1' },
@@ -14,18 +14,9 @@ const STAGES = [
 
 export default function StageLayout({ children, currentStage }) {
   return (
-    <div className="flex min-h-[calc(100vh-56px)] flex-col bg-mml-navy">
+    <div className="flex min-h-0 flex-1 flex-col bg-mml-navy">
       <div className="border-b border-white/[0.06] bg-mml-navy-mid text-white">
-        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-5 px-6 py-3 max-md:gap-2.5 max-md:py-2.5">
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-1.5 no-underline font-display text-[13px] font-normal text-white"
-          >
-            <BrandMark className="h-6 w-6 shrink-0 object-contain" />
-            <span>
-              Make My <strong className="font-bold text-mml-teal">Lesson</strong>
-            </span>
-          </Link>
+        <div className={cn(containerClass, 'flex flex-wrap items-center gap-4 py-3 md:gap-5 max-md:gap-2.5 max-md:py-2.5')}>
           <div className="flex shrink-0 items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.04] px-3.5 py-2">
             <div className="flex h-7 w-7 shrink-0 overflow-hidden rounded-full border border-mml-teal/30 bg-mml-navy-mid ring-1 ring-white/5">
               <AylaIcon width={28} height={28} alt="" className="h-full w-full" />
@@ -53,7 +44,7 @@ export default function StageLayout({ children, currentStage }) {
       </div>
 
       <div className="border-b border-white/[0.06] bg-mml-navy-card">
-        <div className="mx-auto flex max-w-[1200px] items-center px-6 py-3.5">
+        <div className={cn(containerClass, 'flex items-center overflow-x-auto py-3.5')}>
           {STAGES.map((s, i) => {
             const isDone = s.num < currentStage
             const isActive = s.num === currentStage
@@ -102,7 +93,7 @@ export default function StageLayout({ children, currentStage }) {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1200px] flex-1 px-6 py-8 max-md:px-4 max-md:py-5">{children}</div>
+      <div className={cn(containerClass, 'flex-1 py-8 max-md:py-5')}>{children}</div>
     </div>
   )
 }

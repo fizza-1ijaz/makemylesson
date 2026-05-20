@@ -4,6 +4,7 @@ import React, { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/cn'
+import { containerClass } from '@/components/layout/Container'
 import { MML_APP } from '@/lib/appUrls'
 import BrandMark from '@/components/BrandMark'
 import { Menu, X } from 'lucide-react'
@@ -11,12 +12,12 @@ import { Menu, X } from 'lucide-react'
 function useNavLinks() {
   return useMemo(
     () => [
-      { href: '/#features', label: 'Features', flutter: false },
-      { href: MML_APP.pricing, label: 'Pricing', flutter: true },
-      { href: '/faq', label: 'FAQs', flutter: false },
-      { href: '/blog', label: 'Blogs', flutter: false },
-      { href: MML_APP.ayla, label: 'Ayla AI', flutter: true },
-      { href: '/contact', label: 'Contact Us', flutter: false },
+      { href: '/#features', label: 'Features', external: false },
+      { href: '/pricing', label: 'Pricing', external: false },
+      { href: '/faq', label: 'FAQs', external: false },
+      { href: '/blog', label: 'Blogs', external: false },
+      { href: MML_APP.ayla, label: 'Ayla AI', external: false },
+      { href: '/contact', label: 'Contact Us', external: false },
     ],
     [],
   )
@@ -27,7 +28,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  const hideBrandLogo = pathname?.startsWith('/blog')
+  const homeHref = pathname === '/' ? '/#hero' : '/'
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10)
@@ -41,17 +42,19 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={cn(
-        'fixed left-0 right-0 top-0 z-[1000] border-b border-transparent backdrop-blur-xl transition-all duration-300',
+        'fixed left-0 right-0 top-0 z-[1100] border-b border-transparent backdrop-blur-xl transition-all duration-300',
         scrolled
           ? 'border-white/[0.06] bg-[rgba(15,27,45,0.97)] shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
           : 'bg-[rgba(15,27,45,0.85)]',
       )}
     >
-      <div className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-5 max-[480px]:px-4">
+      <div className={cn(containerClass, 'flex h-14 items-center gap-4')}>
         <Link
-          href="/#hero"
-          className={cn('flex shrink-0 items-center no-underline', hideBrandLogo ? 'gap-0' : 'gap-1.5')}
+          href={homeHref}
+          className="flex shrink-0 items-center gap-1.5 no-underline"
+          aria-label="Make My Lesson home"
           onClick={(e) => {
             if (pathname === '/') {
               e.preventDefault()
@@ -60,32 +63,22 @@ export default function Navbar() {
             }
           }}
         >
-          {!hideBrandLogo && <BrandMark className="h-7 w-7 shrink-0 object-contain" />}
+          <BrandMark className="h-7 w-7 shrink-0 object-contain" />
           <span className="font-display text-[14px] font-normal text-white">
             Make My <strong className="font-bold text-mml-teal">Lesson</strong>
           </span>
         </Link>
 
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto min-[901px]:flex">
-          {navLinks.map((item) =>
-            item.flutter ? (
-              <a
-                key={item.href}
-                href={item.href}
-                className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+          {navLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         <button
@@ -104,26 +97,16 @@ export default function Navbar() {
           mobileOpen && 'max-h-[480px]',
         )}
       >
-        <div className="flex flex-col px-4 py-3">
-          {navLinks.map((item) =>
-            item.flutter ? (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+        <div className={cn(containerClass, 'flex flex-col py-3')}>
+          {navLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Container, { PageShell } from '@/components/layout/Container'
 import { getBlogIndexDataForMakeMyLesson } from '@/lib/blogs'
 import { buildBreadcrumbSchema } from '@/lib/blogJsonLd'
 import {
@@ -99,14 +100,14 @@ export default async function BlogPage({ searchParams }) {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-      <div className="min-h-[calc(100vh-56px)] border-t border-white/10 bg-mml-navy-mid px-5 pb-24 pt-14 sm:px-6">
-        <header className="mx-auto max-w-4xl border-b border-white/10 pb-10 text-center">
+      <PageShell contentClassName="pb-24">
+        <header className="border-b border-white/10 pb-10 text-center">
           <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">Blog</p>
           <h1 className="mt-3 font-display text-[clamp(24px,4vw,36px)] font-normal text-white">{seo.headline}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-base font-light leading-relaxed text-white/85">{seo.subheadline}</p>
         </header>
 
-        <div className="mx-auto mt-10 max-w-5xl">
+        <Container variant="wide" className="mt-10">
           {categories.length > 0 && (
             <nav
               aria-label="Filter posts by category"
@@ -174,8 +175,8 @@ export default async function BlogPage({ searchParams }) {
               ))
             )}
           </section>
-        </div>
-      </div>
+        </Container>
+      </PageShell>
     </>
   )
 }

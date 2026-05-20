@@ -1,11 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const flutterHostingOrigin = (
-  process.env.MML_FLUTTER_HOSTING_ORIGIN ||
-  process.env.NEXT_PUBLIC_MML_FLUTTER_HOSTING_ORIGIN ||
-  'https://makemylesson.app'
-).replace(/\/$/, '')
-
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
@@ -25,18 +19,8 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/app',
-        destination: `${flutterHostingOrigin}/app`,
-      },
-      {
-        source: '/app/:path*',
-        destination: `${flutterHostingOrigin}/app/:path*`,
-      },
-    ]
-  },
+  // /app/* is served by src/app/app/[[...path]]/page.jsx (Navbar + Flutter iframe).
+  // Flutter static assets can still be loaded from the iframe origin directly.
 }
 
 export default nextConfig

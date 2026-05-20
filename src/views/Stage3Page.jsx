@@ -35,7 +35,7 @@ export default function Stage3Page() {
 
   return (
     <StageLayout currentStage={3}>
-      <div className="max-w-[1100px] animate-fade-in-up">
+      <div className="w-full min-w-0 animate-fade-in-up">
         <div className="mb-7">
           <p className="section-label">Stage 3 of 4</p>
           <h2 className="my-1.5 font-display text-[clamp(22px,3vw,30px)] font-bold">

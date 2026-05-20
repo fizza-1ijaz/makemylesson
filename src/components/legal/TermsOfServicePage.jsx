@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import PolicyPageShell from '@/components/layout/PolicyPageShell'
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-[calc(100vh-56px)] border-t border-white/10 bg-mml-navy-mid px-5 pb-24 pt-14 sm:px-6">
-      <article className="mx-auto max-w-3xl">
+    <PolicyPageShell>
+      <article>
         <header className="border-b border-white/10 pb-8 text-center">
           <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
             Terms of Service
@@ -291,6 +292,6 @@ export default function TermsOfServicePage() {
           </section>
         </div>
       </article>
-    </div>
+    </PolicyPageShell>
   )
 }

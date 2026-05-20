@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import AylaIcon from '@/components/AylaIcon'
+import { containerClass } from '@/components/layout/Container'
+import { cn } from '@/lib/cn'
 import {
   User,
   BookOpen,
@@ -30,7 +32,7 @@ const QUICK_ACTIONS = [
 export default function ProfilePage() {
   return (
     <div className="min-h-[calc(100vh-56px)] animate-fade-up bg-mml-navy-mid py-8">
-      <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-start gap-6 px-6 md:grid-cols-[340px_1fr]">
+      <div className={cn(containerClass, 'grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-[minmax(0,340px)_1fr]')}>
         <div className="flex flex-col gap-4">
           <div className="card p-5">
             <div className="mb-5 flex items-center gap-2.5 rounded-mml-sm bg-mml-navy px-3.5 py-2.5">

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PageShell } from '@/components/layout/Container'
 
 const INDIVIDUAL_FEATURES = [
   '30 generation credits per month',
@@ -25,8 +26,8 @@ function SubTitle({ children }) {
 
 export default function PricingPage() {
   return (
-    <div className="min-h-[calc(100vh-56px)] border-t border-white/10 bg-mml-navy-mid px-5 pb-24 pt-14 sm:px-6">
-      <article className="mx-auto max-w-4xl">
+    <PageShell variant="content">
+      <article>
         <header className="border-b border-white/10 pb-10 text-center">
           <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">Pricing &amp; Subscription</p>
           <h1 className="mt-3 font-display text-[clamp(22px,3.5vw,32px)] font-normal text-white">
@@ -328,6 +329,6 @@ export default function PricingPage() {
           </div>
         </div>
       </article>
-    </div>
+    </PageShell>
   )
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PageShell } from '@/components/layout/Container'
 import { notFound } from 'next/navigation'
 import { getBlogBySlugForMakeMyLesson } from '@/lib/blogs'
 import { buildBlogPostingJsonLd, buildBreadcrumbSchema } from '@/lib/blogJsonLd'
@@ -84,15 +85,15 @@ export default async function BlogPostPage({ params }) {
             __html: JSON.stringify(breadcrumbSchema),
           }}
         />
-        <div className="min-h-[calc(100vh-56px)] border-t border-white/10 bg-mml-navy-mid px-5 pb-24 pt-14 sm:px-6">
-          <header className="mx-auto max-w-3xl border-b border-white/10 pb-8 text-center">
+        <PageShell variant="narrow" contentClassName="pb-24">
+          <header className="border-b border-white/10 pb-8 text-center">
             <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">Blog</p>
             <h1 className="mt-3 font-display text-[clamp(22px,3.5vw,32px)] font-normal text-white">Coming soon</h1>
             <p className="mt-4 text-sm text-white/75">
               New articles will appear here once they are published in Supabase for this site.
             </p>
           </header>
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+          <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
             <p className="text-[15px] text-white/85">We&apos;re working on new content. Check back soon.</p>
             <p className="mt-4">
               <Link href="/blog" className="text-[14px] font-semibold text-mml-teal hover:text-white hover:underline">
@@ -100,7 +101,7 @@ export default async function BlogPostPage({ params }) {
               </Link>
             </p>
           </div>
-        </div>
+        </PageShell>
       </>
     )
   }
@@ -123,8 +124,8 @@ export default async function BlogPostPage({ params }) {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <div className="min-h-[calc(100vh-56px)] border-t border-white/10 bg-mml-navy-mid px-5 pb-24 pt-14 sm:px-6">
-        <header className="mx-auto max-w-3xl border-b border-white/10 pb-8 text-center sm:text-left">
+      <PageShell variant="narrow" contentClassName="pb-24">
+        <header className="border-b border-white/10 pb-8 text-center sm:text-left">
           <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">
             {blog.category?.name ? `Blog · ${blog.category.name}` : 'Blog'}
           </p>
@@ -146,7 +147,7 @@ export default async function BlogPostPage({ params }) {
           )}
         </header>
 
-        <article className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+        <article className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
           {blog.cover_image_url && (
             <div className="mb-8 overflow-hidden rounded-xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -169,7 +170,7 @@ export default async function BlogPostPage({ params }) {
             </Link>
           </nav>
         </article>
-      </div>
+      </PageShell>
     </>
   )
 }

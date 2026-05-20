@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PageShell } from '@/components/layout/Container'
 
 const SUPPORT_EMAIL = 'support@makemylesson.ai'
 
@@ -7,8 +8,7 @@ const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encod
 
 export default function ContactPage() {
   return (
-    <div className="min-h-[calc(100vh-56px)] border-t border-white/10 bg-mml-navy-mid px-5 pb-24 pt-14 sm:px-6">
-      <div className="mx-auto max-w-xl text-center">
+    <PageShell variant="narrow" contentClassName="max-w-xl text-center">
         <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">Contact</p>
         <h1 className="mt-3 font-display text-[clamp(24px,4vw,36px)] font-normal text-white">Contact us</h1>
         <p className="mt-4 text-base font-light leading-relaxed text-white/80">
@@ -35,7 +35,6 @@ export default function ContactPage() {
             ← Back to home
           </Link>
         </p>
-      </div>
-    </div>
+    </PageShell>
   )
 }
