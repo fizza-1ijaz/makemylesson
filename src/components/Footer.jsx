@@ -38,7 +38,7 @@ export default function Footer() {
             aria-label="Make My Lesson home"
           >
             <BrandMark className="h-8 w-8 shrink-0 object-contain" />
-            <span className="font-display text-[15px] font-normal text-white sm:text-base">
+            <span className="font-display text-[17px] font-normal leading-[1.85] text-white">
               Make My <strong className="font-bold text-mml-teal">Lesson</strong>
             </span>
           </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="whitespace-nowrap text-[13px] font-medium text-white no-underline transition-colors hover:text-mml-teal"
+                className="whitespace-nowrap text-[17px] font-medium leading-[1.85] text-white no-underline transition-colors hover:text-mml-teal"
               >
                 {label}
               </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-4 grid w-full grid-cols-1 gap-x-10 gap-y-2 text-[13px] leading-6 text-white sm:mt-5 sm:text-[13.5px] sm:leading-[1.55] lg:grid-cols-2 lg:gap-y-0">
+        <div className="mt-4 grid w-full grid-cols-1 gap-x-10 gap-y-2 text-[17px] leading-[1.85] text-white sm:mt-5 lg:grid-cols-2 lg:gap-y-0">
           <div className="space-y-2 text-center lg:text-left">
             <p>
               AI-powered lesson planning for teachers across Australia, United Kingdom, Canada, International Baccalaureate and
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-4 text-center text-[11px] text-white sm:mt-5 sm:text-xs">© {year} Qismat Ventures W.L.L. All rights reserved.</p>
+        <p className="mt-4 text-center text-[17px] leading-[1.85] text-white sm:mt-5">© {year} Qismat Ventures W.L.L. All rights reserved.</p>
       </Container>
     </footer>
   )

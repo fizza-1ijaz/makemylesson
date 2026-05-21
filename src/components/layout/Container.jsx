@@ -23,7 +23,7 @@ export const containerContentClass =
 export const sectionYClass = 'py-12 md:py-16 lg:py-24'
 
 export const pageShellClass =
-  'min-h-[calc(100vh-3.5rem)] min-w-0 border-t border-white/10 bg-mml-navy-mid'
+  'min-h-[calc(100vh-4rem)] min-w-0 border-t border-white/10 bg-mml-navy-mid'
 
 const variantClass = {
   default: containerClass,

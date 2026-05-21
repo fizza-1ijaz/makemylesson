@@ -31,7 +31,7 @@ const QUICK_ACTIONS = [
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-[calc(100vh-56px)] animate-fade-up bg-mml-navy-mid py-8">
+    <div className="min-h-[calc(100vh-4rem)] animate-fade-up bg-mml-navy-mid py-8">
       <div className={cn(containerClass, 'grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-[minmax(0,340px)_1fr]')}>
         <div className="flex flex-col gap-4">
           <div className="card p-5">

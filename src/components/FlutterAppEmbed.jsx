@@ -15,7 +15,7 @@ export default function FlutterAppEmbed({ segments = [] }) {
     <iframe
       title="Make My Lesson app"
       src={src}
-      className="block w-full min-h-[calc(100vh-3.5rem)] flex-1 border-0 bg-mml-navy"
+      className="block w-full min-h-[calc(100vh-4rem)] flex-1 border-0 bg-mml-navy"
       allow="clipboard-read; clipboard-write"
     />
   )

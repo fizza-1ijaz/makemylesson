@@ -61,6 +61,29 @@
   .main-content {
     @apply min-w-0;
   }
+
+  /* Site navbar — fixed 64px bar and 17px type on every viewport */
+  #site-nav {
+    --site-nav-height: 4rem;
+    --site-nav-font-size: 17px;
+    --site-nav-line-height: 1.25;
+  }
+
+  #site-nav .site-nav-bar {
+    height: var(--site-nav-height);
+    min-height: var(--site-nav-height);
+  }
+
+  #site-nav .site-nav-brand-text,
+  #site-nav .site-nav-link {
+    font-size: var(--site-nav-font-size);
+    line-height: var(--site-nav-line-height);
+  }
+
+  #site-nav .site-nav-brand-mark {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 @layer components {
@@ -82,7 +105,7 @@
   }
 
   .mml-page-shell {
-    @apply min-h-[calc(100vh-3.5rem)] min-w-0 border-t border-white/10 bg-mml-navy-mid;
+    @apply min-h-[calc(100vh-4rem)] min-w-0 border-t border-white/10 bg-mml-navy-mid;
   }
   .text-teal {
     color: var(--teal);
@@ -274,9 +297,13 @@
   --sh4: 0 24px 64px rgba(0,0,0,.11), 0 8px 24px rgba(0,0,0,.06);
   --serif: var(--font-dm-serif), 'DM Serif Display', Georgia, serif;
   --sans: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
+  --lp-body-fs: 17px;
+  --lp-body-lh: 1.85;
+  --lp-ui-fs: 17px;
+  --lp-ui-lh: 1.85;
   font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -337,7 +364,7 @@
   --sh4: 0 24px 64px rgba(0,0,0,.7);
 }
 
-/* Hash links clear fixed app navbar (h-14 ≈ 56px) */
+/* Hash links clear fixed app navbar (h-16 = 64px) */
 .landing-page #how-it-works,
 .landing-page #teaching-methods,
 .landing-page #what-it-replaces,
@@ -356,7 +383,7 @@
 .landing-page #feature-lesson-planning,
 .landing-page #feature-slide-decks,
 .landing-page #feature-assessments {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 4rem;
 }
 
 /* Headings: size comes from Tailwind per section — do not set global h1/h2 here (conflicts with Tailwind). */
@@ -367,11 +394,37 @@
 }
 
 .landing-page .sub {
-  font-size: 17px;
+  font-size: var(--lp-body-fs);
   font-weight: 300;
-  line-height: 1.8;
+  line-height: var(--lp-body-lh);
   color: var(--muted);
   max-width: min(100%, 42rem);
+}
+
+/* Body copy — 17px / 1.85 on mobile; scales on xl+ via large-screens.css */
+.landing-page .hero-sub-lead,
+.landing-page .problem-side p,
+.landing-page .hiw .section-intro,
+.landing-page .methods-section .section-intro.methods-intro,
+.landing-page .replaces-section .replaces-intro-text,
+.landing-page .library-intro-body,
+.landing-page .feat-ai-lead,
+.landing-page .feat-ai-card-desc,
+.landing-page .complete-pack h3 + p,
+.landing-page .complete-pack > div > p,
+.landing-page .feat-p,
+.landing-page .feat-checks .feat-check,
+.landing-page .ayla-feat-checks .feat-check,
+.landing-page .cur .section-intro.cur-head-sub,
+.landing-page .curr-body p,
+.landing-page .trust-box p,
+.landing-page .pricing-intro,
+.landing-page .stage-desc,
+.landing-page .sister-card-body p,
+.landing-page .final-cta-lead,
+.landing-page .pain-text {
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
 }
 
 /* Layout — aligned with .mml-container / Container.jsx */
@@ -705,13 +758,13 @@
   color: var(--teal);
 }
 .hero-sub {
-  line-height: 1.52;
+  line-height: var(--lp-body-lh);
   margin-bottom: 18px;
   max-width: min(100%, 36rem);
 }
 .hero-sub-lead {
-  font-size: clamp(17px, 1.65vw, 20.5px);
-  line-height: 1.55;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   font-weight: 400;
   margin-bottom: 20px;
 }
@@ -1109,8 +1162,8 @@
     line-height: 1.16;
   }
   .hero-sub-lead {
-    font-size: clamp(15px, 3.8vw, 17px);
-    line-height: 1.55;
+    font-size: var(--lp-body-fs);
+    line-height: var(--lp-body-lh);
     margin-bottom: 16px;
   }
   .hero-sub-fine {
@@ -1174,8 +1227,8 @@
     margin-bottom: 0.18em;
   }
   .hero-sub-lead {
-    font-size: 15px;
-    line-height: 1.52;
+    font-size: var(--lp-body-fs);
+    line-height: var(--lp-body-lh);
   }
   .hero-sub-fine {
     font-size: 11.75px;
@@ -1343,8 +1396,8 @@
 }
 .problem-side p {
   margin: 0 0 16px;
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   max-width: min(100%, 65ch);
 }
@@ -1405,14 +1458,14 @@
   background: rgba(212, 160, 18, 0.15);
 }
 .pain-text {
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
 }
 .pain-text strong {
   display: block;
   margin-bottom: 6px;
-  font-size: 15px;
+  font-size: var(--lp-body-fs);
   font-weight: 600;
   color: var(--ink);
 }
@@ -1470,8 +1523,8 @@
 }
 .hiw .section-intro {
   margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   font-weight: 400;
   max-width: min(100%, 48rem);
@@ -1561,8 +1614,8 @@
   line-height: 1.45;
 }
 .stage-desc {
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   margin: 0 0 14px;
 }
@@ -1649,8 +1702,8 @@
 }
 .methods-section .section-intro.methods-intro {
   margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.72);
   max-width: min(100%, 48rem);
@@ -1719,8 +1772,8 @@
 }
 .replaces-section .replaces-intro-text {
   margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   max-width: min(100%, 48rem);
   color: var(--body);
 }
@@ -1967,8 +2020,8 @@
 .library-intro-body {
   margin: 18px auto 0;
   max-width: min(100%, 48rem);
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   text-align: center;
 }
@@ -2095,9 +2148,9 @@
   margin: 0;
 }
 .feat-ai-card-desc {
-  font-size: 13.5px;
+  font-size: var(--lp-body-fs);
   font-weight: 300;
-  line-height: 1.65;
+  line-height: var(--lp-body-lh);
   color: var(--muted);
   margin: 0 0 14px;
   flex: 1;
@@ -2135,8 +2188,8 @@
 }
 .complete-pack h3 + p,
 .complete-pack > div > p {
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   margin: 0 0 20px;
   max-width: min(100%, 65ch);
@@ -2296,11 +2349,11 @@
   line-height: 1.14; margin-bottom: 16px;
 }
 .feat-h em { font-style: italic; color: var(--teal); }
-.feat-p { font-size: 15.5px; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 24px; }
+.feat-p { font-size: var(--lp-body-fs); font-weight: 300; line-height: var(--lp-body-lh); color: var(--muted); margin-bottom: 24px; }
 .feat-checks { display: flex; flex-direction: column; gap: 11px; list-style: none; padding: 0; margin: 0; }
 .feat-check {
   display: flex; align-items: flex-start; gap: 12px;
-  font-size: 14.5px; font-weight: 300; color: var(--body); line-height: 1.6;
+  font-size: var(--lp-body-fs); font-weight: 300; color: var(--body); line-height: var(--lp-body-lh);
 }
 .feat-check-icon {
   width: 18px; height: 18px; border-radius: 50%;
@@ -2389,8 +2442,8 @@
 }
 .cur .section-intro.cur-head-sub {
   margin-top: 14px;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   font-weight: 400;
   max-width: min(100%, 48rem);
   margin-left: auto;
@@ -2508,8 +2561,8 @@
   text-align: inherit;
 }
 .curr-body p {
-  font-size: 13.5px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   margin: 0 0 12px;
 }
@@ -2814,8 +2867,8 @@
   box-shadow: var(--sh2);
 }
 .trust-box p {
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   margin: 0 0 16px;
 }
@@ -2888,8 +2941,8 @@
 .pricing-intro {
   margin: 14px auto 0;
   max-width: min(100%, 42rem);
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
 }
 .pricing-intro strong {
@@ -3026,8 +3079,8 @@
 }
 .pricing-school-note {
   text-align: center;
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--muted);
   max-width: 640px;
   margin: 0 auto;
@@ -3315,8 +3368,8 @@
   }
 }
 .sister-card-body p {
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: var(--lp-body-fs);
+  line-height: var(--lp-body-lh);
   color: var(--body);
   margin: 0 0 14px;
 }
@@ -3470,10 +3523,10 @@
   position: relative;
 }
 .final-cta-lead {
-  font-size: 17px;
+  font-size: var(--lp-body-fs);
   color: rgba(255, 255, 255, 0.5);
   font-weight: 300;
-  line-height: 1.6;
+  line-height: var(--lp-body-lh);
   max-width: min(100%, 36rem);
   margin: 0 auto 28px;
   position: relative;
@@ -3509,6 +3562,107 @@
 .foot-links a:hover { color: var(--teal); }
 .foot-copy { width: 100%; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 8px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--pale); }
 
+@import '../styles/large-screens.css';
+
+/* UI chrome, eyebrows, previews, cards, tables — 17px on every viewport */
+.landing-page :is(
+  .lp-label,
+  .section-eyebrow,
+  .hero-floating-main,
+  .hero-floating-sub,
+  .hch-title,
+  .stage-label,
+  .hero-card-h3,
+  .hero-card-meta,
+  .hsr-label,
+  .stage-pill,
+  .hero-preview-trust-item,
+  .hero-preview-trust-sep,
+  .mock-addr,
+  .ayla-name,
+  .ayla-role,
+  .ayla-chip,
+  .mf-label,
+  .mf-val,
+  .mf-arr,
+  .mock-gen,
+  .mock-tab,
+  .mr-title,
+  .mr-sub,
+  .mr-row,
+  .stat-label,
+  .stat-source,
+  .pack-total-label,
+  .doc-list li,
+  .doc-label,
+  .feat-label,
+  .feat-step-num,
+  .feat-ai-card-title,
+  .feat-ai-card-desc,
+  .feat-ai-card-more,
+  .stage-badge,
+  .stage-cost,
+  .two-docs-badge,
+  .stage-tag,
+  .method-chip,
+  .replaces-table,
+  .replaces-th,
+  .replaces-th-badge,
+  .replaces-table td,
+  .replaces-cell-text,
+  .export-chip,
+  .export-chip-icon,
+  .fv-label,
+  .fv-tag,
+  .fv-row,
+  .fv-btn,
+  .fv-btn-primary,
+  .fv-slide-meta,
+  .fv-slide-title,
+  .fv-slide-sub,
+  .fv-slide-img,
+  .fv-q-title,
+  .fv-option,
+  .curr-card h3,
+  .curr-tag,
+  .ayla-chat-name,
+  .ayla-chat-status,
+  .ayla-pro-badge,
+  .ac-chip,
+  .msg-bub,
+  .ayla-input-row input,
+  .rev-stars,
+  .rev-quote,
+  .rev-name,
+  .rev-role,
+  .rev-av,
+  .plan-blurb,
+  .pricing-view-cta-lead,
+  .pricing-view-cta-note,
+  .pricing-strip-period,
+  .pricing-strip-price-note,
+  .pricing-strip-features,
+  .pricing-strip-cta,
+  .plan-save,
+  .plan-credits,
+  .plan-credits-sub,
+  .plan-features,
+  .plan-features li,
+  .plan-period,
+  .featured-badge,
+  .sister-platform-name,
+  .final-cta-section-label,
+  .final-cta-lead,
+  .final-cta-sub,
+  .final-cta-app-btn,
+  .final-cta-qr-placeholder-text,
+  .landing-page .btn,
+  .landing-page .btn-lg,
+  .landing-page .final-cta .final-cta-btn--primary.btn-lg
+) {
+  font-size: var(--lp-ui-fs);
+  line-height: var(--lp-ui-lh);
+}
 
 /* Scrollbar (dashboard) */
 ::-webkit-scrollbar {
