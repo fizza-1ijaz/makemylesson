@@ -6,7 +6,7 @@ import BrandMark from '@/components/BrandMark'
 import Container from '@/components/layout/Container'
 
 const STUDIELY_URL = 'https://www.studiely.com'
-const LINGUATUDE_URL = 'https://linguatude.ai'
+const LINGUATUDE_URL = 'https://linguatude.com'
 const SKYEN_SYSTEMS_URL = 'https://skyensolutions.com'
 
 /** Compliance and legal — matches indexable policy routes in sitemap. */

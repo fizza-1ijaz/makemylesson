@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Reveal } from '../shared'
 
 const STUDIELY_URL = 'https://www.studiely.com'
-const LINGUATUDE_URL = 'https://linguatude.ai'
+const LINGUATUDE_URL = 'https://linguatude.com'
 
 export default function SisterPlatformsSection() {
   return (
