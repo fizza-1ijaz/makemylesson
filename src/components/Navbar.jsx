@@ -7,17 +7,19 @@ import { cn } from '@/lib/cn'
 import { containerClass } from '@/components/layout/Container'
 import { MML_APP } from '@/lib/appUrls'
 import BrandMark from '@/components/BrandMark'
+import SectionLink from '@/components/SectionLink'
+import { scrollToTop } from '@/lib/homeScroll'
 import { Menu, X } from 'lucide-react'
 
 function useNavLinks() {
   return useMemo(
     () => [
-      { href: '/#features', label: 'Features', external: false },
-      { href: '/pricing', label: 'Pricing', external: false },
-      { href: '/faq', label: 'FAQs', external: false },
-      { href: '/blog', label: 'Blogs', external: false },
-      { href: MML_APP.ayla, label: 'Ayla AI', external: false },
-      { href: '/contact', label: 'Contact Us', external: false },
+      { sectionId: 'features', href: '/', label: 'Features' },
+      { href: '/pricing', label: 'Pricing' },
+      { href: '/faq', label: 'FAQs' },
+      { href: '/blog', label: 'Blogs' },
+      { href: MML_APP.ayla, label: 'Ayla AI' },
+      { href: '/contact', label: 'Contact Us' },
     ],
     [],
   )
@@ -28,7 +30,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  const homeHref = pathname === '/' ? '/#hero' : '/'
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10)
@@ -52,14 +53,13 @@ export default function Navbar() {
     >
       <div className={cn(containerClass, 'flex h-14 items-center gap-4')}>
         <Link
-          href={homeHref}
+          href="/"
           className="flex shrink-0 items-center gap-1.5 no-underline"
           aria-label="Make My Lesson home"
           onClick={(e) => {
             if (pathname === '/') {
               e.preventDefault()
-              document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              window.history.replaceState(null, '', '/#hero')
+              scrollToTop()
             }
           }}
         >
@@ -70,15 +70,26 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto min-[901px]:flex">
-          {navLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.sectionId ? (
+              <SectionLink
+                key={item.label}
+                sectionId={item.sectionId}
+                href={item.href}
+                className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
+              >
+                {item.label}
+              </SectionLink>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="shrink-0 rounded-lg px-2.5 py-1.5 font-sans text-[12px] font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal min-[1100px]:px-3 min-[1100px]:text-[13px]"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
 
         <button
@@ -98,15 +109,27 @@ export default function Navbar() {
         )}
       >
         <div className={cn(containerClass, 'flex flex-col py-3')}>
-          {navLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.sectionId ? (
+              <SectionLink
+                key={item.label}
+                sectionId={item.sectionId}
+                href={item.href}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </SectionLink>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
       </div>
     </nav>

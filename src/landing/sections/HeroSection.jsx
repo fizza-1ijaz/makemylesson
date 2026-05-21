@@ -1,3 +1,4 @@
+import SectionLink from '@/components/SectionLink'
 import { Label, Reveal } from '../shared'
 import { MML_APP } from '@/lib/appUrls'
 
@@ -51,9 +52,9 @@ export default function HeroSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
-                <a href="#how-it-works" className="btn btn-ghost btn-lg">
+                <SectionLink sectionId="how-it-works" href="/" className="btn btn-ghost btn-lg">
                   See how it works ↓
-                </a>
+                </SectionLink>
               </div>
             </Reveal>
           </div>

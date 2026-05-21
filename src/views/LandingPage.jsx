@@ -17,10 +17,12 @@ import PricingSection from '@/landing/sections/PricingSection'
 import ReviewsSection from '@/landing/sections/ReviewsSection'
 import TrustSection from '@/landing/sections/TrustSection'
 import StatsSection from '@/landing/sections/StatsSection'
+import LandingScrollHandler from '@/components/LandingScrollHandler'
 
 export default function LandingPage() {
   return (
     <div className="landing-page" data-theme="light">
+      <LandingScrollHandler />
       <HeroSection />
       <StatsSection />
       <ProblemSection />

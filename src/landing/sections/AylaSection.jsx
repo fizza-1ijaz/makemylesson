@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 
 import { AylaHeaderAvatar, AylaMsgAvatar, TypingDots } from '../AylaChatUi'
 import { CheckItem, Label, Reveal } from '../shared'
@@ -203,9 +204,9 @@ export default function AylaSection() {
               <a href={MML_APP.ayla} className="btn btn-teal btn-lg">
                 Chat with Ayla →
               </a>
-              <a href="#" className="btn btn-ghost btn-lg">
+              <Link href="/faq" className="btn btn-ghost btn-lg">
                 Learn More
-              </a>
+              </Link>
             </div>
           </Reveal>
         </div>

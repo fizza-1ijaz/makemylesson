@@ -1,5 +1,6 @@
 import { ClipboardList, ListChecks, Presentation } from 'lucide-react'
 
+import SectionLink from '@/components/SectionLink'
 import { CARD_ICON_PROPS, LABEL_ICON_PROPS } from '../featureIcons'
 import { CheckItem, Label, Reveal } from '../shared'
 
@@ -49,7 +50,7 @@ export default function FeaturesSection() {
           </div>
           <div className="feat-ai-grid">
             {aiToolCards.map(({ id, Icon, title, desc }) => (
-              <a key={id} href={`#${id}`} className="feat-ai-card">
+              <SectionLink key={id} sectionId={id} href="/" className="feat-ai-card">
                 <div className="feat-ai-card-head">
                   <span className="feat-ai-card-ico" aria-hidden>
                     <Icon {...CARD_ICON_PROPS} />
@@ -58,7 +59,7 @@ export default function FeaturesSection() {
                 </div>
                 <p className="feat-ai-card-desc">{desc}</p>
                 <span className="feat-ai-card-more">View details →</span>
-              </a>
+              </SectionLink>
             ))}
           </div>
         </Reveal>
