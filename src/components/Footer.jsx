@@ -7,7 +7,7 @@ import Container from '@/components/layout/Container'
 
 const STUDIELY_URL = 'https://www.studiely.com'
 const LINGUATUDE_URL = 'https://linguatude.com'
-const SKYEN_SYSTEMS_URL = 'https://skyensolutions.com'
+const SKYEN_SYSTEMS_URL = 'https://skyensystems.com'
 
 /** Compliance and legal — matches indexable policy routes in sitemap. */
 const FOOTER_NAV = [
