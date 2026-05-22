@@ -3,6 +3,7 @@
  * `dynamic = 'force-dynamic'` (see `src/app/blog/layout.jsx`). React `cache()` only dedupes within one request.
  */
 import { cache } from 'react'
+import { BLOG_CONTENT_EXTRA_FIELDS, resolveBlogContent } from '@/lib/blogContent'
 import { supabase } from '@/lib/supabaseClient'
 
 /** Must match `sites.site_key` for Make My Lesson in Supabase. */
@@ -279,11 +280,16 @@ async function loadBlogPostBySlugWithFallback(client, siteId, slug) {
     ).maybeSingle()
 
   const attempts = [
+    `id, content, ${BLOG_CONTENT_EXTRA_FIELDS}, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
+    `id, content, tables, content_blocks, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
+    `id, content, tables, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
     `id, content, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
     `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
     `id, content, blog_category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
     `id, content, category_id, ${BLOG_SEO_FIELDS}`,
     `id, content, blog_category_id, ${BLOG_SEO_FIELDS}`,
+    `*, category:blog_categories(id, name, slug)`,
+    '*',
   ]
 
   let lastError
@@ -333,7 +339,9 @@ export async function getBlogBySlugForMakeMyLesson(slug) {
   if (!row) return null
 
   const catById = Object.fromEntries((categoriesData ?? []).map((c) => [c.id, c]))
-  return attachCategoryToPost(row, catById)
+  const post = attachCategoryToPost(row, catById)
+  const content = resolveBlogContent(row)
+  return { ...post, content: content ?? post.content ?? null }
 }
 
 export async function getBlogsForConfiguredSite() {

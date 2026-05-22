@@ -67,7 +67,7 @@ export async function generateMetadata({ params }) {
 }
 
 const htmlArticleClass =
-  'blog-html text-[15px] leading-relaxed text-white/90 [&_p]:mb-4 [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-xl [&_h2]:text-white [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-lg [&_h3]:text-white [&_a]:text-mml-teal [&_a]:underline [&_a]:underline-offset-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_img]:max-w-full [&_img]:rounded-lg [&_blockquote]:border-l-2 [&_blockquote]:border-mml-teal/50 [&_blockquote]:pl-4 [&_blockquote]:italic'
+  'blog-html text-[15px] leading-relaxed text-white/90 [&_p]:mb-4 [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-xl [&_h2]:text-white [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-lg [&_h3]:text-white [&_a]:text-mml-teal [&_a]:underline [&_a]:underline-offset-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_img]:max-w-full [&_img]:rounded-lg [&_blockquote]:border-l-2 [&_blockquote]:border-mml-teal/50 [&_blockquote]:pl-4 [&_blockquote]:italic [&_table]:my-6 [&_table]:w-full [&_table]:min-w-[280px] [&_table]:border-collapse [&_table]:text-left [&_table]:text-[15px] [&_thead]:border-b [&_thead]:border-white/20 [&_th]:border [&_th]:border-white/15 [&_th]:bg-white/[0.08] [&_th]:px-3 [&_th]:py-2 [&_th]:font-semibold [&_th]:text-white [&_td]:!border [&_td]:!border-gray-200 [&_td]:!bg-white [&_td]:!px-3 [&_td]:!py-2 [&_td]:!align-top [&_td]:!text-black [&_td]:!text-[15px] [&_td_a]:!text-[#a67c00] [&_td_a]:underline [&_td_strong]:!text-black [&_td_p]:!mb-2 [&_td_p]:!text-black'
 
 export default async function BlogPostPage({ params }) {
   const slug = params?.slug
@@ -160,7 +160,10 @@ export default async function BlogPostPage({ params }) {
             </p>
           )}
           {blog.content ? (
-            <div className={htmlArticleClass} dangerouslySetInnerHTML={{ __html: blog.content }} />
+            <div
+              className={`${htmlArticleClass} max-w-full overflow-x-auto`}
+              dangerouslySetInnerHTML={{ __html: blog.content }}
+            />
           ) : (
             <p className="text-[13px] text-white/65">Content for this article has not been added yet.</p>
           )}
