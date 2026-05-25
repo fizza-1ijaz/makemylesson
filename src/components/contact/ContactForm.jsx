@@ -285,11 +285,15 @@ export default function ContactForm() {
           />
         </div>
 
-        <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[15px] text-gray-500">
+        <div className="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-center text-[15px] text-gray-500 sm:text-left">
             By submitting, you agree we may use your details to respond to this inquiry.
           </p>
-          <button type="submit" disabled={isLoading} className="btn-primary shrink-0 px-8 py-3 text-[16px] disabled:opacity-70">
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="btn-primary w-full justify-center px-8 py-3 text-[16px] sm:w-auto sm:shrink-0 disabled:opacity-70"
+          >
             {isLoading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
