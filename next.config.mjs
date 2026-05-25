@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  experimental: {
+    serverComponentsExternalPackages: ['nodemailer'],
+  },
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
   poweredByHeader: false,

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '../styles/large-screens.css';
+
 @layer base {
   :root {
     --teal: #e5b82a;
@@ -3561,8 +3563,6 @@
 .foot-links a { font-size: 13px; color: var(--muted); transition: color .15s; text-decoration: none; }
 .foot-links a:hover { color: var(--teal); }
 .foot-copy { width: 100%; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 8px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--pale); }
-
-@import '../styles/large-screens.css';
 
 /* UI chrome, eyebrows, previews, cards, tables — 17px on every viewport */
 .landing-page :is(

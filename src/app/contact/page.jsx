@@ -1,12 +1,24 @@
 import ContactPage from '@/views/ContactPage'
 
 export const metadata = {
-  title: 'Contact — AI Lesson Planner Support | Make My Lesson',
+  title: 'Contact Us — Support for Teachers | Make My Lesson',
   description:
-    'Contact support for the lesson planning app for teachers: billing, curriculum routes, Google Classroom export, Microsoft Teams, and account help at support@makemylesson.ai.',
-  keywords: ['Make My Lesson contact', 'AI lesson planner support', 'lesson planning app help'],
+    'Contact Make My Lesson for support with AI lesson planning, curriculum-aligned teaching packs, billing, school plans, and partnerships. We reply within 1–2 business days.',
+  keywords: [
+    'Make My Lesson contact',
+    'AI lesson planner support',
+    'teacher lesson planning help',
+    'school plan inquiry',
+  ],
   alternates: { canonical: '/contact' },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: 'Contact Make My Lesson',
+    description:
+      'Get help with lesson planning, exports, billing, and school plans. Message our team or email support@makemylesson.ai.',
+    url: '/contact',
+    type: 'website',
+  },
 }
 
 export default function ContactRoutePage() {
