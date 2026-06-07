@@ -136,9 +136,11 @@ export default async function BlogPage({ searchParams }) {
               <p className="text-center text-[14px] text-white/70 md:col-span-2 lg:col-span-3">{seo.empty_state_message}</p>
             ) : (
               visiblePosts.map((post) => (
-                <article
+                <Link
                   key={post.id}
-                  className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-sm transition-shadow duration-200 hover:border-white/15 hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)]"
+                  href={`/blog/${post.slug}`}
+                  aria-label={`Read article: ${post.title}`}
+                  className="group flex cursor-pointer flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-sm transition-all duration-200 hover:border-white/15 hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mml-teal"
                 >
                   {post.cover_image_url && (
                     <div className="mb-4 overflow-hidden rounded-xl">
@@ -146,7 +148,7 @@ export default async function BlogPage({ searchParams }) {
                       <img
                         src={post.cover_image_url}
                         alt=""
-                        className="h-40 w-full object-cover"
+                        className="h-40 w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
                       />
                     </div>
                   )}
@@ -156,22 +158,20 @@ export default async function BlogPage({ searchParams }) {
                         {post.category.name}
                       </p>
                     )}
-                    <h2 className="mb-2 font-display text-[18px] font-normal leading-snug text-white">{post.title}</h2>
+                    <h2 className="mb-2 font-display text-[18px] font-normal leading-snug text-white group-hover:text-mml-teal">
+                      {post.title}
+                    </h2>
                     <p className="mb-4 text-[13px] leading-relaxed text-white/75">
                       {post.description || 'Read the full article to learn more.'}
                     </p>
                   </div>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-[13px] font-semibold text-mml-teal underline-offset-2 transition-colors hover:text-white hover:underline"
-                    aria-label={`Read more about ${post.title}`}
-                  >
+                  <span className="inline-flex items-center text-[13px] font-semibold text-mml-teal underline-offset-2 transition-colors group-hover:text-white group-hover:underline">
                     Read more
                     <span className="ml-1 text-[14px]" aria-hidden>
                       →
                     </span>
-                  </Link>
-                </article>
+                  </span>
+                </Link>
               ))
             )}
           </section>

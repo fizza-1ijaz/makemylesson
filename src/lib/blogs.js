@@ -54,8 +54,26 @@ async function execPostgrestWithRetries(label, op) {
   throw new Error(`${label}: ${truncateForError(lastMsg)}`)
 }
 
-const BLOG_SEO_FIELDS =
+const BLOG_SEO_FIELDS_PRIMARY =
+  'slug, title, description, meta_title, meta_description, cover_image_url, date_published, author_name, keywords, article_section'
+
+const BLOG_SEO_FIELDS_LEGACY =
   'slug, title, description, meta_title, meta_description, cover_image_url, display_date, author_name, keywords, article_section'
+
+const BLOG_ORDER_COLUMNS = ['date_published', 'display_date', 'created_at', 'updated_at']
+
+function isMissingColumnError(message, column) {
+  if (!message || !column) return false
+  return message.includes(`column blogs.${column} does not exist`)
+}
+
+/** Normalize date field — Supabase uses `date_published`; app code expects `display_date`. */
+function normalizeBlogRow(row) {
+  if (!row || typeof row !== 'object') return row
+  const display_date =
+    row.display_date ?? row.date_published ?? row.created_at ?? row.updated_at ?? null
+  return { ...row, display_date }
+}
 
 const DEFAULT_INDEX_SEO = {
   title: 'Blog — Make My Lesson',
@@ -102,47 +120,57 @@ function attachCategoryToPost(row, catById) {
  * Load blog rows. Tries `category_id` + embed (manual join fixes null/wrong embeds), then simpler selects.
  */
 async function loadBlogPostsWithFallback(client, siteId) {
-  const ordered = (sel) =>
-    applyPublishedFilterIfConfigured(
-      client.from('blogs').select(sel).eq('site_id', siteId),
-    ).order('display_date', { ascending: false })
-
-  const attempts = [
-    {
-      label: 'load makemylesson blogs',
-      sel: `id, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    },
-    {
-      label: 'load makemylesson blogs (embed only)',
-      sel: `id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    },
-    {
-      label: 'load makemylesson blogs (blog_category_id + embed)',
-      sel: `id, blog_category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    },
-    {
-      label: 'load makemylesson blogs (category_id only)',
-      sel: `id, category_id, ${BLOG_SEO_FIELDS}`,
-    },
-    {
-      label: 'load makemylesson blogs (blog_category_id only)',
-      sel: `id, blog_category_id, ${BLOG_SEO_FIELDS}`,
-    },
+  const embed = 'category:blog_categories(id, name, slug)'
+  const seoSets = [
+    { label: 'primary', fields: BLOG_SEO_FIELDS_PRIMARY },
+    { label: 'legacy', fields: BLOG_SEO_FIELDS_LEGACY },
   ]
+
+  const attempts = []
+  for (const { label: seoLabel, fields } of seoSets) {
+    attempts.push({
+      label: `load makemylesson blogs (${seoLabel})`,
+      sel: `id, category_id, ${fields}, ${embed}`,
+    })
+    attempts.push({
+      label: `load makemylesson blogs (${seoLabel}, embed only)`,
+      sel: `id, ${fields}, ${embed}`,
+    })
+    attempts.push({
+      label: `load makemylesson blogs (${seoLabel}, category_id only)`,
+      sel: `id, category_id, ${fields}`,
+    })
+  }
+  attempts.push({
+    label: 'load makemylesson blogs (select all)',
+    sel: `*, ${embed}`,
+  })
+  attempts.push({
+    label: 'load makemylesson blogs (select all, no embed)',
+    sel: '*',
+  })
 
   let lastError
   for (const { label, sel } of attempts) {
-    try {
-      const data = await execPostgrestWithRetries(label, () => ordered(sel))
-      if (process.env.NODE_ENV === 'development') {
-        const n = data?.length ?? 0
-        if (n > 0) console.info(`[blogs] ${label}: ${n} post(s)`)
+    for (const orderCol of BLOG_ORDER_COLUMNS) {
+      try {
+        const data = await execPostgrestWithRetries(label, () =>
+          applyPublishedFilterIfConfigured(
+            client.from('blogs').select(sel).eq('site_id', siteId),
+          ).order(orderCol, { ascending: false }),
+        )
+        if (process.env.NODE_ENV === 'development') {
+          const n = data?.length ?? 0
+          if (n > 0) console.info(`[blogs] ${label}: ${n} post(s)`)
+        }
+        return (data ?? []).map(normalizeBlogRow)
+      } catch (e) {
+        lastError = e
+        const msg = e instanceof Error ? e.message : String(e)
+        if (isMissingColumnError(msg, orderCol)) continue
+        console.warn(`[blogs] ${label} failed:`, truncateForError(msg))
+        break
       }
-      return data ?? []
-    } catch (e) {
-      lastError = e
-      const msg = e instanceof Error ? e.message : String(e)
-      console.warn(`[blogs] ${label} failed:`, truncateForError(msg))
     }
   }
   throw lastError
@@ -279,18 +307,25 @@ async function loadBlogPostBySlugWithFallback(client, siteId, slug) {
       client.from('blogs').select(sel).eq('site_id', siteId).eq('slug', slug),
     ).maybeSingle()
 
-  const attempts = [
-    `id, content, ${BLOG_CONTENT_EXTRA_FIELDS}, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    `id, content, tables, content_blocks, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    `id, content, tables, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    `id, content, category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    `id, content, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    `id, content, blog_category_id, ${BLOG_SEO_FIELDS}, category:blog_categories(id, name, slug)`,
-    `id, content, category_id, ${BLOG_SEO_FIELDS}`,
-    `id, content, blog_category_id, ${BLOG_SEO_FIELDS}`,
-    `*, category:blog_categories(id, name, slug)`,
-    '*',
-  ]
+  const embed = 'category:blog_categories(id, name, slug)'
+  const seoFields = [BLOG_SEO_FIELDS_PRIMARY, BLOG_SEO_FIELDS_LEGACY]
+  const attempts = []
+  for (const fields of seoFields) {
+    attempts.push(
+      `id, content, faq_schema, ${BLOG_CONTENT_EXTRA_FIELDS}, category_id, ${fields}, ${embed}`,
+      `id, content, faq_schema, tables, content_blocks, category_id, ${fields}, ${embed}`,
+      `id, content, faq_schema, tables, category_id, ${fields}, ${embed}`,
+      `id, content, faq_schema, category_id, ${fields}, ${embed}`,
+      `id, content, faq_schema, ${fields}, ${embed}`,
+      `id, content, faq_schema, category_id, ${fields}`,
+      `id, content, ${BLOG_CONTENT_EXTRA_FIELDS}, category_id, ${fields}, ${embed}`,
+      `id, content, tables, category_id, ${fields}, ${embed}`,
+      `id, content, category_id, ${fields}, ${embed}`,
+      `id, content, ${fields}, ${embed}`,
+      `id, content, category_id, ${fields}`,
+    )
+  }
+  attempts.push(`*, ${embed}`, '*')
 
   let lastError
   let anySucceeded = false
@@ -339,7 +374,7 @@ export async function getBlogBySlugForMakeMyLesson(slug) {
   if (!row) return null
 
   const catById = Object.fromEntries((categoriesData ?? []).map((c) => [c.id, c]))
-  const post = attachCategoryToPost(row, catById)
+  const post = normalizeBlogRow(attachCategoryToPost(row, catById))
   const content = resolveBlogContent(row)
   return { ...post, content: content ?? post.content ?? null }
 }
@@ -371,10 +406,23 @@ export async function getBlogSlugsForConfiguredSite() {
   if (!client) return []
 
   try {
-    const data = await execPostgrestWithRetries('fetch blog slugs', () =>
-      applyPublishedFilterIfConfigured(client.from('blogs').select('slug, display_date').eq('site_id', siteId)),
-    )
-    return data ?? []
+    let lastError
+    for (const dateCol of BLOG_ORDER_COLUMNS) {
+      try {
+        const data = await execPostgrestWithRetries('fetch blog slugs', () =>
+          applyPublishedFilterIfConfigured(
+            client.from('blogs').select(`slug, ${dateCol}`).eq('site_id', siteId),
+          ).order(dateCol, { ascending: false }),
+        )
+        return (data ?? []).map(normalizeBlogRow)
+      } catch (e) {
+        lastError = e
+        const msg = e instanceof Error ? e.message : String(e)
+        if (isMissingColumnError(msg, dateCol)) continue
+        throw e
+      }
+    }
+    throw lastError
   } catch (e) {
     if (process.env.BUILD_SKIP_BLOGS_ON_SUPABASE_ERROR === '1') {
       console.warn(

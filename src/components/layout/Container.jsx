@@ -4,9 +4,13 @@ import { cn } from '@/lib/cn'
 export const containerClass =
   'mx-auto w-full min-w-0 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16'
 
-/** Narrow column for policy copy, contact, articles */
+/** Narrow column for policy copy, contact */
 export const containerNarrowClass =
   'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10'
+
+/** Blog article — narrow through lg; wider readable column on xl+ desktops */
+export const containerBlogArticleClass =
+  'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10 xl:max-w-[1400px] xl:px-12 2xl:max-w-[1600px] 2xl:px-16'
 
 /** Prose / legal summaries */
 export const containerProseClass =
@@ -28,6 +32,7 @@ export const pageShellClass =
 const variantClass = {
   default: containerClass,
   narrow: containerNarrowClass,
+  blogArticle: containerBlogArticleClass,
   prose: containerProseClass,
   wide: containerWideClass,
   content: containerContentClass,

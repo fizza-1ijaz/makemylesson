@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { PageShell } from '@/components/layout/Container'
 import { notFound } from 'next/navigation'
 import { getBlogBySlugForMakeMyLesson } from '@/lib/blogs'
+import { buildBlogFaqJsonLd } from '@/lib/blogFaqSchema'
 import { buildBlogPostingJsonLd, buildBreadcrumbSchema } from '@/lib/blogJsonLd'
 import {
   DEFAULT_OG_IMAGE_ALT,
@@ -66,9 +67,6 @@ export async function generateMetadata({ params }) {
   }
 }
 
-const htmlArticleClass =
-  'blog-html text-[15px] leading-relaxed text-white/90 [&_p]:mb-4 [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-xl [&_h2]:text-white [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-lg [&_h3]:text-white [&_a]:text-mml-teal [&_a]:underline [&_a]:underline-offset-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_img]:max-w-full [&_img]:rounded-lg [&_blockquote]:border-l-2 [&_blockquote]:border-mml-teal/50 [&_blockquote]:pl-4 [&_blockquote]:italic [&_table]:my-6 [&_table]:w-full [&_table]:min-w-[280px] [&_table]:border-collapse [&_table]:text-left [&_table]:text-[15px] [&_thead]:border-b [&_thead]:border-white/20 [&_th]:border [&_th]:border-white/15 [&_th]:bg-white/[0.08] [&_th]:px-3 [&_th]:py-2 [&_th]:font-semibold [&_th]:text-white [&_td]:!border [&_td]:!border-gray-200 [&_td]:!bg-white [&_td]:!px-3 [&_td]:!py-2 [&_td]:!align-top [&_td]:!text-black [&_td]:!text-[15px] [&_td_a]:!text-[#a67c00] [&_td_a]:underline [&_td_strong]:!text-black [&_td_p]:!mb-2 [&_td_p]:!text-black'
-
 export default async function BlogPostPage({ params }) {
   const slug = params?.slug
   if (!slug) notFound()
@@ -85,15 +83,15 @@ export default async function BlogPostPage({ params }) {
             __html: JSON.stringify(breadcrumbSchema),
           }}
         />
-        <PageShell variant="narrow" contentClassName="pb-24">
-          <header className="border-b border-white/10 pb-8 text-center">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">Blog</p>
-            <h1 className="mt-3 font-display text-[clamp(22px,3.5vw,32px)] font-normal text-white">Coming soon</h1>
-            <p className="mt-4 text-sm text-white/75">
+        <PageShell variant="blogArticle" contentClassName="pb-24">
+          <header className="blog-article-header text-center">
+            <p className="blog-article-eyebrow">Blog</p>
+            <h1 className="blog-article-title">Coming soon</h1>
+            <p className="blog-article-deck">
               New articles will appear here once they are published in Supabase for this site.
             </p>
           </header>
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+          <div className="blog-article-card">
             <p className="text-[15px] text-white/85">We&apos;re working on new content. Check back soon.</p>
             <p className="mt-4">
               <Link href="/blog" className="text-[14px] font-semibold text-mml-teal hover:text-white hover:underline">
@@ -107,8 +105,10 @@ export default async function BlogPostPage({ params }) {
   }
 
   const { blog } = result
+  const canonical = `${SITE_URL}/blog/${blog.slug}`
   const jsonLd = buildBlogPostingJsonLd(blog)
   const breadcrumbSchema = buildBreadcrumbSchema(blog.title, `/blog/${blog.slug}`)
+  const faqJsonLd = buildBlogFaqJsonLd(blog.faq_schema, canonical)
 
   return (
     <>
@@ -124,14 +124,22 @@ export default async function BlogPostPage({ params }) {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <PageShell variant="narrow" contentClassName="pb-24">
-        <header className="border-b border-white/10 pb-8 text-center sm:text-left">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[2px] text-mml-teal">
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd),
+          }}
+        />
+      )}
+      <PageShell variant="blogArticle" contentClassName="pb-24">
+        <header className="blog-article-header">
+          <p className="blog-article-eyebrow">
             {blog.category?.name ? `Blog · ${blog.category.name}` : 'Blog'}
           </p>
-          <h1 className="mt-3 font-display text-[clamp(22px,3.5vw,34px)] font-normal text-white">{blog.title}</h1>
+          <h1 className="blog-article-title">{blog.title}</h1>
           {blog.display_date && (
-            <p className="mt-3 text-[13px] text-white/60">
+            <p className="blog-article-meta">
               {new Date(blog.display_date).toLocaleDateString('en-GB', {
                 year: 'numeric',
                 month: 'long',
@@ -141,13 +149,11 @@ export default async function BlogPostPage({ params }) {
             </p>
           )}
           {(blog.description || blog.meta_description) && (
-            <p className="mt-4 text-base font-light leading-relaxed text-white/80">
-              {blog.description || blog.meta_description}
-            </p>
+            <p className="blog-article-deck">{blog.description || blog.meta_description}</p>
           )}
         </header>
 
-        <article className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+        <article className="blog-article-card">
           {blog.cover_image_url && (
             <div className="mb-8 overflow-hidden rounded-xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -160,10 +166,7 @@ export default async function BlogPostPage({ params }) {
             </p>
           )}
           {blog.content ? (
-            <div
-              className={`${htmlArticleClass} max-w-full overflow-x-auto`}
-              dangerouslySetInnerHTML={{ __html: blog.content }}
-            />
+            <div className="blog-html" dangerouslySetInnerHTML={{ __html: blog.content }} />
           ) : (
             <p className="text-[13px] text-white/65">Content for this article has not been added yet.</p>
           )}

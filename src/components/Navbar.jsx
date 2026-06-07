@@ -10,13 +10,16 @@ import SectionLink from '@/components/SectionLink'
 import { scrollToTop } from '@/lib/homeScroll'
 import { Menu, X } from 'lucide-react'
 
-/** Fixed nav shell — same bar height, logo, and 17px type on every viewport */
-const NAV_CONTAINER = 'site-nav-container mx-auto flex w-full min-w-0 items-center gap-4 px-4'
-const NAV_BAR = 'site-nav-bar flex h-16 min-h-16 items-center'
+/** Fixed nav shell — centered link cluster; scales spacing/type on large screens */
+const NAV_CONTAINER =
+  'site-nav-container mx-auto flex w-full min-w-0 max-w-[1600px] items-center gap-4 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16'
+const NAV_BAR = 'site-nav-bar flex h-16 min-h-16 w-full items-center'
 const NAV_BRAND_MARK = 'site-nav-brand-mark h-8 w-8 shrink-0 object-contain'
 const NAV_BRAND_TEXT = 'site-nav-brand-text font-display font-normal text-white'
 const NAV_LINK =
-  'site-nav-link shrink-0 rounded-lg px-3 py-2 font-sans font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal'
+  'site-nav-link shrink-0 rounded-lg px-3 py-2 font-sans font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal xl:px-4 xl:py-2.5'
+const NAV_DESKTOP =
+  'site-nav-desktop hidden min-w-0 flex-1 items-center justify-center gap-1 min-[901px]:flex lg:gap-1.5 xl:gap-2'
 const NAV_MENU_LINK =
   'site-nav-link block rounded-lg px-3 py-2.5 font-sans font-medium text-white no-underline transition-colors hover:bg-mml-teal/[0.08] hover:text-mml-teal'
 
@@ -79,7 +82,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className="site-nav-desktop hidden min-w-0 flex-1 items-center justify-center gap-1 overflow-x-auto min-[901px]:flex">
+        <div className={NAV_DESKTOP}>
           {navLinks.map((item) =>
             item.sectionId ? (
               <SectionLink
