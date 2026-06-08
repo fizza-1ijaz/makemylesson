@@ -2,20 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import BrandMark from '@/components/BrandMark'
 import Container from '@/components/layout/Container'
-
-const STUDIELY_URL = 'https://www.studiely.com'
-const LINGUATUDE_URL = 'https://linguatude.com'
-const SKYEN_SYSTEMS_URL = 'https://skyensystems.com'
-
-const FOOTER_SOCIAL_LINKS = [
-  { href: 'https://www.facebook.com/MakeMyLesson', label: 'Facebook', Icon: Facebook },
-  { href: 'https://www.instagram.com/makemylesson', label: 'Instagram', Icon: Instagram },
-  { href: 'https://www.youtube.com/@MakeMyLesson', label: 'YouTube', Icon: Youtube },
-  { href: 'https://www.linkedin.com/showcase/makemylesson/', label: 'LinkedIn', Icon: Linkedin },
-]
 
 /** Compliance and legal — matches indexable policy routes in sitemap. */
 const FOOTER_NAV = [
@@ -67,72 +55,9 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-4 grid w-full grid-cols-1 gap-x-10 gap-y-2 text-[17px] leading-[1.85] text-white sm:mt-5 lg:grid-cols-2 lg:gap-y-0">
-          <div className="space-y-2 text-center lg:text-left">
-            <p>
-              AI-powered lesson planning for teachers across Australia, United Kingdom, Canada, International Baccalaureate and
-              United States.
-            </p>
-            <p>
-              Make My Lesson is a product of Skyen Solutions, a trade name of Qismat Ventures W.L.L. (CR 190698-1) — Office 501,
-              Building 1025, Road 3621, Block 436, Al Seef, Bahrain.
-            </p>
-          </div>
-
-          <div className="space-y-2 text-center lg:text-left">
-            <p>
-              Make My Lesson is a sister platform of{' '}
-              <a
-                href={STUDIELY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
-              >
-                Studiely
-              </a>{' '}
-              and{' '}
-              <a
-                href={LINGUATUDE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
-              >
-                Linguatude
-              </a>
-              .
-            </p>
-            <p>
-              Make My Lesson is part of the Skyen Solutions family of EdTech products. For custom software development,
-              websites, and mobile applications, visit{' '}
-              <a
-                href={SKYEN_SYSTEMS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
-              >
-                Skyen Systems
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:mt-5">
-          {FOOTER_SOCIAL_LINKS.map(({ href, label, Icon }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-mml-teal/40 hover:bg-mml-teal/10 hover:text-mml-teal"
-            >
-              <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden />
-            </a>
-          ))}
-        </div>
-
-        <p className="mt-4 text-center text-[17px] leading-[1.85] text-white sm:mt-5">© {year} Qismat Ventures W.L.L. All rights reserved.</p>
+        <p className="mt-4 text-center text-[17px] leading-[1.85] text-white sm:mt-5">
+          © {year} Qismat Ventures W.L.L. All rights reserved.
+        </p>
       </Container>
     </footer>
   )
