@@ -98,7 +98,7 @@ export default function ProfilePage() {
             <h3 className="mb-3.5 text-[0.9rem] font-bold text-white">Your Activity</h3>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: 'Total lessons this month', value: '17', trend: '+3 this month', clr: '#e5b82a' },
+                { label: 'Total lessons this month', value: '17', trend: '+3 this month', clr: '#7dd3e8' },
                 { label: 'Total Exports', value: '96', trend: '+20 this month', clr: '#a78bfa' },
                 { label: 'Questions', value: '5,412', trend: '+266 this month', clr: '#B8860B' },
                 { label: 'Students', value: '5,412', trend: '+1 this month', clr: '#4ade80' },

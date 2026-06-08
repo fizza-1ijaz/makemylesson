@@ -135,7 +135,7 @@ export default function LibraryPage() {
                 className={cn(
                   'relative flex w-full cursor-pointer items-start gap-2.5 rounded-[13px] border border-white/10 bg-mml-navy-card p-3 pl-4 text-left transition-all',
                   'hover:-translate-y-px hover:border-white/30 hover:shadow-md',
-                  active?.id === l.id && 'border-mml-teal bg-mml-teal/10 shadow-[0_0_0_2px_rgba(212,160,18,0.14)]',
+                  active?.id === l.id && 'border-mml-teal bg-mml-teal/10 shadow-[0_0_0_2px_rgba(125,211,232,0.18)]',
                 )}
                 onClick={() => setActive(l)}
               >

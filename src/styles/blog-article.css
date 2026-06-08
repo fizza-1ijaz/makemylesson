@@ -21,7 +21,7 @@
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--teal, #e5b82a);
+  color: var(--teal, #7dd3e8);
 }
 
 .blog-article-title {
@@ -133,7 +133,7 @@
 }
 
 .blog-html a {
-  color: var(--teal, #e5b82a);
+  color: var(--teal, #7dd3e8);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -220,7 +220,7 @@
 }
 
 .blog-html td a {
-  color: #a67c00 !important;
+  color: #4ba8c4 !important;
 }
 
 .blog-html td strong {

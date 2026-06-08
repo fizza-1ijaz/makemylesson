@@ -73,7 +73,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
               </div>
-              <div className="relative flex max-w-full flex-col items-center rounded-2xl border border-mml-teal/40 bg-mml-teal/[0.08] p-6 text-center shadow-[0_0_0_1px_rgba(212,160,18,0.15)] lg:items-stretch lg:text-left">
+              <div className="relative flex max-w-full flex-col items-center rounded-2xl border border-mml-teal/40 bg-mml-teal/[0.08] p-6 text-center shadow-[0_0_0_1px_rgba(125,211,232,0.2)] lg:items-stretch lg:text-left">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-mml-teal px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-mml-navy">
                   Best value
                 </div>

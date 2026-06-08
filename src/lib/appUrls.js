@@ -9,3 +9,6 @@ export const MML_APP = {
   stage1: '/app/stage1',
   ayla: '/app/ayla',
 }
+
+export const GOOGLE_PLAY_URL =
+  'https://play.google.com/store/apps/details?id=com.skyensolutions.makemylesson.make_my_lesson'

@@ -61,7 +61,7 @@ export default function StageLayout({ children, currentStage }) {
                     className={cn(
                       'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-[1.5px] text-xs font-bold transition-all',
                       isActive &&
-                        'scale-110 border-mml-teal bg-mml-teal text-mml-navy shadow-[0_0_0_3px_rgba(212,160,18,0.25)]',
+                        'scale-110 border-mml-teal bg-mml-teal text-mml-navy shadow-[0_0_0_3px_rgba(125,211,232,0.3)]',
                       isDone && !isActive && 'border-mml-teal-dark bg-mml-teal-dark text-white',
                       !isActive && !isDone && 'border-white/[0.06] bg-mml-navy-mid text-white',
                     )}

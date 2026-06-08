@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 
-import { MML_APP } from '@/lib/appUrls'
+import { GOOGLE_PLAY_URL, MML_APP } from '@/lib/appUrls'
 import { Reveal } from '../shared'
 
 export const CTA_LINKS = {
@@ -12,7 +12,7 @@ export const CTA_LINKS = {
   },
   app: {
     appStore: '#',
-    googlePlay: '#',
+    googlePlay: GOOGLE_PLAY_URL,
   },
 }
 
