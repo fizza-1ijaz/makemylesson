@@ -1,37 +1,19 @@
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 
 import { MML_APP } from '@/lib/appUrls'
 import { Reveal } from '../shared'
 
-/** Replace `#` with real URLs when ready. */
 export const CTA_LINKS = {
   social: {
-    youtube: '#',
-    x: '#',
-    linkedin: '#',
-    instagram: '#',
-    facebook: '#',
-    tiktok: '#',
+    facebook: 'https://www.facebook.com/MakeMyLesson',
+    instagram: 'https://www.instagram.com/makemylesson',
+    youtube: 'https://www.youtube.com/@MakeMyLesson',
+    linkedin: 'https://www.linkedin.com/showcase/makemylesson/',
   },
   app: {
     appStore: '#',
     googlePlay: '#',
   },
-}
-
-function TikTokIcon({ className, size = 20 }) {
-  return (
-    <svg
-      className={className}
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.7 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-    </svg>
-  )
 }
 
 function AppleIcon({ className }) {
@@ -51,12 +33,10 @@ function GooglePlayIcon({ className }) {
 }
 
 const SOCIAL_ICONS = [
-  { key: 'youtube', href: CTA_LINKS.social.youtube, label: 'YouTube', Icon: Youtube },
-  { key: 'x', href: CTA_LINKS.social.x, label: 'X', Icon: Twitter },
-  { key: 'linkedin', href: CTA_LINKS.social.linkedin, label: 'LinkedIn', Icon: Linkedin },
-  { key: 'instagram', href: CTA_LINKS.social.instagram, label: 'Instagram', Icon: Instagram },
   { key: 'facebook', href: CTA_LINKS.social.facebook, label: 'Facebook', Icon: Facebook },
-  { key: 'tiktok', href: CTA_LINKS.social.tiktok, label: 'TikTok' },
+  { key: 'instagram', href: CTA_LINKS.social.instagram, label: 'Instagram', Icon: Instagram },
+  { key: 'youtube', href: CTA_LINKS.social.youtube, label: 'YouTube', Icon: Youtube },
+  { key: 'linkedin', href: CTA_LINKS.social.linkedin, label: 'LinkedIn', Icon: Linkedin },
 ]
 
 export default function CtaBandSection() {
@@ -90,11 +70,7 @@ export default function CtaBandSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {key === 'tiktok' ? (
-                  <TikTokIcon className="final-cta-social-ico" size={20} />
-                ) : (
-                  <Icon className="final-cta-social-ico" size={20} strokeWidth={1.75} aria-hidden />
-                )}
+                <Icon className="final-cta-social-ico" size={20} strokeWidth={1.75} aria-hidden />
               </a>
             ))}
           </div>

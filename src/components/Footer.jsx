@@ -2,12 +2,20 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import BrandMark from '@/components/BrandMark'
 import Container from '@/components/layout/Container'
 
 const STUDIELY_URL = 'https://www.studiely.com'
 const LINGUATUDE_URL = 'https://linguatude.com'
 const SKYEN_SYSTEMS_URL = 'https://skyensystems.com'
+
+const FOOTER_SOCIAL_LINKS = [
+  { href: 'https://www.facebook.com/MakeMyLesson', label: 'Facebook', Icon: Facebook },
+  { href: 'https://www.instagram.com/makemylesson', label: 'Instagram', Icon: Instagram },
+  { href: 'https://www.youtube.com/@MakeMyLesson', label: 'YouTube', Icon: Youtube },
+  { href: 'https://www.linkedin.com/showcase/makemylesson/', label: 'LinkedIn', Icon: Linkedin },
+]
 
 /** Compliance and legal — matches indexable policy routes in sitemap. */
 const FOOTER_NAV = [
@@ -107,6 +115,21 @@ export default function Footer() {
               .
             </p>
           </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:mt-5">
+          {FOOTER_SOCIAL_LINKS.map(({ href, label, Icon }) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-mml-teal/40 hover:bg-mml-teal/10 hover:text-mml-teal"
+            >
+              <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden />
+            </a>
+          ))}
         </div>
 
         <p className="mt-4 text-center text-[17px] leading-[1.85] text-white sm:mt-5">© {year} Qismat Ventures W.L.L. All rights reserved.</p>
