@@ -5,6 +5,10 @@ import { usePathname } from 'next/navigation'
 import BrandMark from '@/components/BrandMark'
 import Container from '@/components/layout/Container'
 
+const STUDIELY_URL = 'https://www.studiely.com'
+const LINGUATUDE_URL = 'https://linguatude.com'
+const SKYEN_SYSTEMS_URL = 'https://skyensystems.com'
+
 /** Compliance and legal — matches indexable policy routes in sitemap. */
 const FOOTER_NAV = [
   { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -53,6 +57,56 @@ export default function Footer() {
               </Link>
             ))}
           </nav>
+        </div>
+
+        <div className="mt-4 grid w-full grid-cols-1 gap-x-10 gap-y-2 text-[17px] leading-[1.85] text-white sm:mt-5 lg:grid-cols-2 lg:gap-y-0">
+          <div className="space-y-2 text-center lg:text-left">
+            <p>
+              AI-powered lesson planning for teachers across Australia, United Kingdom, Canada, International Baccalaureate and
+              United States.
+            </p>
+            <p>
+              Make My Lesson is a product of Skyen Solutions, a trade name of Qismat Ventures W.L.L. (CR 190698-1) — Office 501,
+              Building 1025, Road 3621, Block 436, Al Seef, Bahrain.
+            </p>
+          </div>
+
+          <div className="space-y-2 text-center lg:text-left">
+            <p>
+              Make My Lesson is a sister platform of{' '}
+              <a
+                href={STUDIELY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
+              >
+                Studiely
+              </a>{' '}
+              and{' '}
+              <a
+                href={LINGUATUDE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
+              >
+                Linguatude
+              </a>
+              .
+            </p>
+            <p>
+              Make My Lesson is part of the Skyen Solutions family of EdTech products. For custom software development,
+              websites, and mobile applications, visit{' '}
+              <a
+                href={SKYEN_SYSTEMS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
+              >
+                Skyen Systems
+              </a>
+              .
+            </p>
+          </div>
         </div>
 
         <p className="mt-4 text-center text-[17px] leading-[1.85] text-white sm:mt-5">
