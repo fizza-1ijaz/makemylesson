@@ -42,7 +42,7 @@ function buildHtmlEmail({ name, email, company, subjectLabel, message, submitted
   <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;">
     <tr>
       <td style="padding:20px 24px;background:#0f1b2d;color:#f0f6ff;">
-        <p style="margin:0;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7dd3e8;">Make My Lesson</p>
+        <p style="margin:0;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#e5b82a;">Make My Lesson</p>
         <h1 style="margin:8px 0 0;font-size:20px;font-weight:600;">New contact message</h1>
       </td>
     </tr>
@@ -55,7 +55,7 @@ function buildHtmlEmail({ name, email, company, subjectLabel, message, submitted
           </tr>
           <tr>
             <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;color:#6b7280;font-size:13px;">Email</td>
-            <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;"><a href="mailto:${escapeHtml(email)}" style="color:#4ba8c4;">${escapeHtml(email)}</a></td>
+            <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;"><a href="mailto:${escapeHtml(email)}" style="color:#a67c00;">${escapeHtml(email)}</a></td>
           </tr>
           ${companyRow}
           <tr>

@@ -4,7 +4,6 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieConsent from '@/components/CookieConsent'
 import {
-  BRAND_LOGO_PATH,
   DEFAULT_OG_IMAGE_ALT,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_PATH,
@@ -40,9 +39,9 @@ export const metadata: Metadata = {
   title: defaultTitle,
   description: defaultDescription,
   icons: {
-    icon: [{ url: BRAND_LOGO_PATH, type: 'image/png' }],
-    shortcut: BRAND_LOGO_PATH,
-    apple: BRAND_LOGO_PATH,
+    icon: [{ url: '/logo.png', type: 'image/png' }],
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
   openGraph: {
     type: 'website',

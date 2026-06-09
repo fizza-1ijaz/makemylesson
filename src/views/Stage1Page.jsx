@@ -113,7 +113,7 @@ export default function Stage1Page() {
               type="button"
               className={cn(
                 'mb-4 flex w-full items-center justify-center gap-2 rounded-full border-none py-3.5 font-sans text-[15px] font-bold text-white transition-all',
-                'bg-gradient-to-br from-mml-teal to-mml-teal-dark hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(125,211,232,0.35)]',
+                'bg-gradient-to-br from-mml-teal to-mml-teal-dark hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,160,18,0.35)]',
                 generating && 'cursor-not-allowed opacity-80',
               )}
               onClick={handleGenerate}

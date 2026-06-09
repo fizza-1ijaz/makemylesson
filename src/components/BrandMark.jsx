@@ -1,13 +1,12 @@
 import Image from 'next/image'
-import { BRAND_LOGO_PATH } from '@/lib/siteUrl'
 
 /**
- * Site logo from `public/logo-makemylesson2.png`. Use next to visible “Make My Lesson” text; keep alt empty to avoid duplication.
+ * Site logo from /public/logo.png. Use next to visible “Make My Lesson” text; keep alt empty to avoid duplication.
  */
 export default function BrandMark({ className = 'h-7 w-7 shrink-0 object-contain' }) {
   return (
     <Image
-      src={BRAND_LOGO_PATH}
+      src="/logo.png"
       alt=""
       width={128}
       height={128}

@@ -1,6 +1,5 @@
 import LandingPage from '@/views/LandingPage'
 import {
-  BRAND_LOGO_PATH,
   DEFAULT_OG_IMAGE_ALT,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_PATH,
@@ -112,7 +111,7 @@ const softwareJsonLd = {
     '@type': 'Organization',
     name: 'Make My Lesson',
     url: siteOrigin,
-    logo: `${siteOrigin}${BRAND_LOGO_PATH}`,
+    logo: `${siteOrigin}/logo.png`,
   },
 }
 
