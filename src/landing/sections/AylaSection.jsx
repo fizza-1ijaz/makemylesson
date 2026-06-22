@@ -102,7 +102,7 @@ export default function AylaSection() {
 
   return (
     <section ref={sectionRef} id="ayla-ai" className="ayla-section">
-      <div className="W">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <Reveal className="section-head ayla-section-head">
           <Label center>Meet Ayla</Label>
           <h2 className="ayla-head-title">
@@ -110,86 +110,90 @@ export default function AylaSection() {
           </h2>
         </Reveal>
 
-        <div className="ayla-grid">
-          <Reveal className="ayla-chat">
-            <div className="ayla-chat-head">
-              <AylaHeaderAvatar />
-              <div>
-                <div className="ayla-chat-name">Ayla - AI Teaching Assistant</div>
-                <div className="ayla-chat-status">● Online · Always context-aware</div>
-              </div>
-              <span className="ayla-pro-badge">PRO</span>
-            </div>
-            <div className="ayla-chip-strip">
-              {chips.map((chip, i) => (
-                <button
-                  key={chip}
-                  className={`ac-chip ${activeChip === i ? 'on' : ''}`}
-                  onClick={() => setActiveChip(i)}
-                >
-                  {chip}
-                </button>
-              ))}
-            </div>
-            <div className="ayla-msgs">
-              <div
-                ref={scrollRef}
-                className="ayla-msgs-scroll"
-                tabIndex={0}
-                aria-label="Conversation messages"
-              >
-                <div className="msg">
-                  <AylaMsgAvatar />
-                  <div className="msg-bub ayla">
-                    Hi! I am Ayla. I can refine your lesson, suggest activities, or adjust difficulty. What are you
-                    working on?
+        <div className="ayla-grid grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+          <Reveal className="ayla-chat-col order-1 min-w-0 lg:col-span-8">
+            <div className="ayla-chat-shell">
+              <div className="ayla-chat">
+                <div className="ayla-chat-head">
+                  <AylaHeaderAvatar />
+                  <div>
+                    <div className="ayla-chat-name">Ayla - AI Teaching Assistant</div>
+                    <div className="ayla-chat-status">● Online · Always context-aware</div>
                   </div>
+                  <span className="ayla-pro-badge">PRO</span>
                 </div>
-                <div className="msg me">
-                  <div className="msg-bub user">Can you add a group activity to the Ecosystems lesson?</div>
+                <div className="ayla-chip-strip">
+                  {chips.map((chip, i) => (
+                    <button
+                      key={chip}
+                      className={`ac-chip ${activeChip === i ? 'on' : ''}`}
+                      onClick={() => setActiveChip(i)}
+                    >
+                      {chip}
+                    </button>
+                  ))}
                 </div>
-                <div className="msg">
-                  <AylaMsgAvatar />
-                  <div className="msg-bub ayla">
-                    Done! I added a 15-min <strong>Ecosystem Mapping</strong> group activity after core teaching.
-                    Students map food chains in groups of 4. Want me to generate the instructions?
-                  </div>
-                </div>
-                <div className="msg me">
-                  <div className="msg-bub user">Yes and make it suitable for ELL students.</div>
-                </div>
-                <div className="msg">
-                  <AylaMsgAvatar />
-                  <div className="msg-bub ayla" aria-live="polite">
-                    {typed ? (
-                      <>
-                        Done! ✅ Added a differentiated <strong>Ecosystem Mapping</strong> activity with visual cards and
-                        sentence starters for ELL students. It is in your Stage 1 plan now.
-                      </>
-                    ) : (
-                      <TypingDots />
+                <div className="ayla-msgs">
+                  <div
+                    ref={scrollRef}
+                    className="ayla-msgs-scroll"
+                    tabIndex={0}
+                    aria-label="Conversation messages"
+                  >
+                    <div className="msg">
+                      <AylaMsgAvatar />
+                      <div className="msg-bub ayla">
+                        Hi! I am Ayla. I can refine your lesson, suggest activities, or adjust difficulty. What are you
+                        working on?
+                      </div>
+                    </div>
+                    <div className="msg me">
+                      <div className="msg-bub user">Can you add a group activity to the Ecosystems lesson?</div>
+                    </div>
+                    <div className="msg">
+                      <AylaMsgAvatar />
+                      <div className="msg-bub ayla">
+                        Done! I added a 15-min <strong>Ecosystem Mapping</strong> group activity after core teaching.
+                        Students map food chains in groups of 4. Want me to generate the instructions?
+                      </div>
+                    </div>
+                    <div className="msg me">
+                      <div className="msg-bub user">Yes and make it suitable for ELL students.</div>
+                    </div>
+                    <div className="msg">
+                      <AylaMsgAvatar />
+                      <div className="msg-bub ayla" aria-live="polite">
+                        {typed ? (
+                          <>
+                            Done! ✅ Added a differentiated <strong>Ecosystem Mapping</strong> activity with visual cards
+                            and sentence starters for ELL students. It is in your Stage 1 plan now.
+                          </>
+                        ) : (
+                          <TypingDots />
+                        )}
+                      </div>
+                    </div>
+                    {showStickyTyping && (
+                      <div className="ayla-typing-sticky" aria-hidden>
+                        <div className="msg ayla-typing-msg">
+                          <AylaMsgAvatar />
+                          <div className="msg-bub ayla ayla-typing-bub">
+                            <TypingDots />
+                          </div>
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
-                {showStickyTyping && (
-                  <div className="ayla-typing-sticky" aria-hidden>
-                    <div className="msg ayla-typing-msg">
-                      <AylaMsgAvatar />
-                      <div className="msg-bub ayla ayla-typing-bub">
-                        <TypingDots />
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <div className="ayla-input-row">
+                  <input type="text" placeholder="Ask Ayla anything about your lesson..." />
+                  <button>→</button>
+                </div>
               </div>
-            </div>
-            <div className="ayla-input-row">
-              <input type="text" placeholder="Ask Ayla anything about your lesson..." />
-              <button>→</button>
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="ayla-copy">
+          <Reveal delay={120} className="ayla-copy order-2 min-w-0 lg:col-span-4">
             <p className="sub ayla-head-sub">
               Ayla is embedded in every stage. She knows your curriculum, grade, and preferences so every suggestion is
               actually relevant.

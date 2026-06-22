@@ -4,22 +4,22 @@ import PolicyPageShell from '@/components/layout/PolicyPageShell'
 export default function PrivacyPolicyPage() {
   return (
     <PolicyPageShell>
-      <article>
-        <header className="border-b border-white/10 pb-8 text-center">
-          <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
+      <article className="legal-article">
+        <header className="legal-article-header">
+          <h1 className="legal-article-title">
             Privacy Policy (Web Version)
           </h1>
-          <p className="mt-4 text-sm font-medium text-mml-teal">Operated by Qismat Ventures W.L.L</p>
-          <p className="mt-6 text-[13px] leading-relaxed text-white">
+          <p className="legal-article-operator">Operated by Qismat Ventures W.L.L</p>
+          <p className="legal-article-meta">
             <span className="block">Effective Date: [To be set]</span>
             <span className="mt-1 block">Last Updated: [To be set]</span>
             <span className="mt-1 block">Version: 1.0 (Web Version)</span>
           </p>
         </header>
 
-        <div className="mt-10 space-y-8 text-[14px] leading-relaxed text-white sm:text-[15px]">
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">Introduction</h2>
+        <div className="legal-article-body">
+          <section className="legal-section">
+            <h2 className="legal-h2">Introduction</h2>
             <p className="mb-3">
               Make My Lesson is an educational technology platform operated by Qismat Ventures W.L.L (&quot;we,&quot;
               &quot;us,&quot; or &quot;our&quot;).
@@ -39,8 +39,8 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">1. Company Information</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">1. Company Information</h2>
             <ul className="mb-4 list-none space-y-2">
               <li>
                 <span className="font-medium text-white">Company Name:</span> Qismat Ventures W.L.L
@@ -68,8 +68,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">2. Scope &amp; Compliance</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">2. Scope &amp; Compliance</h2>
             <p className="mb-3">This Privacy Policy complies with:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>General Data Protection Regulation (GDPR &amp; UK GDPR)</li>
@@ -80,8 +80,8 @@ export default function PrivacyPolicyPage() {
             <p>Make My Lesson does not target children and does not provide accounts for student use.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">3. Third-Party Services &amp; Firebase Disclosure</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">3. Third-Party Services &amp; Firebase Disclosure</h2>
             <p className="mb-3">Make My Lesson uses the following Google Firebase services:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Firebase Authentication</li>
@@ -105,18 +105,18 @@ export default function PrivacyPolicyPage() {
             <p>No data is used for advertising or behavioural profiling.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">4. Data We Collect</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">4. Data We Collect</h2>
             <p className="mb-6">We collect only the data necessary for platform functionality and improvement.</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">4.1 Account &amp; Identifiers</h3>
+            <h3 className="legal-h3">4.1 Account &amp; Identifiers</h3>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Email address</li>
               <li>Firebase UID</li>
               <li>User role (e.g., Teacher, Institution)</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">4.2 Educational &amp; Generated Content</h3>
+            <h3 className="legal-h3">4.2 Educational &amp; Generated Content</h3>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Lesson plans</li>
               <li>Presentations</li>
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
               <li>User preferences and settings</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">4.3 Analytics Data</h3>
+            <h3 className="legal-h3">4.3 Analytics Data</h3>
             <ul className="mb-3 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Page views and navigation patterns</li>
               <li>Feature usage metrics</li>
@@ -140,14 +140,14 @@ export default function PrivacyPolicyPage() {
               <li>Data is anonymised or aggregated where possible</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">4.4 Technical &amp; Device Data</h3>
+            <h3 className="legal-h3">4.4 Technical &amp; Device Data</h3>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Browser and device information</li>
               <li>Session identifiers</li>
               <li>Crash logs and diagnostics</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">4.5 Subscription &amp; Payment Data (Web)</h3>
+            <h3 className="legal-h3">4.5 Subscription &amp; Payment Data (Web)</h3>
             <ul className="mb-3 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Subscription plan and status</li>
               <li>Transaction identifiers</li>
@@ -160,7 +160,7 @@ export default function PrivacyPolicyPage() {
               <li>Payments are processed securely by third-party providers.</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">4.6 Data We Do NOT Collect</h3>
+            <h3 className="legal-h3">4.6 Data We Do NOT Collect</h3>
             <p className="mb-3">We do not collect:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Precise location data</li>
@@ -170,8 +170,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">5. Children &amp; Age Policy</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">5. Children &amp; Age Policy</h2>
             <p className="mb-3">Make My Lesson is not intended for children under 13.</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>We do not knowingly collect data from children</li>
@@ -181,8 +181,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">6. Cookies &amp; Similar Technologies</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">6. Cookies &amp; Similar Technologies</h2>
             <p className="mb-3">Make My Lesson may use cookies or similar technologies for:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Authentication and session management</li>
@@ -199,8 +199,8 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">7. How We Use Your Data</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">7. How We Use Your Data</h2>
             <p className="mb-3">We use data only to:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Provide and maintain platform functionality</li>
@@ -214,8 +214,8 @@ export default function PrivacyPolicyPage() {
             <p>We do not use data for advertising or marketing.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">8. Data Sharing</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">8. Data Sharing</h2>
             <p className="mb-3">We do not sell personal data.</p>
             <p className="mb-3">Data is shared only:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -225,8 +225,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">9. International Transfers &amp; Data Storage</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">9. International Transfers &amp; Data Storage</h2>
             <p className="mb-3">Data may be stored on servers outside your country, including the United States.</p>
             <p className="mb-3">We use:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -235,8 +235,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">10. Data Retention</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">10. Data Retention</h2>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Active accounts → retained while in use</li>
               <li>Inactive accounts → deleted after 2 years</li>
@@ -244,8 +244,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">11. User Rights</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">11. User Rights</h2>
             <p className="mb-3">You may request:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Access to your data</li>
@@ -268,8 +268,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">12. Account Deletion</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">12. Account Deletion</h2>
             <p className="mb-3">You may request deletion by:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Using in-app settings (if available), or</li>
@@ -283,8 +283,8 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">13. Analytics Controls</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">13. Analytics Controls</h2>
             <p className="mb-3">You may opt out of non-essential analytics by:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Adjusting browser or device settings</li>
@@ -293,15 +293,15 @@ export default function PrivacyPolicyPage() {
             <p>Declining analytics does not affect platform functionality.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">14. Changes to This Policy</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">14. Changes to This Policy</h2>
             <p className="mb-3">We may update this Privacy Policy periodically.</p>
             <p className="mb-3">Material changes may be communicated via the platform or email.</p>
             <p>Continued use constitutes acceptance.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">15. Contact</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">15. Contact</h2>
             <p className="mb-3">For privacy-related questions or requests:</p>
             <ul className="list-none space-y-1">
               <li>

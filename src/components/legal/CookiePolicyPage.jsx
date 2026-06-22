@@ -4,19 +4,19 @@ import PolicyPageShell from '@/components/layout/PolicyPageShell'
 export default function CookiePolicyPage() {
   return (
     <PolicyPageShell>
-      <article>
-        <header className="border-b border-white/10 pb-8 text-center">
-          <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
+      <article className="legal-article">
+        <header className="legal-article-header">
+          <h1 className="legal-article-title">
             Cookie Policy
           </h1>
-          <p className="mt-4 text-sm font-medium text-mml-teal">Operated by Qismat Ventures W.L.L</p>
-          <p className="mt-6 text-[13px] leading-relaxed text-white">
+          <p className="legal-article-operator">Operated by Qismat Ventures W.L.L</p>
+          <p className="legal-article-meta">
             <span className="block">Effective Date: [To be set]</span>
             <span className="mt-1 block">Last Updated: [To be set]</span>
           </p>
         </header>
 
-        <div className="mt-10 space-y-8 text-[14px] leading-relaxed text-white sm:text-[15px]">
+        <div className="legal-article-body">
           <p>
             This Cookie Policy explains what cookies and similar technologies are, how Make My Lesson uses them across its
             website and web-based services, and what controls you have over them. It should be read alongside our{' '}
@@ -30,8 +30,8 @@ export default function CookiePolicyPage() {
             No. 190698-1).
           </p>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">1. What Are Cookies?</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">1. What Are Cookies?</h2>
             <p className="mb-3">
               Cookies are small text files placed on your device (computer, tablet, or phone) when you visit a website.
             </p>
@@ -51,12 +51,12 @@ export default function CookiePolicyPage() {
             <p className="mt-3">For simplicity, we refer to all of these as &quot;cookies.&quot;</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">2. How Make My Lesson Uses Cookies</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">2. How Make My Lesson Uses Cookies</h2>
             <p className="mb-3">We use cookies only for essential functionality and platform improvement.</p>
             <p className="mb-4">We do not use cookies for advertising, behavioural tracking, or profiling.</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">2.1 Strictly Necessary Cookies</h3>
+            <h3 className="legal-h3">2.1 Strictly Necessary Cookies</h3>
             <p className="mb-3">These cookies are essential for the platform to function.</p>
             <p className="mb-3">Examples:</p>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -66,7 +66,7 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="mb-6">These cookies cannot be disabled without affecting core functionality.</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">2.2 Functional Cookies</h3>
+            <h3 className="legal-h3">2.2 Functional Cookies</h3>
             <p className="mb-3">These cookies improve user experience by remembering preferences.</p>
             <p className="mb-3">Examples:</p>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -76,7 +76,7 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="mb-6">Where required by law, we request consent before enabling these cookies.</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">2.3 Analytics Cookies</h3>
+            <h3 className="legal-h3">2.3 Analytics Cookies</h3>
             <p className="mb-3">We use Firebase Analytics to understand how users interact with the platform.</p>
             <p className="mb-3">Data collected may include:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -94,8 +94,8 @@ export default function CookiePolicyPage() {
             <p>Analytics cookies are used only to improve platform performance.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">3. Third-Party Cookies</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">3. Third-Party Cookies</h2>
             <p className="mb-3">
               Make My Lesson uses Google Firebase, which may set or read cookies as part of its services.
             </p>
@@ -125,8 +125,8 @@ export default function CookiePolicyPage() {
             <p className="mt-3">to place cookies on our platform.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">4. Subscription &amp; Payment Cookies</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">4. Subscription &amp; Payment Cookies</h2>
             <p className="mb-3">For web-based payments (e.g., via Paddle or equivalent providers):</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Payment providers may set necessary cookies for secure transactions</li>
@@ -136,18 +136,18 @@ export default function CookiePolicyPage() {
             <p className="mt-3">App store purchases (Apple/Google) are handled externally and do not involve website cookies.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">5. Cookie Duration</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">5. Cookie Duration</h2>
             <p className="mb-4">Cookies fall into two categories:</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Session Cookies</h3>
+            <h3 className="legal-h3">Session Cookies</h3>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Temporary</li>
               <li>Expire when you close your browser</li>
               <li>Used for login and session management</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Persistent Cookies</h3>
+            <h3 className="legal-h3">Persistent Cookies</h3>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Remain for a defined period</li>
               <li>Used for analytics and preferences</li>
@@ -155,11 +155,11 @@ export default function CookiePolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">6. Your Cookie Choices &amp; Controls</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">6. Your Cookie Choices &amp; Controls</h2>
             <p className="mb-4">You can control cookies in several ways:</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">6.1 Browser Settings</h3>
+            <h3 className="legal-h3">6.1 Browser Settings</h3>
             <p className="mb-3">You can:</p>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Block all cookies</li>
@@ -168,7 +168,7 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="mb-6">Note: Disabling essential cookies may affect platform functionality.</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">6.2 Analytics Opt-Out</h3>
+            <h3 className="legal-h3">6.2 Analytics Opt-Out</h3>
             <p className="mb-3">You may opt out of analytics by:</p>
             <ul className="mb-6 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Adjusting browser or device privacy settings</li>
@@ -176,7 +176,7 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="mb-6">Declining analytics cookies does not affect access to platform features.</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">6.3 Device-Level Controls (Mobile)</h3>
+            <h3 className="legal-h3">6.3 Device-Level Controls (Mobile)</h3>
             <p className="mb-3">On mobile devices, similar tracking technologies may be controlled via:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>iOS: Settings → Privacy &amp; Security</li>
@@ -185,8 +185,8 @@ export default function CookiePolicyPage() {
             <p className="mt-3">Refer to platform privacy settings for more control.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">7. Children&apos;s Cookie Use</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">7. Children&apos;s Cookie Use</h2>
             <p className="mb-3">Make My Lesson is not intended for children.</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>We do not use cookies for children&apos;s profiling</li>
@@ -196,8 +196,8 @@ export default function CookiePolicyPage() {
             <p className="mt-3">If such data is identified, it will be deleted.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">8. Legal Basis for Cookie Use</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">8. Legal Basis for Cookie Use</h2>
             <p className="mb-3">Where applicable under GDPR and similar laws:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Strictly necessary cookies → Legitimate interest (required for service)</li>
@@ -206,15 +206,15 @@ export default function CookiePolicyPage() {
             <p>We provide clear mechanisms for users to manage consent.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">9. Changes to This Cookie Policy</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">9. Changes to This Cookie Policy</h2>
             <p className="mb-3">We may update this Cookie Policy from time to time.</p>
             <p className="mb-3">Material changes will be communicated via the platform or email.</p>
             <p>Continued use constitutes acceptance of updates.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">10. Contact</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">10. Contact</h2>
             <p className="mb-3">For questions about cookies:</p>
             <ul className="list-none space-y-1">
               <li>

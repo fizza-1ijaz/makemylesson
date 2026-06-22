@@ -13,9 +13,6 @@ export default function ReviewsSection() {
           <h2 className="reviews-head-title">
             Loved by <em>educators</em> worldwide.
           </h2>
-          <p className="sub reviews-head-sub">
-            From classroom teachers to department heads here is what they say.
-          </p>
         </Reveal>
       </div>
       <div className="mq-rows">

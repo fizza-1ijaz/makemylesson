@@ -4,7 +4,7 @@ import { Reveal } from '../shared'
 const PLANS = [
   {
     title: 'Free trial',
-    blurb: 'Try the full workflow with free generation credits — no credit card required.',
+    blurb: 'Try the full workflow with free generation credits, no credit card required.',
   },
   {
     title: 'Individual',
@@ -27,10 +27,6 @@ export default function PricingSection() {
         <Reveal className="pricing-head">
           <span className="section-eyebrow">Pricing</span>
           <h2 className="pricing-head-title">Plans for every teacher and team</h2>
-          <p className="section-intro pricing-intro">
-            From a free trial to school-wide rollout — pick what fits. Full prices, currencies, and credit rules live on
-            our pricing page.
-          </p>
         </Reveal>
 
         <div className="pricing-grid pricing-grid--plans">

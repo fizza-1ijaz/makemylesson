@@ -6,7 +6,7 @@ import { cn } from '@/lib/cn'
 export default function PolicyPageShell({ children, className }) {
   return (
     <div className={cn(pageShellClass, className)}>
-      <Container variant="narrow" className={cn(sectionYClass, 'pb-24')}>
+      <Container variant="policy" className={cn(sectionYClass, 'legal-page pb-16 md:pb-20 lg:pb-24')}>
         {children}
       </Container>
     </div>

@@ -66,7 +66,7 @@ export default function Stage4Page() {
                       <div className="mb-0.5 text-sm font-semibold">{t.label}</div>
                       <div className="text-xs text-white">{t.desc}</div>
                     </div>
-                    <span className={cn('tag shrink-0', t.tag === 'PREMIUM' ? 'tag-yellow' : 'tag-teal')}>{t.tag}</span>
+                    <span className={cn('tag shrink-0', t.tag === 'PREMIUM' ? 'tag-premium' : 'tag-teal')}>{t.tag}</span>
                     {quizType === t.id && (
                       <div className="absolute right-2 top-2 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-mml-teal text-mml-navy">
                         <Check size={12} />
@@ -105,7 +105,7 @@ export default function Stage4Page() {
                       {selectedQTypes.includes(q.id) && <Check size={10} />}
                     </div>
                     <span>{q.label}</span>
-                    {q.tag && <span className="tag tag-yellow ml-auto">{q.tag}</span>}
+                    {q.tag && <span className="tag tag-premium ml-auto">{q.tag}</span>}
                   </button>
                 ))}
               </div>

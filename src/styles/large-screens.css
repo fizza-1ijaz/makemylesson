@@ -31,9 +31,6 @@
   }
 
   .landing-page .lp-label {
-    font-size: var(--lp-ui-fs);
-    line-height: var(--lp-ui-lh);
-    letter-spacing: 0.14em;
     gap: 10px;
   }
 
@@ -100,15 +97,13 @@
   }
 
   .hero-visual {
-    max-width: min(100%, 720px);
+    max-width: min(100%, 440px);
     margin-left: 0;
     margin-right: 0;
-    transform: scale(1.06);
-    transform-origin: center right;
   }
 
   .hero-right-visual {
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   .hero-preview-trust {
@@ -150,10 +145,6 @@
     gap: clamp(2rem, 5vw, 4.5rem);
   }
 
-  .ayla-grid {
-    gap: clamp(2rem, 5vw, 5rem);
-  }
-
   .pricing-grid {
     gap: clamp(1.125rem, 1.2vw, 1.5rem);
   }
@@ -182,7 +173,6 @@
   .landing-page .trust-headline,
   .landing-page .reviews-head-title,
   .landing-page .pricing-head-title,
-  .landing-page .sister-card-headline,
   .landing-page .complete-pack h3 {
     font-size: clamp(1.75rem, 2.2vw + 0.75rem, 3.25rem);
   }
@@ -228,9 +218,7 @@
   }
 
   .hero-visual {
-    max-width: min(100%, 780px);
-    transform: scale(1.1);
-    transform-origin: center right;
+    max-width: min(100%, 460px);
   }
 
   .hero-title {
@@ -249,7 +237,6 @@
   .landing-page .trust-headline,
   .landing-page .reviews-head-title,
   .landing-page .pricing-head-title,
-  .landing-page .sister-card-headline,
   .landing-page .complete-pack h3 {
     font-size: clamp(2rem, 2.4vw + 0.85rem, 3.5rem);
   }
@@ -261,6 +248,18 @@
   .stage-num {
     font-size: clamp(2.5rem, 3.5vw, 3.5rem);
   }
+
+  .hiw-compact-card {
+    min-height: clamp(12rem, 14vw, 16rem);
+  }
+
+  .hiw-stage-title {
+    font-size: clamp(1.0625rem, 0.45vw + 0.9rem, 1.5rem);
+  }
+
+  .hiw-compact-preview {
+    font-size: clamp(0.9375rem, 0.25vw + 0.82rem, 1.125rem);
+  }
 }
 
 @media (min-width: 1800px) {
@@ -269,8 +268,7 @@
   }
 
   .hero-visual {
-    max-width: min(100%, 840px);
-    transform: scale(1.14);
+    max-width: min(100%, 460px);
   }
 
   .hero-title {
@@ -297,7 +295,7 @@
 
 @media (min-width: 2200px) {
   .hero-visual {
-    transform: scale(1.22);
+    max-width: min(100%, 480px);
   }
 
   .hero-title {
@@ -312,10 +310,16 @@
   .landing-page .complete-pack > div > p,
   .landing-page .feat-p,
   .landing-page .feat-checks .feat-check,
-  .landing-page .ayla-feat-checks .feat-check,
   .landing-page .final-cta-lead {
     font-size: var(--lp-body-fs);
     line-height: var(--lp-body-lh);
     max-width: min(100%, 48rem);
+  }
+
+  .landing-page .ayla-feat-checks .feat-check,
+  .landing-page .ayla-copy .ayla-head-sub {
+    font-size: var(--lp-body-fs);
+    line-height: var(--lp-body-lh);
+    max-width: none;
   }
 }

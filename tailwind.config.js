@@ -9,22 +9,22 @@ module.exports = {
           'navy-mid': '#1A2B42',
           'navy-light': '#243450',
           'navy-card': '#1E2F47',
-          teal: '#E5B82A',
-          'teal-dark': '#A67C00',
-          'teal-light': '#FDE68A',
+          teal: '#7DD3E8',
+          'teal-dark': '#4BA8C4',
+          'teal-light': '#B5E8F4',
           text: '#F0F6FF',
           'text-secondary': '#94A3B8',
           muted: '#64748B',
-          yellow: '#FCD34D',
+          sky: '#38BDF8',
           green: '#4ADE80',
           purple: '#A78BFA',
           red: '#F87171',
         },
       },
       fontFamily: {
-        sans: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
-        display: ['var(--font-dm-serif)', 'DM Serif Display', 'Georgia', 'serif'],
-        mono: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         mml: '16px',
@@ -33,7 +33,7 @@ module.exports = {
       },
       boxShadow: {
         mml: '0 4px 24px rgba(0,0,0,0.3)',
-        teal: '0 0 30px rgba(212, 160, 18, 0.22)',
+        teal: '0 0 30px rgba(56, 189, 248, 0.22)',
       },
       keyframes: {
         fadeInUp: {

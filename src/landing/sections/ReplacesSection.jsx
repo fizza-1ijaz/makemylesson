@@ -40,18 +40,6 @@ export default function ReplacesSection() {
         <Reveal className="replaces-intro">
           <span className="section-eyebrow">What it replaces</span>
           <h2 className="replaces-headline">One platform. Everything you used to need five tools for.</h2>
-          <div className="section-intro replaces-intro-text">
-            <p>
-              Most teachers piece together their lesson preparation across multiple tools — a lesson plan template in Word,
-              a slide deck in PowerPoint or Google Slides, a worksheet builder somewhere else, a quiz generator, and then
-              back to Word to write the assessment. Each tool doesn&apos;t know what the others did. Nothing is aligned.
-              Nothing is curriculum-specific. And the whole process takes hours.
-            </p>
-            <p>
-              Make My Lesson replaces all of it. One platform. One curriculum selection. Everything generated in sequence,
-              everything coherent, everything aligned.
-            </p>
-          </div>
         </Reveal>
 
         <Reveal delay={80}>

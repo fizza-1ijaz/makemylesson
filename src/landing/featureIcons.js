@@ -1,4 +1,4 @@
-/** Shared Lucide props for marketing accent (mustard) outline icons */
+/** Shared Lucide props for marketing cyan outline icons */
 export const CARD_ICON_PROPS = {
   size: 26,
   strokeWidth: 1.5,
@@ -15,4 +15,9 @@ export const HIW_ICON_PROPS = {
   size: 26,
   strokeWidth: 1.5,
   className: 'text-mml-teal',
+}
+
+export const FV_ROW_ICON_PROPS = {
+  size: 15,
+  strokeWidth: 1.75,
 }

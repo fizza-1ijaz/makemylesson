@@ -8,10 +8,10 @@ import { cn } from '@/lib/cn'
 import StageLayout from '../components/StageLayout'
 
 const LESSONS = [
-  { id: 1, title: 'Exploring Ecosystems', subject: 'Science', grade: 'Grade 9', stages: [true, true, true, false], edited: '2 days ago', emoji: '🌿', hue: '#d4a012' },
+  { id: 1, title: 'Exploring Ecosystems', subject: 'Science', grade: 'Grade 9', stages: [true, true, true, false], edited: '2 days ago', emoji: '🌿', hue: '#7dd3e8' },
   { id: 2, title: 'The Water Cycle', subject: 'Science', grade: 'Grade 9', stages: [true, true, false, false], edited: '1 week ago', emoji: '💧', hue: '#3b82f6' },
   { id: 3, title: 'Parts of the Plant', subject: 'Biology', grade: 'Grade 6', stages: [true, false, false, false], edited: '2 weeks ago', emoji: '🌱', hue: '#22c55e' },
-  { id: 4, title: "Earth's Changing Surface", subject: 'Geology', grade: 'Grade 7', stages: [true, true, true, true], edited: '3 weeks ago', emoji: '🌍', hue: '#f59e0b' },
+  { id: 4, title: "Earth's Changing Surface", subject: 'Geology', grade: 'Grade 7', stages: [true, true, true, true], edited: '3 weeks ago', emoji: '🌍', hue: '#38bdf8' },
 ]
 
 const STAGE_NAMES = ['Plan', 'Present', 'Assess', 'Quiz']
@@ -55,7 +55,7 @@ export default function LibraryPage() {
             <div>
               <div className="mb-1 font-mono text-[11px] font-medium uppercase tracking-[1.5px] text-mml-teal">My Library</div>
               <h1 className="font-display text-[clamp(22px,2.5vw,30px)] font-normal leading-tight tracking-tight text-white">
-                Your <em className="italic text-mml-teal">lessons.</em>
+                Your <em className="text-mml-teal">lessons.</em>
               </h1>
             </div>
             <div className="mt-1.5 flex shrink-0 items-center gap-1.5">
@@ -135,7 +135,7 @@ export default function LibraryPage() {
                 className={cn(
                   'relative flex w-full cursor-pointer items-start gap-2.5 rounded-[13px] border border-white/10 bg-mml-navy-card p-3 pl-4 text-left transition-all',
                   'hover:-translate-y-px hover:border-white/30 hover:shadow-md',
-                  active?.id === l.id && 'border-mml-teal bg-mml-teal/10 shadow-[0_0_0_2px_rgba(212,160,18,0.14)]',
+                  active?.id === l.id && 'border-mml-teal bg-mml-teal/10 shadow-[0_0_0_2px_rgba(125,211,232,0.14)]',
                 )}
                 onClick={() => setActive(l)}
               >

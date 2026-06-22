@@ -4,21 +4,21 @@ import PolicyPageShell from '@/components/layout/PolicyPageShell'
 export default function TermsOfServicePage() {
   return (
     <PolicyPageShell>
-      <article>
-        <header className="border-b border-white/10 pb-8 text-center">
-          <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
+      <article className="legal-article">
+        <header className="legal-article-header">
+          <h1 className="legal-article-title">
             Terms of Service
           </h1>
-          <p className="mt-4 text-sm font-medium text-mml-teal">Operated by Qismat Ventures W.L.L</p>
-          <p className="mt-6 text-[13px] leading-relaxed text-white">
+          <p className="legal-article-operator">Operated by Qismat Ventures W.L.L</p>
+          <p className="legal-article-meta">
             <span className="block">Effective Date: [To be set]</span>
             <span className="mt-1 block">Last Updated: [To be set]</span>
           </p>
         </header>
 
-        <div className="mt-10 space-y-8 text-[14px] leading-relaxed text-white sm:text-[15px]">
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">1. Introduction</h2>
+        <div className="legal-article-body">
+          <section className="legal-section">
+            <h2 className="legal-h2">1. Introduction</h2>
             <p className="mb-3">
               Welcome to Make My Lesson, an educational technology platform operated by Qismat Ventures W.L.L
               (&quot;Make My Lesson,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
@@ -47,8 +47,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">2. Eligibility &amp; Users</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">2. Eligibility &amp; Users</h2>
             <p className="mb-3">Make My Lesson is designed primarily for:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Teachers and educators</li>
@@ -63,8 +63,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">3. Account Registration &amp; Responsibility</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">3. Account Registration &amp; Responsibility</h2>
             <p className="mb-3">To access certain features, you must create an account.</p>
             <p className="mb-3">You are responsible for:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -80,8 +80,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">4. Educational Purpose &amp; AI Disclaimer</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">4. Educational Purpose &amp; AI Disclaimer</h2>
             <p className="mb-3">
               Make My Lesson is designed to assist teachers in planning lessons, creating presentations, classroom
               activities, and assessments.
@@ -103,8 +103,8 @@ export default function TermsOfServicePage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">5. Acceptable Use</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">5. Acceptable Use</h2>
             <p className="mb-3">You agree not to:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Use the platform for unlawful or harmful purposes</li>
@@ -122,8 +122,8 @@ export default function TermsOfServicePage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">6. Generated Content &amp; Responsibility</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">6. Generated Content &amp; Responsibility</h2>
             <p className="mb-3">Make My Lesson generates educational materials based on user input.</p>
             <p className="mb-3">You acknowledge and agree that:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -139,8 +139,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">7. Intellectual Property</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">7. Intellectual Property</h2>
             <p className="mb-3">
               All platform content, design, technology, and branding are owned by or licensed to Qismat Ventures W.L.L.
             </p>
@@ -157,8 +157,8 @@ export default function TermsOfServicePage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">8. Credits, Payments &amp; Subscriptions</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">8. Credits, Payments &amp; Subscriptions</h2>
             <p className="mb-3">Make My Lesson operates on a credit-based system:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Each AI generation consumes 1 credit</li>
@@ -189,8 +189,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">9. Institutional &amp; School Use</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">9. Institutional &amp; School Use</h2>
             <p className="mb-3">For school or department plans:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Each teacher receives an individual account and separate credits</li>
@@ -200,8 +200,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">10. Suspension &amp; Termination</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">10. Suspension &amp; Termination</h2>
             <p className="mb-3">We may suspend or terminate access:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>For violations of these Terms or policies</li>
@@ -212,8 +212,8 @@ export default function TermsOfServicePage() {
             <p>Certain obligations (e.g., payment, liability, legal terms) survive termination.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">11. Third-Party Services</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">11. Third-Party Services</h2>
             <p className="mb-3">Make My Lesson may integrate with third-party services, including:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Google Firebase (authentication, storage, analytics)</li>
@@ -223,8 +223,8 @@ export default function TermsOfServicePage() {
             <p>We are not responsible for third-party services or their terms.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">12. Disclaimer of Warranties</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">12. Disclaimer of Warranties</h2>
             <p className="mb-3">Make My Lesson is provided &quot;as is&quot; and &quot;as available.&quot;</p>
             <p className="mb-3">We do not guarantee:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -235,8 +235,8 @@ export default function TermsOfServicePage() {
             <p>Use of the platform is at your own risk, to the extent permitted by law.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">13. Limitation of Liability</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">13. Limitation of Liability</h2>
             <p className="mb-3">To the maximum extent permitted by law:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>We are not liable for indirect, incidental, or consequential damages</li>
@@ -248,8 +248,8 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">14. Indemnification</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">14. Indemnification</h2>
             <p className="mb-3">You agree to indemnify and hold harmless Qismat Ventures W.L.L from claims arising from:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Your use of the platform</li>
@@ -258,19 +258,19 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">15. Governing Law</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">15. Governing Law</h2>
             <p>These Terms are governed by the laws of the Kingdom of Bahrain.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">16. Changes to These Terms</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">16. Changes to These Terms</h2>
             <p className="mb-3">We may update these Terms periodically.</p>
             <p>Continued use of Make My Lesson after changes constitutes acceptance.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">17. Contact Information</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">17. Contact Information</h2>
             <p className="mb-3">For any questions or concerns:</p>
             <ul className="list-none space-y-1">
               <li>

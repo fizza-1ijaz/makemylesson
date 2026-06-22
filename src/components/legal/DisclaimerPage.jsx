@@ -4,19 +4,19 @@ import PolicyPageShell from '@/components/layout/PolicyPageShell'
 export default function DisclaimerPage() {
   return (
     <PolicyPageShell>
-      <article>
-        <header className="border-b border-white/10 pb-8 text-center">
-          <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
+      <article className="legal-article">
+        <header className="legal-article-header">
+          <h1 className="legal-article-title">
             Disclaimer
           </h1>
-          <p className="mt-4 text-sm font-medium text-mml-teal">Operated by Qismat Ventures W.L.L</p>
-          <p className="mt-6 text-[13px] leading-relaxed text-white">
+          <p className="legal-article-operator">Operated by Qismat Ventures W.L.L</p>
+          <p className="legal-article-meta">
             <span className="block">Effective Date: [To be set]</span>
             <span className="mt-1 block">Last Updated: [To be set]</span>
           </p>
         </header>
 
-        <div className="mt-10 space-y-8 text-[14px] leading-relaxed text-white sm:text-[15px]">
+        <div className="legal-article-body">
           <p>
             This Disclaimer governs your access to and use of Make My Lesson across all platforms operated by Qismat
             Ventures W.L.L, including the website, mobile applications, and any associated services.
@@ -42,8 +42,8 @@ export default function DisclaimerPage() {
             .
           </p>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">1. General Platform Disclaimer</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">1. General Platform Disclaimer</h2>
             <p className="mb-3">
               Make My Lesson is an educational technology platform designed to assist teachers in planning lessons and
               creating teaching materials.
@@ -67,8 +67,8 @@ export default function DisclaimerPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">2. AI-Generated Content Disclaimer</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">2. AI-Generated Content Disclaimer</h2>
             <p className="mb-3">Make My Lesson uses artificial intelligence to generate educational content.</p>
             <p className="mb-3">You acknowledge that:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -85,8 +85,8 @@ export default function DisclaimerPage() {
             <p>Make My Lesson does not guarantee the accuracy or reliability of AI-generated content.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">3. Assessment &amp; Evaluation Disclaimer (Critical)</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">3. Assessment &amp; Evaluation Disclaimer (Critical)</h2>
             <p className="mb-3">Where Make My Lesson is used to generate:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Tests</li>
@@ -110,8 +110,8 @@ export default function DisclaimerPage() {
             <p>All responsibility remains with the teacher or institution.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">4. No Guarantee of Educational or Teaching Outcomes</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">4. No Guarantee of Educational or Teaching Outcomes</h2>
             <p className="mb-3">
               Make My Lesson makes no representations or warranties that use of the platform will result in:
             </p>
@@ -124,8 +124,8 @@ export default function DisclaimerPage() {
             <p>Outcomes depend on individual use, professional judgment, and external factors beyond our control.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">5. Platform Availability</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">5. Platform Availability</h2>
             <p className="mb-3">Make My Lesson is provided on an &quot;as is&quot; and &quot;as available&quot; basis.</p>
             <p className="mb-3">We do not guarantee:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -136,8 +136,8 @@ export default function DisclaimerPage() {
             <p>Temporary interruptions or updates may occur without notice.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">6. Third-Party Services</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">6. Third-Party Services</h2>
             <p className="mb-3">Make My Lesson may integrate with third-party services, including:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Google Firebase (data storage, authentication, analytics)</li>
@@ -152,8 +152,8 @@ export default function DisclaimerPage() {
             <p>Use of third-party services is subject to their own terms.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">7. Intellectual Property</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">7. Intellectual Property</h2>
             <p className="mb-3">
               All platform content, design, and technology are owned by or licensed to Qismat Ventures W.L.L.
             </p>
@@ -166,8 +166,8 @@ export default function DisclaimerPage() {
             <p>User-generated content remains the property of the user, but may be processed for platform functionality.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">8. Limitation of Liability</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">8. Limitation of Liability</h2>
             <p className="mb-3">To the fullest extent permitted by law, Qismat Ventures W.L.L shall not be liable for:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Any indirect, incidental, or consequential damages</li>
@@ -184,8 +184,8 @@ export default function DisclaimerPage() {
             <p>Nothing in this Disclaimer limits liability where prohibited by law.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">9. No Professional Advice</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">9. No Professional Advice</h2>
             <p className="mb-3">Nothing generated by Make My Lesson constitutes:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Professional educational advice</li>
@@ -195,8 +195,8 @@ export default function DisclaimerPage() {
             <p>All content is for general educational assistance only.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">10. Institutional Responsibility</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">10. Institutional Responsibility</h2>
             <p className="mb-3">Schools and institutions using Make My Lesson are responsible for:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Ensuring proper use by staff</li>
@@ -207,19 +207,19 @@ export default function DisclaimerPage() {
             <p>Make My Lesson does not assume responsibility for institutional implementation.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">11. Governing Law</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">11. Governing Law</h2>
             <p>This Disclaimer is governed by the laws of the Kingdom of Bahrain.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">12. Changes to This Disclaimer</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">12. Changes to This Disclaimer</h2>
             <p className="mb-3">We may update this Disclaimer periodically.</p>
             <p>Continued use of the platform constitutes acceptance of updates.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">13. Contact</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">13. Contact</h2>
             <p className="mb-3">For questions regarding this Disclaimer:</p>
             <ul className="list-none space-y-1">
               <li>

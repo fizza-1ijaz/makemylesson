@@ -32,7 +32,8 @@ export function useInView(options = {}) {
   return [ref, visible]
 }
 
-export function useCounter(target, suffix, decimals = 0) {
+export function useCounter(end, options = {}) {
+  const { suffix = '', decimals = 0, start = 0, range = false } = options
   const ref = useRef(null)
   const started = useRef(false)
 
@@ -49,8 +50,13 @@ export function useCounter(target, suffix, decimals = 0) {
 
           const tick = () => {
             const p = Math.min((Date.now() - t0) / dur, 1)
-            const v = (1 - Math.pow(1 - p, 3)) * target
-            el.textContent = (decimals ? v.toFixed(decimals) : Math.round(v)) + suffix
+            const eased = 1 - Math.pow(1 - p, 3)
+            const v = start + eased * (end - start)
+            if (range) {
+              el.textContent = `${start}–${Math.round(v)}${suffix}`
+            } else {
+              el.textContent = (decimals ? v.toFixed(decimals) : Math.round(v)) + suffix
+            }
             if (p < 1) requestAnimationFrame(tick)
           }
 
@@ -63,7 +69,7 @@ export function useCounter(target, suffix, decimals = 0) {
 
     obs.observe(el)
     return () => obs.disconnect()
-  }, [target, suffix, decimals])
+  }, [end, suffix, decimals, start, range])
 
   return ref
 }

@@ -1,6 +1,18 @@
+import Image from 'next/image'
 import SectionLink from '@/components/SectionLink'
 import { Label, Reveal } from '../shared'
 import { MML_APP } from '@/lib/appUrls'
+
+const HERO_MOCKUPS = [
+  {
+    src: '/mockups/makemylesson-mockup.jpeg',
+    className: 'hero-mockup-phone--primary',
+  },
+  {
+    src: '/mockups/makemylesson-mockup2.jpeg',
+    className: 'hero-mockup-phone--secondary',
+  },
+]
 
 export default function HeroSection() {
   return (
@@ -14,15 +26,15 @@ export default function HeroSection() {
           {/* LEFT */}
           <div className="hero-left">
             <Reveal>
-              <Label center>AI lesson planner for teachers</Label>
+              <Label>AI lesson planner for teachers</Label>
             </Reveal>
 
             <Reveal delay={80}>
-              <h1 className="hero-title font-display text-slate-900">
+              <h1 className="hero-title font-display font-bold not-italic text-slate-900">
                 <span className="hero-title-line">The AI Lesson Planner</span>
                 <span className="hero-title-line">and Lesson Plan Generator</span>
                 <span className="hero-title-line hero-title-line--last">
-                  <em>for Curriculum-Aligned Teaching Packs</em>
+                  <span className="hero-title-accent not-italic">for Curriculum-Aligned Teaching Packs</span>
                 </span>
               </h1>
             </Reveal>
@@ -30,17 +42,8 @@ export default function HeroSection() {
             <Reveal delay={120}>
               <p className="hero-sub hero-sub-lead">
                 Your curriculum, your output. Select your route, enter your topic, and get a standards-based, classroom-ready
-                pack—lesson plan, AI presentation, classroom activity, and summative assessment with mark scheme—{' '}
+                pack with lesson plan, AI presentation, classroom activity, and summative assessment with mark scheme{' '}
                 <strong>in minutes, not hours.</strong> Save 2–3 hours per lesson and cut lesson preparation time.
-              </p>
-            </Reveal>
-
-            <Reveal delay={140}>
-              <p className="hero-sub hero-sub-fine">
-                Not a generic template—this lesson planning app is built for your exact curriculum. Make My Lesson replaces
-                multiple tools with one teaching pack generator: instructional materials, learning objectives, and
-                pedagogically sound structure for primary and secondary teachers, heads of department, and early-career
-                teachers alike—aligned to GCSE, HSC, IB, Common Core, NGSS, and more.
               </p>
             </Reveal>
 
@@ -63,76 +66,25 @@ export default function HeroSection() {
           <Reveal delay={200} className="hero-right-wrap">
             <div className="hero-right hero-right-visual">
               <div className="hero-visual">
-                <div className="hero-floating">
-                  <span className="hero-floating-main" aria-hidden>
-                    ⏱ 2–3 hours saved
-                  </span>
-                  <span className="hero-floating-sub">per complete teaching pack</span>
-                </div>
-
-                <div className="hero-card">
-                  <div className="hero-card-header">
-                    <span className="hch-dot" />
-                    <span className="hch-title">Lesson Plan Generated</span>
-                    <span className="stage-label">Stage 1 · 1 credit</span>
-                  </div>
-
-                  <h3 className="hero-card-h3">Year 10 Physics — Newton&apos;s Laws of Motion</h3>
-                  <p className="hero-card-meta">
-                    NSW Secondary · 45 minutes · Inquiry-Based Learning
-                  </p>
-
-                  <div className="hero-section-row">
-                    <span className="hsr-label">Learning Objectives</span>
-                    <div className="hsr-bar">
-                      <div className="hsr-fill hsr-fill--d0" style={{ width: '88%' }} />
+                <div className="hero-mockups" aria-hidden>
+                  <div className="hero-mockups-glow" />
+                  <div className="hero-mockups-ring" />
+                  {HERO_MOCKUPS.map(({ src, className }) => (
+                    <div key={src} className={`hero-mockup-phone ${className}`}>
+                      <div className="hero-mockup-notch" />
+                      <div className="hero-mockup-screen">
+                        <Image
+                          src={src}
+                          alt=""
+                          width={390}
+                          height={844}
+                          className="hero-mockup-img"
+                          sizes="(max-width: 960px) 42vw, 210px"
+                          priority
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="hero-section-row">
-                    <span className="hsr-label">Teaching Sequence</span>
-                    <div className="hsr-bar">
-                      <div className="hsr-fill hsr-fill--d1" style={{ width: '95%' }} />
-                    </div>
-                  </div>
-                  <div className="hero-section-row">
-                    <span className="hsr-label">Differentiation</span>
-                    <div className="hsr-bar">
-                      <div className="hsr-fill hsr-fill--d2" style={{ width: '79%' }} />
-                    </div>
-                  </div>
-                  <div className="hero-section-row">
-                    <span className="hsr-label">Assessment for Learning</span>
-                    <div className="hsr-bar">
-                      <div className="hsr-fill hsr-fill--d3" style={{ width: '85%' }} />
-                    </div>
-                  </div>
-
-                  <div className="hero-card-footer">
-                    <span className="hsr-label hsr-label--block">Ready to continue:</span>
-                    <div className="stage-pills">
-                      <span className="stage-pill pill-sky">📊 Presentation</span>
-                      <span className="stage-pill pill-gold">✏️ Activity</span>
-                      <span className="stage-pill pill-white">📝 Assessment</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hero-preview-trust" aria-label="Plan highlights">
-                  <span className="hero-preview-trust-item">10 free credits</span>
-                  <span className="hero-preview-trust-sep" aria-hidden>
-                    |
-                  </span>
-                  <span className="hero-preview-trust-item">No credit card required</span>
-                  <span className="hero-preview-trust-sep" aria-hidden>
-                    |
-                  </span>
-                  <span className="hero-preview-trust-item">71 curriculum routes</span>
-                  <span className="hero-preview-trust-sep" aria-hidden>
-                    |
-                  </span>
-                  <span className="hero-preview-trust-item hero-preview-trust-item--regions">
-                    Australia · UK · Canada · IB · US
-                  </span>
+                  ))}
                 </div>
               </div>
             </div>

@@ -12,9 +12,13 @@ export const containerNarrowClass =
 export const containerBlogArticleClass =
   'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10 xl:max-w-[1400px] xl:px-12 2xl:max-w-[1600px] 2xl:px-16'
 
+/** Policy / compliance — readable width on large screens */
+export const containerPolicyClass =
+  'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 lg:px-10 xl:max-w-6xl xl:px-16 2xl:max-w-6xl'
+
 /** Prose / legal summaries */
 export const containerProseClass =
-  'mx-auto w-full min-w-0 max-w-2xl px-4 sm:px-6 md:px-8 lg:px-10'
+  'mx-auto w-full min-w-0 max-w-2xl px-4 sm:px-6 md:px-8 lg:px-10 xl:max-w-5xl xl:px-16'
 
 /** Blog listing and dashboards */
 export const containerWideClass =
@@ -33,6 +37,7 @@ const variantClass = {
   default: containerClass,
   narrow: containerNarrowClass,
   blogArticle: containerBlogArticleClass,
+  policy: containerPolicyClass,
   prose: containerProseClass,
   wide: containerWideClass,
   content: containerContentClass,

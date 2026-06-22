@@ -1,27 +1,41 @@
+import { useCounter } from '../hooks'
 import { Reveal } from '../shared'
 
 const STATS = [
   {
-    num: '49h',
-    label: 'per week the average teacher works — 10 hours above their contracted hours',
-    source: 'RAND State of the American Teacher, 2025',
+    end: 49,
+    suffix: 'h',
+    label: 'per week the average teacher works, 10 hours above their contracted hours',
   },
   {
-    num: '2–3h',
+    end: 3,
+    start: 2,
+    suffix: 'h',
+    range: true,
     label: 'saved per complete teaching pack vs. building across 5 separate tools',
-    source: 'Based on lesson plan + presentation + activity + assessment preparation',
   },
   {
-    num: '71',
-    label: 'curriculum routes — Australia, UK, Canada, IB and US. Every route dedicated, never generic.',
-    source: null,
+    end: 71,
+    suffix: '',
+    label: 'curriculum routes across Australia, UK, Canada, IB and US. Every route dedicated, never generic.',
   },
   {
-    num: '16',
-    label: 'teaching methods genuinely embedded throughout every stage — not just labelled',
-    source: null,
+    end: 16,
+    suffix: '',
+    label: 'teaching methods genuinely embedded throughout every stage, not just labelled',
   },
 ]
+
+function StatNumber({ end, start = 0, suffix = '', range = false }) {
+  const ref = useCounter(end, { start: range ? start : 0, suffix, range })
+  const initial = range ? `${start}–${start}${suffix}` : `0${suffix}`
+
+  return (
+    <span ref={ref} className="stat-num">
+      {initial}
+    </span>
+  )
+}
 
 export default function StatsSection() {
   return (
@@ -30,9 +44,8 @@ export default function StatsSection() {
         <div className="stats-grid">
           {STATS.map((s, i) => (
             <Reveal key={`stat-${i}`} delay={i * 70} className="stat stat-item">
-              <span className="stat-num">{s.num}</span>
+              <StatNumber end={s.end} start={s.start} suffix={s.suffix} range={s.range} />
               <span className="stat-label">{s.label}</span>
-              {s.source ? <span className="stat-source">{s.source}</span> : null}
             </Reveal>
           ))}
         </div>

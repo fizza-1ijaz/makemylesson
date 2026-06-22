@@ -3,21 +3,21 @@ import PolicyPageShell from '@/components/layout/PolicyPageShell'
 export default function RefundPaymentsPolicyPage() {
   return (
     <PolicyPageShell>
-      <article>
-        <header className="border-b border-white/10 pb-8 text-center">
-          <h1 className="font-display text-[clamp(20px,3.2vw,28px)] font-normal uppercase tracking-[0.06em] text-white">
+      <article className="legal-article">
+        <header className="legal-article-header">
+          <h1 className="legal-article-title">
             Refund &amp; Payments Policy
           </h1>
-          <p className="mt-4 text-sm font-medium text-mml-teal">Operated by Qismat Ventures W.L.L</p>
-          <p className="mt-6 text-[13px] leading-relaxed text-white">
+          <p className="legal-article-operator">Operated by Qismat Ventures W.L.L</p>
+          <p className="legal-article-meta">
             <span className="block">Effective Date: [To be set]</span>
             <span className="mt-1 block">Last Updated: [To be set]</span>
           </p>
         </header>
 
-        <div className="mt-10 space-y-8 text-[14px] leading-relaxed text-white sm:text-[15px]">
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">1. Introduction</h2>
+        <div className="legal-article-body">
+          <section className="legal-section">
+            <h2 className="legal-h2">1. Introduction</h2>
             <p className="mb-3">
               This Refund &amp; Payments Policy governs all payments, subscriptions, and paid features offered on Make My
               Lesson, operated by Qismat Ventures W.L.L.
@@ -44,8 +44,8 @@ export default function RefundPaymentsPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">2. Platform-Based Purchases (Apple &amp; Google)</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">2. Platform-Based Purchases (Apple &amp; Google)</h2>
             <p className="mb-3">If you subscribe through:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Apple App Store</li>
@@ -60,34 +60,34 @@ export default function RefundPaymentsPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">3. Direct Purchases (Web – Paddle or Equivalent)</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">3. Direct Purchases (Web – Paddle or Equivalent)</h2>
             <p className="mb-3">For purchases made directly via Make My Lesson:</p>
             <h3 className="mb-2 mt-4 font-sans text-[15px] font-semibold text-white">Eligibility</h3>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Subscriptions may be eligible for a refund within 7 calendar days of purchase</li>
               <li>Only if the service has not been substantially used</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Important Conditions</h3>
+            <h3 className="legal-h3">Important Conditions</h3>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Once credits are used (i.e., generation occurs), refunds may be denied</li>
               <li>Manual editing does not count as usage</li>
               <li>AI generation (credit consumption) counts as usage</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Subscriptions</h3>
+            <h3 className="legal-h3">Subscriptions</h3>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Subscriptions can be cancelled anytime to stop future billing</li>
               <li>Current billing cycles are non-refundable</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Refund Processing</h3>
+            <h3 className="legal-h3">Refund Processing</h3>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Approved refunds are issued to the original payment method</li>
               <li>Transaction or processing fees may be deducted where applicable</li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">4. Credit System (Important Clarification)</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">4. Credit System (Important Clarification)</h2>
             <p className="mb-3">Make My Lesson operates on a credit-based system:</p>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>1 credit = 1 stage generation</li>
@@ -95,21 +95,21 @@ export default function RefundPaymentsPolicyPage() {
               <li>5 free credits are provided on signup</li>
               <li>Paid plans include 30 credits per month</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Key Rules:</h3>
+            <h3 className="legal-h3">Key Rules:</h3>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Credits are deducted only after successful generation and save</li>
               <li>Manual editing is always free</li>
               <li>Regeneration counts as a new credit usage</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Refund Implication:</h3>
+            <h3 className="legal-h3">Refund Implication:</h3>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Once credits are used, the service is considered partially or fully consumed</li>
               <li>This may make the purchase non-refundable</li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">5. Free Access (No Trial Billing)</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">5. Free Access (No Trial Billing)</h2>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Every user receives 5 free credits on signup</li>
               <li>No payment method is required for initial access</li>
@@ -121,8 +121,8 @@ export default function RefundPaymentsPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">6. School &amp; Department Plans</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">6. School &amp; Department Plans</h2>
             <p className="mb-3">For institutional purchases:</p>
             <h3 className="mb-2 mt-4 font-sans text-[15px] font-semibold text-white">Plans Include:</h3>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
@@ -130,20 +130,20 @@ export default function RefundPaymentsPolicyPage() {
               <li>School Plan (up to 10 teachers)</li>
               <li>Custom plans for 10+ seats</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Refund Policy</h3>
+            <h3 className="legal-h3">Refund Policy</h3>
             <ul className="mb-4 list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>These plans include a 14-day money-back guarantee</li>
               <li>Refund eligibility applies only within 14 days of purchase</li>
             </ul>
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Conditions</h3>
+            <h3 className="legal-h3">Conditions</h3>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>After 14 days, plans are non-refundable</li>
               <li>Each teacher account operates independently (no shared credits)</li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">7. Child Accounts</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">7. Child Accounts</h2>
             <p className="mb-3">Make My Lesson is not designed for children.</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Accounts are intended for teachers and institutions only</li>
@@ -151,8 +151,8 @@ export default function RefundPaymentsPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">8. Legal Exceptions &amp; Consumer Rights</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">8. Legal Exceptions &amp; Consumer Rights</h2>
             <p className="mb-3">Nothing in this policy limits rights under applicable consumer protection laws, including:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Statutory refund rights</li>
@@ -161,8 +161,8 @@ export default function RefundPaymentsPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">9. Billing Support &amp; Disputes</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">9. Billing Support &amp; Disputes</h2>
             <p className="mb-3">For billing-related queries:</p>
             <ul className="mb-6 list-none space-y-1">
               <li>
@@ -197,10 +197,10 @@ export default function RefundPaymentsPolicyPage() {
               <li>May vary for third-party platforms</li>
             </ul>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Platform Authority</h3>
+            <h3 className="legal-h3">Platform Authority</h3>
             <p className="mb-6">For Apple/Google purchases → final authority rests with the platform</p>
 
-            <h3 className="mb-2 font-sans text-[15px] font-semibold text-white">Good-Faith Requirement</h3>
+            <h3 className="legal-h3">Good-Faith Requirement</h3>
             <p className="mb-3">Fraudulent or repeated abuse of refund claims may result in:</p>
             <ul className="list-disc space-y-2 pl-5 marker:text-mml-teal">
               <li>Account restrictions</li>
@@ -208,14 +208,14 @@ export default function RefundPaymentsPolicyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">10. Changes to This Policy</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">10. Changes to This Policy</h2>
             <p className="mb-3">We may update this policy periodically.</p>
             <p>Continued use of Make My Lesson constitutes acceptance of updates.</p>
           </section>
 
-          <section>
-            <h2 className="mb-3 font-display text-lg font-normal text-white">11. Contact Information</h2>
+          <section className="legal-section">
+            <h2 className="legal-h2">11. Contact Information</h2>
             <p className="mb-3">For payment-related questions:</p>
             <ul className="list-none space-y-1">
               <li>

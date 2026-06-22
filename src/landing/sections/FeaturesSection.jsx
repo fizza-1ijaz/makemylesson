@@ -1,15 +1,31 @@
-import { ClipboardList, ListChecks, Presentation } from 'lucide-react'
+import {
+  BookOpen,
+  ClipboardList,
+  ImageIcon,
+  ListChecks,
+  Presentation,
+  Target,
+  Users,
+} from 'lucide-react'
 
 import SectionLink from '@/components/SectionLink'
-import { CARD_ICON_PROPS, LABEL_ICON_PROPS } from '../featureIcons'
+import { CARD_ICON_PROPS, FV_ROW_ICON_PROPS, LABEL_ICON_PROPS } from '../featureIcons'
 import { CheckItem, Label, Reveal } from '../shared'
+
+const LESSON_PLAN_ROWS = [
+  { Icon: Target, text: 'Objectives · 3 standards-aligned goals' },
+  { Icon: BookOpen, text: 'Hook · 10 min - Think-pair-share activity', highlight: true },
+  { Icon: Presentation, text: 'Core Teaching · 20 min' },
+  { Icon: Users, text: 'Group Practice · 10 min' },
+  { Icon: ClipboardList, text: 'Exit Ticket · 5 min' },
+]
 
 const aiToolCards = [
   {
     id: 'feature-lesson-planning',
     Icon: ClipboardList,
     title: 'Lesson planning',
-    desc: "Curriculum-aligned lesson plan with learning objectives, differentiation, and Bloom's Taxonomy balance—built for your route, not a one-size-fits-all template.",
+    desc: "Curriculum-aligned lesson plan with learning objectives, differentiation, and Bloom's Taxonomy balance, built for your route, not a one-size-fits-all template.",
   },
   {
     id: 'feature-slide-decks',
@@ -21,7 +37,7 @@ const aiToolCards = [
     id: 'feature-assessments',
     Icon: ListChecks,
     title: 'Assessments',
-    desc: 'Summative and formative assessment papers with mark scheme generator output—answer keys and instructional materials matched to what you taught.',
+    desc: 'Summative and formative assessment papers with mark scheme generator output: answer keys and instructional materials matched to what you taught.',
   },
 ]
 
@@ -43,10 +59,6 @@ export default function FeaturesSection() {
           <div className="section-head feat-ai-tools-intro">
             <Label center>AI tools for teachers</Label>
             <h2 className="feat-ai-h2">Complete teaching pack: lesson plan and assessment together</h2>
-            <p className="feat-ai-lead sub">
-              One lesson plan maker flow—plan, AI presentation for teachers, classroom activity generator, and AI assessment
-              with answer key and mark scheme. Pick a focus below or scroll for standards-based, classroom-ready detail.
-            </p>
           </div>
           <div className="feat-ai-grid">
             {aiToolCards.map(({ id, Icon, title, desc }) => (
@@ -98,11 +110,14 @@ export default function FeaturesSection() {
             <div className="fv-body">
               <div className="fv-tag">The Water Cycle - 45 min</div>
               <div className="fv-rows">
-                <div className="fv-row">🎯 Objectives · 3 standards-aligned goals</div>
-                <div className="fv-row fv-hi">📖 Hook · 10 min - Think-pair-share activity</div>
-                <div className="fv-row">🔬 Core Teaching · 20 min</div>
-                <div className="fv-row">✏️ Group Practice · 10 min</div>
-                <div className="fv-row">📋 Exit Ticket · 5 min</div>
+                {LESSON_PLAN_ROWS.map(({ Icon, text, highlight }) => (
+                  <div key={text} className={`fv-row${highlight ? ' fv-hi' : ''}`}>
+                    <span className="fv-row-icon" aria-hidden>
+                      <Icon {...FV_ROW_ICON_PROPS} />
+                    </span>
+                    <span className="fv-row-text">{text}</span>
+                  </div>
+                ))}
               </div>
               <div className="fv-btns">
                 <div className="fv-btn-primary">Export PDF</div>
@@ -150,7 +165,10 @@ export default function FeaturesSection() {
                 <div className="fv-slide-meta">Slide 1 of 8 - Title</div>
                 <div className="fv-slide-title">Exploring Ecosystems</div>
                 <div className="fv-slide-sub">Grade 5 · US Common Core Science</div>
-                <div className="fv-slide-img">🌿 Cover illustration</div>
+                <div className="fv-slide-img">
+                  <ImageIcon {...FV_ROW_ICON_PROPS} />
+                  <span>Cover illustration</span>
+                </div>
               </div>
               <div className="fv-slide-thumbs">
                 <div className="fv-thumb" />

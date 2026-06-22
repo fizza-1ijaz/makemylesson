@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, DM_Serif_Display } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieConsent from '@/components/CookieConsent'
@@ -12,17 +12,9 @@ import {
 } from '@/lib/siteUrl'
 import './globals.css'
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: '400',
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-dm-serif',
-  display: 'swap',
-  adjustFontFallback: true,
-})
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-inter',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
   adjustFontFallback: true,
@@ -85,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col bg-mml-navy font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <Navbar />
