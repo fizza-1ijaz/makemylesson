@@ -206,7 +206,7 @@ export default function MethodsSection() {
       <div className="W">
         <Reveal className="methods-intro-block">
           <span className="section-eyebrow methods-eyebrow">Teaching methods</span>
-          <h2 className="methods-headline">16 teaching methods. Actually embedded. Not just labelled.</h2>
+          <h2 className="methods-headline">16 Teaching Methods. Actually Embedded. Not Just Labelled.</h2>
           <p className="section-intro methods-intro">
             Your chosen method shapes every section of every document, not just a label on the plan. Inquiry-Based
             Learning builds around questions and discovery; Collaborative Learning adds structured pair and group work

@@ -55,7 +55,7 @@ export default function LibraryPage() {
             <div>
               <div className="mb-1 font-mono text-[11px] font-medium uppercase tracking-[1.5px] text-mml-teal">My Library</div>
               <h1 className="font-display text-[clamp(22px,2.5vw,30px)] font-normal leading-tight tracking-tight text-white">
-                Your <em className="text-mml-teal">lessons.</em>
+                Your <em className="text-mml-teal">Lessons.</em>
               </h1>
             </div>
             <div className="mt-1.5 flex shrink-0 items-center gap-1.5">
@@ -247,7 +247,7 @@ export default function LibraryPage() {
                               {s.title}
                               {ok && <span className="rounded-full border border-mml-teal/30 bg-mml-teal/10 px-1.5 py-0.5 text-[9.5px] font-bold text-mml-teal">Done</span>}
                             </div>
-                            <div className="text-[11px] font-light text-white">{ok ? s.desc : 'Not yet generated'}</div>
+                            <div className="text-[11px] font-light text-white">{ok ? s.desc : 'Not Yet Generated'}</div>
                           </div>
                         </div>
                         <div className="flex shrink-0 gap-1">
@@ -279,13 +279,13 @@ export default function LibraryPage() {
                   type="button"
                   className="flex w-full items-center justify-center gap-1.5 border-t border-white/10 bg-transparent py-2.5 font-sans text-[13px] font-semibold text-white transition-colors hover:bg-mml-teal/10 hover:text-mml-teal"
                 >
-                  <Download size={13} /> Download all stages
+                  <Download size={13} /> Download All Stages
                 </button>
               </div>
 
               <div className="overflow-hidden rounded-2xl border border-white/10 bg-mml-navy-card shadow-sm">
                 <div className="flex items-center justify-between border-b border-white/10 bg-mml-navy-mid px-4 py-3">
-                  <span className="text-[13px] font-semibold text-white">Export question types</span>
+                  <span className="text-[13px] font-semibold text-white">Export Question Types</span>
                   <span className="rounded-full border border-mml-teal/30 bg-mml-teal/10 px-2 py-0.5 text-[10.5px] font-bold text-mml-teal">{exports.length} selected</span>
                 </div>
                 <div className="flex flex-col">
@@ -345,7 +345,7 @@ export default function LibraryPage() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5 p-2.5">
-                  {['Adjust question difficulty', 'Add higher-order thinking', 'Include images or diagrams'].map((h, i) => (
+                  {['Adjust Question Difficulty', 'Add Higher-Order Thinking', 'Include Images or Diagrams'].map((h, i) => (
                     <button
                       key={i}
                       type="button"

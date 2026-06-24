@@ -24,9 +24,9 @@ const RECENT_LESSONS = [
 
 const QUICK_ACTIONS = [
   { icon: <AlertCircle size={16} />, label: 'Need Any Help?' },
-  { icon: <RefreshCw size={16} />, label: 'Refine my existing lesson' },
-  { icon: <PlusCircle size={16} />, label: 'Create something new' },
-  { icon: <PlayCircle size={16} />, label: 'View step by step demo' },
+  { icon: <RefreshCw size={16} />, label: 'Refine My Existing Lesson' },
+  { icon: <PlusCircle size={16} />, label: 'Create Something New' },
+  { icon: <PlayCircle size={16} />, label: 'View Step by Step Demo' },
 ]
 
 export default function ProfilePage() {
@@ -69,7 +69,7 @@ export default function ProfilePage() {
                   type="button"
                   className="inline-flex items-center gap-1.5 rounded-full bg-mml-teal/10 px-3 py-1 text-[0.75rem] font-semibold text-mml-teal-dark transition-colors hover:bg-mml-teal/20"
                 >
-                  <Edit3 size={12} /> Edit profile
+                  <Edit3 size={12} /> Edit Profile
                 </button>
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function ProfilePage() {
             <h3 className="mb-3.5 text-[0.9rem] font-bold text-white">Your Activity</h3>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: 'Total lessons this month', value: '17', trend: '+3 this month', clr: '#7dd3e8' },
+                { label: 'Total Lessons This Month', value: '17', trend: '+3 this month', clr: '#7dd3e8' },
                 { label: 'Total Exports', value: '96', trend: '+20 this month', clr: '#a78bfa' },
                 { label: 'Questions', value: '5,412', trend: '+266 this month', clr: '#B8860B' },
                 { label: 'Students', value: '5,412', trend: '+1 this month', clr: '#4ade80' },
@@ -152,7 +152,7 @@ export default function ProfilePage() {
             <div className="mb-1 flex items-center justify-between">
               <h3 className="text-[0.9rem] font-bold text-white">Recent Activity</h3>
               <Link href="/library" className="text-[0.78rem] font-semibold text-mml-teal-dark transition-opacity hover:opacity-70">
-                View all activity →
+                View All Activity →
               </Link>
             </div>
             <p className="mb-3.5 text-[0.78rem] text-white">Recent Lesson Activity</p>

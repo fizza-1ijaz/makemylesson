@@ -75,7 +75,7 @@ export default function PricingPage() {
               </div>
               <div className="relative flex max-w-full flex-col items-center rounded-2xl border border-mml-teal/40 bg-mml-teal/[0.08] p-6 text-center shadow-[0_0_0_1px_rgba(125,211,232,0.15)] lg:items-stretch lg:text-left">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-mml-teal px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-mml-navy">
-                  Best value
+                  Best Value
                 </div>
                 <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-mml-teal">Annual</div>
                 <div className="font-display text-3xl text-white sm:text-4xl">
@@ -163,14 +163,14 @@ export default function PricingPage() {
                   <tr>
                     <td className="px-4 py-3 font-medium text-white">School Plan+</td>
                     <td className="px-4 py-3">10+</td>
-                    <td className="px-4 py-3 text-mml-teal">Contact us</td>
+                    <td className="px-4 py-3 text-mml-teal">Contact Us</td>
                     <td className="px-4 py-3">Custom</td>
                     <td className="px-4 py-3">30 credits per teacher</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <SubTitle>How it works</SubTitle>
+            <SubTitle>How It Works</SubTitle>
             <p className="text-white/85">
               The school or department head purchases a plan and receives a unique invite link. Each teacher signs up
               individually using that link. Every teacher has their own account, their own library, and their own credits.
@@ -297,7 +297,7 @@ export default function PricingPage() {
                     ['One-Time Purchase', '$19.99', '—', '50', 'One-Time'],
                     ['Department Plan', '$349/yr', 'Up to 5', '30/month each', 'Annual only'],
                     ['School Plan', '$599/yr', 'Up to 10', '30/month each', 'Annual only'],
-                    ['School Plan+', 'Contact us', '10+', '30/month each', 'Annual only'],
+                    ['School Plan+', 'Contact Us', '10+', '30/month each', 'Annual only'],
                     ['Free Trial', 'Free', '1', '5 (one-time)', 'No card needed'],
                   ].map((row) => (
                     <tr key={row[0]} className="border-b border-white/10 last:border-0">
@@ -318,13 +318,13 @@ export default function PricingPage() {
               href="/lesson/stage1"
               className="inline-flex items-center justify-center rounded-xl bg-mml-teal px-6 py-3 font-sans text-sm font-semibold text-mml-navy no-underline transition-colors hover:bg-mml-teal-dark"
             >
-              Start with free credits
+              Start With Free Credits
             </Link>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-xl border border-white/20 px-6 py-3 font-sans text-sm font-semibold text-white no-underline transition-colors hover:border-mml-teal hover:text-mml-teal"
             >
-              Contact us
+              Contact Us
             </Link>
           </div>
         </div>

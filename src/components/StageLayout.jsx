@@ -30,7 +30,7 @@ export default function StageLayout({ children, currentStage }) {
             </button>
           </div>
           <div className="flex flex-1 flex-wrap gap-2 max-md:hidden">
-            {['Suggest material', 'Suggest Activity', 'Simplify'].map((t) => (
+            {['Suggest Material', 'Suggest Activity', 'Simplify'].map((t) => (
               <button
                 key={t}
                 type="button"

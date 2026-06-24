@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { cn } from '@/lib/cn'
 import AylaIcon from '@/components/AylaIcon'
 import { MML_APP } from '@/lib/appUrls'
 import AylaSection from '@/landing/sections/AylaSection'
@@ -20,8 +22,15 @@ import StatsSection from '@/landing/sections/StatsSection'
 import LandingScrollHandler from '@/components/LandingScrollHandler'
 
 export default function LandingPage() {
+  const [revealReady, setRevealReady] = useState(false)
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setRevealReady(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
+
   return (
-    <div className="landing-page" data-theme="light">
+    <div className={cn('landing-page', revealReady && 'reveal-ready')} data-theme="light">
       <LandingScrollHandler />
       <HeroSection />
       <StatsSection />
@@ -45,7 +54,7 @@ export default function LandingPage() {
         aria-label="Open Ayla or help"
         title="Ayla"
       >
-        <AylaIcon width={44} height={44} alt="" className="landing-fab-ayla" priority={false} />
+        <AylaIcon alt="" className="landing-fab-ayla h-full w-full" priority={false} />
       </a>
     </div>
   )

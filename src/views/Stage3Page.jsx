@@ -197,7 +197,7 @@ export default function Stage3Page() {
                     ))}
                   </div>
                   <button type="button" className="btn-primary mt-4 w-full justify-center">
-                    Generate worksheet
+                    Generate Worksheet
                   </button>
                 </div>
               </div>

@@ -7,7 +7,7 @@ export default function TrustSection() {
         <div className="trust-inner">
           <Reveal className="trust-intro">
             <span className="section-eyebrow">Editorial integrity</span>
-            <h2 className="trust-headline">Built to respect your professional judgement.</h2>
+            <h2 className="trust-headline">Built to Respect Your Professional Judgement.</h2>
             <p className="trust-intro-lead">
               Make My Lesson is built for educators who review, adapt, and own every document before it reaches their
               classroom.
@@ -17,7 +17,7 @@ export default function TrustSection() {
           <Reveal delay={80}>
             <div className="trust-box">
               <div className="trust-box-item">
-                <h3 className="trust-box-title">AI is a starting point, not a final product</h3>
+                <h3 className="trust-box-title">AI Is a Starting Point, Not a Final Product</h3>
                 <blockquote className="trust-box-callout">
                   <p>
                     &ldquo;Content generated aligns with [curriculum name and route]. Always verify against current
@@ -27,7 +27,7 @@ export default function TrustSection() {
               </div>
 
               <div className="trust-box-item">
-                <h3 className="trust-box-title">Professional expertise remains essential</h3>
+                <h3 className="trust-box-title">Professional Expertise Remains Essential</h3>
                 <p>
                   Your knowledge of your students, your classroom, and your school context is what turns generated content
                   into a lesson that works in practice.
@@ -35,7 +35,7 @@ export default function TrustSection() {
               </div>
 
               <div className="trust-box-item">
-                <h3 className="trust-box-title">Honest about limitations</h3>
+                <h3 className="trust-box-title">Honest About Limitations</h3>
                 <p>
                   Make My Lesson supports professional preparation. It does not replace your judgement or sign-off.
                 </p>
@@ -47,7 +47,7 @@ export default function TrustSection() {
               </div>
 
               <div className="trust-box-item">
-                <h3 className="trust-box-title">Handles the repetitive work</h3>
+                <h3 className="trust-box-title">Handles the Repetitive Work</h3>
                 <p>
                   So your preparation time goes into quality, adaptation, and your learners rather than admin.
                 </p>

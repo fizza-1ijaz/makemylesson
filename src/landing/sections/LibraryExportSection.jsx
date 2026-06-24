@@ -35,7 +35,7 @@ const EXPORT_OPTIONS = [
 const FILTER_TAGS = ['All', 'Favourites', 'Science', 'History', 'Maths']
 
 const FOLDERS = [
-  { label: 'All lessons', count: 24, active: true },
+  { label: 'All Lessons', count: 24, active: true },
   { label: 'Favourites', count: 6, icon: Star },
   { label: 'Science', count: 9 },
   { label: 'History', count: 5 },
@@ -133,7 +133,7 @@ function LibraryMockup({ activeExport }) {
         <div className="library-mockup-top">
           <div>
             <p className="library-mockup-eyebrow">My Library</p>
-            <h3 className="library-mockup-title">Saved teaching packs</h3>
+            <h3 className="library-mockup-title">Saved Teaching Packs</h3>
           </div>
           <button type="button" className="library-mockup-export-menu" tabIndex={-1} aria-hidden>
             Export
@@ -283,7 +283,7 @@ export default function LibraryExportSection() {
           <Reveal delay={80} className="library-copy-col order-2 min-w-0 lg:order-1 lg:col-span-6">
             <span className="section-eyebrow library-eyebrow">Library & export</span>
             <h2 className="library-headline">
-              Every teaching pack saved. Every document exportable. Everywhere you teach.
+              Every Teaching Pack Saved. Every Document Exportable. Everywhere You Teach.
             </h2>
             <p className="library-intro-body">
               Every pack saves to My Library with favourites, search, and filters built in. Export as PDF, DOCX, PPTX,

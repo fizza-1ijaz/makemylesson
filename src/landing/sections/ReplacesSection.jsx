@@ -39,7 +39,7 @@ export default function ReplacesSection() {
       <div className="W">
         <Reveal className="replaces-intro">
           <span className="section-eyebrow">What it replaces</span>
-          <h2 className="replaces-headline">One platform. Everything you used to need five tools for.</h2>
+          <h2 className="replaces-headline">One Platform. Everything You Used to Need Five Tools For.</h2>
         </Reveal>
 
         <Reveal delay={80}>
@@ -49,7 +49,7 @@ export default function ReplacesSection() {
                 <tr>
                   <th className="replaces-th replaces-th--before" scope="col">
                     <span className="replaces-th-inner">
-                      <span className="replaces-th-badge replaces-th-badge--before">Old way</span>
+                      <span className="replaces-th-badge replaces-th-badge--before">Old Way</span>
                       Before Make My Lesson
                     </span>
                   </th>

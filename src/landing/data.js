@@ -52,7 +52,7 @@ export const REVIEWS_2 = [
     tc: '#15803d',
   },
   {
-    q: 'VCE content is hard to find anywhere. MakeMylesson nails the Australian curriculum every single time.',
+    q: 'VCE content is hard to find anywhere. Make My Lesson nails the Australian curriculum every single time.',
     n: 'Daniel O.',
     r: 'VCE Biology Teacher',
     col: '#fef9c3',
@@ -73,7 +73,7 @@ export const REVIEWS_2 = [
     tc: '#1d4ed8',
   },
   {
-    q: 'As a new teacher, MakeMylesson gave me the confidence to walk in prepared and professional from day one.',
+    q: 'As a new teacher, Make My Lesson gave me the confidence to walk in prepared and professional from day one.',
     n: 'Zara H.',
     r: 'First Year Teacher',
     col: '#ffe4e6',

@@ -58,7 +58,7 @@ export default function CurriculumSection() {
       <div className="W">
         <Reveal className="curriculum-intro">
           <span className="section-eyebrow">Curriculum coverage</span>
-          <h2 className="cur-head-title">Your curriculum. Your route. Your output. Not a generic template.</h2>
+          <h2 className="cur-head-title">Your Curriculum. Your Route. Your Output. Not a Generic Template.</h2>
         </Reveal>
 
         <div className="curriculum-grid">

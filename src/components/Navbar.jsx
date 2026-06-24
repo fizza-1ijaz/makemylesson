@@ -25,7 +25,7 @@ function useNavLinks() {
       { sectionId: 'features', href: '/', label: 'Features' },
       { href: '/pricing', label: 'Pricing' },
       { href: '/faq', label: 'FAQs' },
-      { href: '/blog', label: 'Blogs' },
+      { href: '/blog', label: 'Blog' },
       { href: MML_APP.ayla, label: 'Ayla AI' },
       { href: '/contact', label: 'Contact Us' },
     ],

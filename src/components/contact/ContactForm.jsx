@@ -130,7 +130,7 @@ export default function ContactForm() {
           className="rounded-2xl border border-gray-200 bg-white p-12 text-center shadow-lg shadow-black/10 sm:p-14"
         >
           <CheckCircle2 className="mx-auto h-12 w-12 text-mml-teal" aria-hidden />
-          <h2 className="mt-4 font-display text-2xl font-normal text-mml-navy">Thank you</h2>
+          <h2 className="mt-4 font-display text-2xl font-normal text-mml-navy">Thank You</h2>
           <p className="mx-auto mt-3 max-w-md text-[17px] leading-relaxed text-gray-600">
             Your message is on its way to our team. We typically reply within one to two business days.
           </p>
@@ -139,7 +139,7 @@ export default function ContactForm() {
             className="btn-outline mt-8"
             onClick={() => setStatus('idle')}
           >
-            Send another message
+            Send Another Message
           </button>
         </motion.div>
       </>
@@ -162,7 +162,7 @@ export default function ContactForm() {
         className="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-lg shadow-black/10 sm:p-10 lg:p-12"
         aria-busy={isLoading}
       >
-        <h2 className="font-display text-2xl font-normal text-mml-navy sm:text-3xl">Send us a message</h2>
+          <h2 className="font-display text-2xl font-normal text-mml-navy sm:text-3xl">Send Us a Message</h2>
         <p className="mt-3 text-[17px] leading-relaxed text-gray-600">
           Tell us how we can help. Fields marked with <span className="text-mml-teal">*</span> are required.
         </p>
@@ -170,7 +170,7 @@ export default function ContactForm() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label htmlFor="contact-name" className={labelClass}>
-              Full name <span className="text-mml-teal">*</span>
+              Full Name <span className="text-mml-teal">*</span>
             </label>
             <input
               id="contact-name"
@@ -210,7 +210,7 @@ export default function ContactForm() {
 
           <div>
             <label htmlFor="contact-company" className={labelClass}>
-              School / organization <span className="font-normal text-gray-400">(optional)</span>
+              School / Organization <span className="font-normal text-gray-400">(optional)</span>
             </label>
             <input
               id="contact-company"
@@ -240,7 +240,7 @@ export default function ContactForm() {
               aria-describedby={fieldErrors.subject ? 'contact-subject-error' : undefined}
             >
               <option value="" disabled>
-                Select a topic
+                Select a Topic
               </option>
               {CONTACT_SUBJECTS.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -302,7 +302,7 @@ export default function ContactForm() {
             ) : (
               <>
                 <Send className="h-4 w-4" aria-hidden />
-                Send message
+                Send Message
               </>
             )}
           </button>

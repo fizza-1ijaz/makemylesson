@@ -132,7 +132,7 @@ export default function Stage4Page() {
                   <h4 className="mb-3.5 text-[15px] font-semibold text-white">Ecosystems Quiz</h4>
                   <div className="flex flex-col gap-4">
                     <div>
-                      <p className="mb-2.5 text-[13px] font-semibold text-white">Q1. Multiple choice questions;</p>
+                      <p className="mb-2.5 text-[13px] font-semibold text-white">Q1. Multiple Choice Questions;</p>
                       <div className="flex flex-col gap-1.5">
                         {[
                           'Option A – Producers create their own food',

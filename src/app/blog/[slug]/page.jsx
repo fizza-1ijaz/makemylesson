@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }) {
         <PageShell variant="blogArticle" contentClassName="pb-24">
           <header className="blog-article-header text-center">
             <p className="blog-article-eyebrow">Blog</p>
-            <h1 className="blog-article-title">Coming soon</h1>
+            <h1 className="blog-article-title">Coming Soon</h1>
             <p className="blog-article-deck">
               New articles will appear here once they are published in Supabase for this site.
             </p>
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }) {
             <p className="text-[15px] text-white/85">We&apos;re working on new content. Check back soon.</p>
             <p className="mt-4">
               <Link href="/blog" className="text-[14px] font-semibold text-mml-teal hover:text-white hover:underline">
-                View all articles
+                View All Articles
               </Link>
             </p>
           </div>
@@ -172,7 +172,7 @@ export default async function BlogPostPage({ params }) {
           )}
           <nav className="mt-10 border-t border-white/10 pt-8" aria-label="Related pages">
             <Link href="/blog" className="text-[14px] font-semibold text-mml-teal hover:text-white hover:underline">
-              ← All articles
+              ← All Articles
             </Link>
           </nav>
         </article>

@@ -44,7 +44,7 @@ export default function CtaBandSection() {
     <section className="final-cta">
       <div className="W final-cta-inner">
         <Reveal>
-          <h2>Your next lesson. Ready in minutes.</h2>
+          <h2>Your Next Lesson. Ready in Minutes.</h2>
           <p className="final-cta-lead">
             Join teachers across Australia, the UK, Canada, and internationally who are spending less time preparing and
             more time teaching.
@@ -59,7 +59,7 @@ export default function CtaBandSection() {
 
           <hr className="final-cta-rule" aria-hidden />
 
-          <p className="final-cta-section-label">Follow us</p>
+          <p className="final-cta-section-label">Follow Us</p>
           <div className="final-cta-socials">
             {SOCIAL_ICONS.map(({ key, href, label, Icon }) => (
               <a
@@ -77,7 +77,7 @@ export default function CtaBandSection() {
 
           <hr className="final-cta-rule" aria-hidden />
 
-          <p className="final-cta-section-label">Teach anywhere. Download the app.</p>
+          <p className="final-cta-section-label">Teach Anywhere. Download the App.</p>
           <div className="final-cta-app-row">
             <a
               href={CTA_LINKS.app.appStore}

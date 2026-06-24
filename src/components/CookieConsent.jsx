@@ -151,7 +151,7 @@ export default function CookieConsent() {
                 transition={{ type: 'spring', delay: 0.08, stiffness: 420, damping: 18 }}
               >
                 <CookieMascot wiggle={wiggle} />
-                <span className="cookie-consent-badge">Fresh batch</span>
+                <span className="cookie-consent-badge">Fresh Batch</span>
               </motion.div>
 
               <motion.div
@@ -161,9 +161,9 @@ export default function CookieConsent() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.12 }}
               >
-                <p className="cookie-consent-eyebrow">Cookie jar</p>
+                <p className="cookie-consent-eyebrow">Cookie Jar</p>
                 <h2 id="cookie-consent-title" className="cookie-consent-title">
-                  We baked a few tiny cookies
+                  We Baked a Few Tiny Cookies
                 </h2>
                 <p id="cookie-consent-desc" className="cookie-consent-text">
                   Essential crumbs keep Make My Lesson working. Optional sprinkles help us understand what teachers love —
@@ -192,7 +192,7 @@ export default function CookieConsent() {
 
                       <motion.div className="cookie-consent-toggle" layout>
                         <span className="cookie-consent-toggle-info">
-                          <span className="cookie-consent-toggle-name">Analytics sprinkles</span>
+                          <span className="cookie-consent-toggle-name">Analytics Sprinkles</span>
                           <span className="cookie-consent-toggle-hint">Anonymous usage to improve the app</span>
                         </span>
                         <button
@@ -217,27 +217,27 @@ export default function CookieConsent() {
                         <span className="cookie-consent-btn-emoji" aria-hidden>
                           🍪
                         </span>
-                        Yes, sprinkle me in
+                        Yes, Sprinkle Me In
                       </button>
                       <button
                         type="button"
                         className="cookie-consent-btn cookie-consent-btn--ghost"
                         onClick={handleEssentialOnly}
                       >
-                        Just the crumbs
+                        Just the Crumbs
                       </button>
                       <button
                         type="button"
                         className="cookie-consent-btn cookie-consent-btn--link"
                         onClick={() => setShowPrefs(true)}
                       >
-                        Customize jar
+                        Customize Jar
                       </button>
                     </>
                   ) : (
                     <>
                       <button type="button" className="cookie-consent-btn cookie-consent-btn--primary" onClick={handleSavePrefs}>
-                        Save my jar
+                        Save My Jar
                       </button>
                       <button
                         type="button"
@@ -253,7 +253,7 @@ export default function CookieConsent() {
                 <p className="cookie-consent-legal">
                   <Link href="/cookie-policy">Cookie Policy</Link>
                   <span aria-hidden> · </span>
-                  <Link href="/privacy-policy">Privacy</Link>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
                 </p>
               </motion.div>
             </div>

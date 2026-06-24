@@ -166,7 +166,7 @@ export default async function BlogPage({ searchParams }) {
                     </p>
                   </div>
                   <span className="inline-flex items-center text-[13px] font-semibold text-mml-teal underline-offset-2 transition-colors group-hover:text-white group-hover:underline">
-                    Read more
+                    Read More
                     <span className="ml-1 text-[14px]" aria-hidden>
                       →
                     </span>

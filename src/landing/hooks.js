@@ -1,8 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 
 const DEFAULT_IN_VIEW_OPTIONS = {
-  threshold: 0.07,
-  rootMargin: '0px 0px -24px 0px',
+  threshold: 0.05,
+  rootMargin: '0px 0px -8px 0px',
+}
+
+function elementIsInView(el) {
+  const rect = el.getBoundingClientRect()
+  const viewH = window.innerHeight || document.documentElement.clientHeight
+  return rect.top < viewH * 0.98 && rect.bottom > 0
 }
 
 export function useInView(options = {}) {
@@ -15,18 +21,40 @@ export function useInView(options = {}) {
     const el = ref.current
     if (!el) return
 
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          obs.unobserve(el)
-        }
-      },
-      { ...DEFAULT_IN_VIEW_OPTIONS, ...optionsRef.current },
-    )
+    const reveal = () => setVisible(true)
 
-    obs.observe(el)
-    return () => obs.disconnect()
+    const attachObserver = () => {
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            reveal()
+            obs.unobserve(el)
+          }
+        },
+        { ...DEFAULT_IN_VIEW_OPTIONS, ...optionsRef.current },
+      )
+      obs.observe(el)
+      return () => obs.disconnect()
+    }
+
+    if (elementIsInView(el)) {
+      reveal()
+      return undefined
+    }
+
+    let cleanup = attachObserver()
+
+    const retryId = requestAnimationFrame(() => {
+      if (elementIsInView(el)) {
+        cleanup?.()
+        reveal()
+      }
+    })
+
+    return () => {
+      cancelAnimationFrame(retryId)
+      cleanup?.()
+    }
   }, [])
 
   return [ref, visible]

@@ -303,9 +303,9 @@ export default function HowItWorksSection() {
         <Reveal className="hiw-intro">
           <span className="section-eyebrow">How it works</span>
           <h2 className="hiw-title-main">
-            Four stages. One topic.
+            Four Stages. One Topic.
             <br />
-            <em>Everything you need.</em>
+            <em>Everything You Need.</em>
           </h2>
         </Reveal>
 

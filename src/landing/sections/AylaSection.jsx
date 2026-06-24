@@ -14,7 +14,7 @@ export default function AylaSection() {
   const sectionRef = useRef(null)
   /** True while we should keep the thread pinned to the latest message (user has not scrolled up). */
   const pinToBottomRef = useRef(true)
-  const chips = ['Suggest material', 'Suggest Activity', 'Simplify', 'Differentiate']
+  const chips = ['Suggest Material', 'Suggest Activity', 'Simplify', 'Differentiate']
 
   const BOTTOM_EPS = 48
 
@@ -106,7 +106,7 @@ export default function AylaSection() {
         <Reveal className="section-head ayla-section-head">
           <Label center>Meet Ayla</Label>
           <h2 className="ayla-head-title">
-            Your AI teaching <em>co-pilot.</em>
+            Your AI Teaching <em>Co-Pilot.</em>
           </h2>
         </Reveal>
 
@@ -206,7 +206,7 @@ export default function AylaSection() {
             </ul>
             <div className="ayla-ctas">
               <a href={MML_APP.ayla} className="btn btn-teal btn-lg">
-                Chat with Ayla →
+                Chat With Ayla →
               </a>
               <Link href="/faq" className="btn btn-ghost btn-lg">
                 Learn More

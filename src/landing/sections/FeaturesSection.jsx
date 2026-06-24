@@ -24,13 +24,13 @@ const aiToolCards = [
   {
     id: 'feature-lesson-planning',
     Icon: ClipboardList,
-    title: 'Lesson planning',
+    title: 'Lesson Planning',
     desc: "Curriculum-aligned lesson plan with learning objectives, differentiation, and Bloom's Taxonomy balance, built for your route, not a one-size-fits-all template.",
   },
   {
     id: 'feature-slide-decks',
     Icon: Presentation,
-    title: 'Slide decks',
+    title: 'Slide Decks',
     desc: 'AI presentation for teachers: clear flow, discussion prompts, speaker notes; PPTX download plus Google Classroom and Microsoft Teams export.',
   },
   {
@@ -58,7 +58,7 @@ export default function FeaturesSection() {
         <Reveal className="feat-ai-tools">
           <div className="section-head feat-ai-tools-intro">
             <Label center>AI tools for teachers</Label>
-            <h2 className="feat-ai-h2">Complete teaching pack: lesson plan and assessment together</h2>
+            <h2 className="feat-ai-h2">Complete Teaching Pack: Lesson Plan and Assessment Together</h2>
           </div>
           <div className="feat-ai-grid">
             {aiToolCards.map(({ id, Icon, title, desc }) => (
@@ -70,7 +70,7 @@ export default function FeaturesSection() {
                   <span className="feat-ai-card-title">{title}</span>
                 </div>
                 <p className="feat-ai-card-desc">{desc}</p>
-                <span className="feat-ai-card-more">View details →</span>
+                <span className="feat-ai-card-more">View Details →</span>
               </SectionLink>
             ))}
           </div>
@@ -87,12 +87,12 @@ export default function FeaturesSection() {
               <span>Lesson Planning</span>
             </div>
             <h2 className="feat-h">
-              A full lesson plan
+              A Full Lesson Plan
               <br />
-              <em>in under 30 seconds.</em>
+              <em>in Under 30 Seconds.</em>
             </h2>
             <p className="feat-p">
-              Choose your curriculum, grade, subject, and topic. MakeMylesson builds a complete, standards-aligned
+              Choose your curriculum, grade, subject, and topic. Make My Lesson builds a complete, standards-aligned
               plan so you walk in and just teach.
             </p>
             <ul className="feat-checks">
@@ -140,9 +140,9 @@ export default function FeaturesSection() {
               <span>Slide Decks</span>
             </div>
             <h2 className="feat-h">
-              Beautiful slides,
+              Beautiful Slides,
               <br />
-              <em>built to teach.</em>
+              <em>Built to Teach.</em>
             </h2>
             <p className="feat-p">
               Every lesson comes with a complete, pedagogically sequenced slide deck vocabulary, visuals, discussion
@@ -191,9 +191,9 @@ export default function FeaturesSection() {
               <span>Assessments</span>
             </div>
             <h2 className="feat-h">
-              Worksheets, quizzes,
+              Worksheets, Quizzes,
               <br />
-              <em>tests in minutes.</em>
+              <em>Tests in Minutes.</em>
             </h2>
             <p className="feat-p">
               Generate differentiated assessments at a click. Choose question types, difficulty, and format and get a
@@ -236,9 +236,9 @@ export default function FeaturesSection() {
             <div>
               <span className="section-eyebrow">The complete teaching pack</span>
               <h3>
-                One topic. Six documents.
+                One Topic. Six Documents.
                 <br />
-                Every phase of your teaching cycle.
+                Every Phase of Your Teaching Cycle.
               </h3>
               <p>
                 When you generate all four stages for one topic, you get six classroom-ready documents covering every
@@ -246,7 +246,7 @@ export default function FeaturesSection() {
                 individually.
               </p>
               <div className="pack-total">
-                <span className="pack-total-label">Total cost</span>
+                <span className="pack-total-label">Total Cost</span>
                 <span className="pack-total-val">4 credits</span>
               </div>
             </div>

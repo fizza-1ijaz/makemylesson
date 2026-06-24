@@ -54,7 +54,7 @@ function InputField({ label, value, onChange, placeholder }) {
 export default function Stage1Page() {
   const router = useRouter()
   const [form, setForm] = useState({
-    curriculum: 'US common core',
+    curriculum: 'US Common Core',
     grade: 'Grade 9',
     subject: 'Science',
     topic: 'The water cycle',
@@ -90,7 +90,7 @@ export default function Stage1Page() {
             <div className="mb-5 flex items-center justify-between rounded-[10px] border border-mml-teal/20 bg-mml-teal/[0.07] px-3.5 py-2.5">
               <div className="flex items-center gap-1.5 text-[13px] font-semibold text-mml-teal">
                 <Check size={12} />
-                <span>US common core</span>
+                <span>US Common Core</span>
               </div>
               <button
                 type="button"

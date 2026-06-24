@@ -56,7 +56,7 @@ export default function HeroSection() {
                   </svg>
                 </a>
                 <SectionLink sectionId="how-it-works" href="/" className="btn btn-ghost btn-lg">
-                  See how it works ↓
+                  See How It Works ↓
                 </SectionLink>
               </div>
             </Reveal>

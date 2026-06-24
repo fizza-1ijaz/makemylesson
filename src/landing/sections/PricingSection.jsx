@@ -3,7 +3,7 @@ import { Reveal } from '../shared'
 
 const PLANS = [
   {
-    title: 'Free trial',
+    title: 'Free Trial',
     blurb: 'Try the full workflow with free generation credits, no credit card required.',
   },
   {
@@ -11,11 +11,11 @@ const PLANS = [
     blurb: 'Monthly or annual subscription for solo teachers who plan lessons every week.',
   },
   {
-    title: 'Add-on credits',
+    title: 'Add-On Credits',
     blurb: 'One-time credit packs when you need extra generations beyond your plan.',
   },
   {
-    title: 'School & department',
+    title: 'School & Department',
     blurb: 'Multi-seat annual plans for teams, with admin controls and per-teacher accounts.',
   },
 ]
@@ -26,7 +26,7 @@ export default function PricingSection() {
       <div className="W pricing-inner">
         <Reveal className="pricing-head">
           <span className="section-eyebrow">Pricing</span>
-          <h2 className="pricing-head-title">Plans for every teacher and team</h2>
+          <h2 className="pricing-head-title">Plans for Every Teacher and Team</h2>
         </Reveal>
 
         <div className="pricing-grid pricing-grid--plans">
@@ -41,7 +41,7 @@ export default function PricingSection() {
         <Reveal delay={260} className="pricing-view-cta">
           <p className="pricing-view-cta-lead">See full pricing, currencies, add-ons, and school tiers.</p>
           <a href={MML_APP.pricing} className="btn btn-teal btn-lg pricing-view-cta-btn">
-            View pricing
+            View Pricing
           </a>
           <p className="pricing-view-cta-note">
             Questions?{' '}

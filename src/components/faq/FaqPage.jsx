@@ -138,11 +138,11 @@ export default function FaqPage() {
         <p className="mt-14 text-center text-[13px] text-slate-600">
           Still stuck?{' '}
           <Link href="/contact" className="font-medium text-mml-teal-dark underline-offset-2 hover:text-mml-teal hover:underline">
-            Contact us
+            Contact Us
           </Link>{' '}
           or explore{' '}
           <Link href="/pricing" className="font-medium text-mml-teal-dark underline-offset-2 hover:text-mml-teal hover:underline">
-            pricing
+            Pricing
           </Link>
           .
         </p>

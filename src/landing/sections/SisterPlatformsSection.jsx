@@ -11,7 +11,7 @@ const SPRING = { type: 'spring', stiffness: 300, damping: 25 }
 const PLATFORMS = [
   {
     name: 'Studiely',
-    tagline: 'Start learning smarter',
+    tagline: 'Start Learning Smarter',
     url: 'https://www.studiely.com',
     logo: '/logo-studiely.jpeg',
     description: [
@@ -21,7 +21,7 @@ const PLATFORMS = [
   },
   {
     name: 'Linguatude',
-    tagline: 'AI English test preparation',
+    tagline: 'AI English Test Preparation',
     url: 'https://linguatude.com',
     logo: '/logo-linguatude.jpg',
     description: [

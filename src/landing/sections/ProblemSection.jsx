@@ -37,9 +37,9 @@ export default function ProblemSection() {
         <div className="problem-cols">
           <Reveal className="problem-side">
             <h2 id="problem-heading">
-              You became a teacher to teach.
+              You Became a Teacher to Teach.
               <br />
-              Not to spend hours every week building resources.
+              Not to Spend Hours Every Week Building Resources.
             </h2>
             <p>
               Teachers average 49 hours a week, 10 hours above contract. Make My Lesson cuts workload on lesson plans,

@@ -40,14 +40,14 @@ export default function ContactPage() {
             Contact
           </p>
           <h1 className="mt-3 font-display text-[clamp(28px,4.5vw,42px)] font-normal leading-tight text-white">
-            We&apos;re here to help teachers succeed
+            We&apos;re Here to Help Teachers Succeed
           </h1>
         </header>
 
         <Container variant="content" className="relative mt-12 md:mt-14">
           <section aria-labelledby="contact-form-heading">
             <h2 id="contact-form-heading" className="sr-only">
-              Contact form
+              Contact Form
             </h2>
             <div className="mx-auto w-full max-w-4xl">
               <ContactForm />
@@ -60,7 +60,7 @@ export default function ContactPage() {
             </Link>
             <span className="mx-2 text-white/25">·</span>
             <Link href="/" className="text-mml-teal hover:underline">
-              Back to home
+              Back to Home
             </Link>
           </p>
         </Container>
