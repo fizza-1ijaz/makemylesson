@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 
 import { Reveal } from '../shared'
+import { containerGutter } from '@/components/layout/Container'
 
 const SPRING = { type: 'spring', stiffness: 300, damping: 25 }
 
@@ -274,7 +275,7 @@ export default function LibraryExportSection() {
 
   return (
     <section id="library-export" className="library-section library-section--showcase">
-      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+      <div className={`mx-auto w-full max-w-[1800px] ${containerGutter}`}>
         <div className="library-layout grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
           <Reveal className="library-mockup-col order-1 min-w-0 lg:order-2 lg:col-span-6">
             <LibraryMockup activeExport={activeExport} />

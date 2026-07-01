@@ -25,41 +25,33 @@ export default function HeroSection() {
           
           {/* LEFT */}
           <div className="hero-left">
-            <Reveal>
-              <Label>AI lesson planner for teachers</Label>
-            </Reveal>
+            <Label>AI lesson planner for teachers</Label>
 
-            <Reveal delay={80}>
-              <h1 className="hero-title font-display font-bold not-italic text-slate-900">
-                <span className="hero-title-line">The AI Lesson Planner</span>
-                <span className="hero-title-line">and Lesson Plan Generator</span>
-                <span className="hero-title-line hero-title-line--last">
-                  <span className="hero-title-accent not-italic">for Curriculum-Aligned Teaching Packs</span>
-                </span>
-              </h1>
-            </Reveal>
+            <h1 className="hero-title font-display font-bold not-italic text-slate-900">
+              <span className="hero-title-line">The AI Lesson Planner</span>
+              <span className="hero-title-line">and Lesson Plan Generator</span>
+              <span className="hero-title-line hero-title-line--last">
+                <span className="hero-title-accent not-italic">for Curriculum-Aligned Teaching Packs</span>
+              </span>
+            </h1>
 
-            <Reveal delay={120}>
-              <p className="hero-sub hero-sub-lead">
-                Your curriculum, your output. Select your route, enter your topic, and get a standards-based, classroom-ready
-                pack with lesson plan, AI presentation, classroom activity, and summative assessment with mark scheme{' '}
-                <strong>in minutes, not hours.</strong> Save 2–3 hours per lesson and cut lesson preparation time.
-              </p>
-            </Reveal>
+            <p className="hero-sub hero-sub-lead">
+              Your curriculum, your output. Select your route, enter your topic, and get a standards-based, classroom-ready
+              pack with lesson plan, AI presentation, classroom activity, and summative assessment with mark scheme{' '}
+              <strong>in minutes, not hours.</strong> Save 2–3 hours per lesson and cut lesson preparation time.
+            </p>
 
-            <Reveal delay={220}>
-              <div className="hero-ctas">
-                <a href={MML_APP.stage1} className="btn btn-teal btn-lg">
-                  Build Your First Teaching Pack Free
-                  <svg width={16} height={16} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <SectionLink sectionId="how-it-works" href="/" className="btn btn-ghost btn-lg">
-                  See How It Works ↓
-                </SectionLink>
-              </div>
-            </Reveal>
+            <div className="hero-ctas">
+              <a href={MML_APP.stage1} className="btn btn-teal btn-lg">
+                Build Your First Teaching Pack Free
+                <svg width={16} height={16} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <SectionLink sectionId="how-it-works" href="/" className="btn btn-ghost btn-lg">
+                See How It Works ↓
+              </SectionLink>
+            </div>
           </div>
 
           {/* RIGHT */}

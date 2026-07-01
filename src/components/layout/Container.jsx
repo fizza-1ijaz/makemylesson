@@ -1,32 +1,31 @@
 import { cn } from '@/lib/cn'
 
+/** Side gutters on small/medium viewports; flush to edges on xl+ desktops */
+export const containerGutter = 'px-4 sm:px-6 md:px-8 xl:px-0'
+
 /** Full-width shell with responsive gutters — matches landing `.W` */
-export const containerClass =
-  'mx-auto w-full min-w-0 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16'
+export const containerClass = `mx-auto w-full min-w-0 ${containerGutter}`
 
 /** Narrow column for policy copy, contact */
-export const containerNarrowClass =
-  'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10'
+export const containerNarrowClass = `mx-auto w-full min-w-0 max-w-3xl ${containerGutter}`
 
 /** Blog article — narrow through lg; wider readable column on xl+ desktops */
 export const containerBlogArticleClass =
-  'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10 xl:max-w-[1400px] xl:px-12 2xl:max-w-[1600px] 2xl:px-16'
+  `mx-auto w-full min-w-0 max-w-3xl ${containerGutter} xl:max-w-[1400px] 2xl:max-w-[1600px]`
 
 /** Policy / compliance — readable width on large screens */
 export const containerPolicyClass =
-  'mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6 lg:px-10 xl:max-w-6xl xl:px-16 2xl:max-w-6xl'
+  `mx-auto w-full min-w-0 max-w-3xl ${containerGutter} xl:max-w-6xl 2xl:max-w-6xl`
 
 /** Prose / legal summaries */
 export const containerProseClass =
-  'mx-auto w-full min-w-0 max-w-2xl px-4 sm:px-6 md:px-8 lg:px-10 xl:max-w-5xl xl:px-16'
+  `mx-auto w-full min-w-0 max-w-2xl ${containerGutter} xl:max-w-5xl`
 
 /** Blog listing and dashboards */
-export const containerWideClass =
-  'mx-auto w-full min-w-0 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16'
+export const containerWideClass = `mx-auto w-full min-w-0 ${containerGutter}`
 
 /** Pricing, FAQ, and medium-width app pages */
-export const containerContentClass =
-  'mx-auto w-full min-w-0 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16'
+export const containerContentClass = `mx-auto w-full min-w-0 ${containerGutter}`
 
 export const sectionYClass = 'py-12 md:py-16 lg:py-24'
 

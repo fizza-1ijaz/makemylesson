@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { AylaHeaderAvatar, AylaMsgAvatar, TypingDots } from '../AylaChatUi'
 import { CheckItem, Label, Reveal } from '../shared'
 import { MML_APP } from '@/lib/appUrls'
+import { containerGutter } from '@/components/layout/Container'
 
 export default function AylaSection() {
   const [typed, setTyped] = useState(false)
@@ -102,7 +103,7 @@ export default function AylaSection() {
 
   return (
     <section ref={sectionRef} id="ayla-ai" className="ayla-section">
-      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+      <div className={`mx-auto w-full max-w-[1800px] ${containerGutter}`}>
         <Reveal className="section-head ayla-section-head">
           <Label center>Meet Ayla</Label>
           <h2 className="ayla-head-title">

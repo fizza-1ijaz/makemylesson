@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { cn } from '@/lib/cn'
 import AylaIcon from '@/components/AylaIcon'
 import { MML_APP } from '@/lib/appUrls'
@@ -24,9 +24,8 @@ import LandingScrollHandler from '@/components/LandingScrollHandler'
 export default function LandingPage() {
   const [revealReady, setRevealReady] = useState(false)
 
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setRevealReady(true))
-    return () => cancelAnimationFrame(id)
+  useLayoutEffect(() => {
+    setRevealReady(true)
   }, [])
 
   return (

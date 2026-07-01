@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
 import { Reveal } from '../shared'
+import { containerGutter } from '@/components/layout/Container'
 
 const SPRING = { type: 'spring', stiffness: 300, damping: 25 }
 
@@ -71,7 +72,7 @@ function PlatformCard({ platform, delay = 0 }) {
 export default function SisterPlatformsSection() {
   return (
     <section id="sister-platforms" className="sister-platforms">
-      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+      <div className={`mx-auto w-full max-w-[1800px] ${containerGutter}`}>
         <Reveal className="sister-head">
           <h2 className="sister-title">Sister Platforms</h2>
           <p className="sister-subtitle">Built by Skyen Solutions</p>
