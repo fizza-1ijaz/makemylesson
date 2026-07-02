@@ -1,10 +1,22 @@
 import { PageShell } from '@/components/layout/Container'
+import FeatureHero from '@/components/features/FeatureHero'
 import TeachingMethodCta from '@/components/teaching-methods/TeachingMethodCta'
 import TeachingMethodFaq from '@/components/teaching-methods/TeachingMethodFaq'
-import Link from 'next/link'
-import { MML_APP } from '@/lib/appUrls'
 
 const FEATURE_PAGE_SHELL = 'tm-page-shell border-slate-200 bg-white'
+
+function FeatureSection({ section }) {
+  return (
+    <section className="tm-section">
+      <h2 className="tm-section-heading">{section.heading}</h2>
+      {section.paragraphs.map((paragraph) => (
+        <p key={paragraph.slice(0, 48)} className="tm-paragraph">
+          {paragraph}
+        </p>
+      ))}
+    </section>
+  )
+}
 
 function FeatureArticle({ feature, content }) {
   const title = content.metaTitle ?? feature.title
@@ -13,21 +25,11 @@ function FeatureArticle({ feature, content }) {
   return (
     <PageShell variant="policy" className={FEATURE_PAGE_SHELL} contentClassName="pb-24">
       <article className="tm-article w-full">
-        <header className="tm-header">
-          <h1 className="tm-title">{title}</h1>
-          {intro ? <p className="tm-quick-answer">{intro}</p> : null}
-        </header>
+        <FeatureHero feature={feature} title={title} intro={intro} />
 
         <div className="tm-body">
           {content.sections.map((section) => (
-            <section key={section.heading} className="tm-section">
-              <h2 className="tm-section-heading">{section.heading}</h2>
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 48)} className="tm-paragraph">
-                  {paragraph}
-                </p>
-              ))}
-            </section>
+            <FeatureSection key={section.heading} section={section} />
           ))}
 
           {content.cta && (
@@ -45,10 +47,7 @@ function FeaturePlaceholder({ feature }) {
   return (
     <PageShell variant="policy" className={FEATURE_PAGE_SHELL} contentClassName="pb-24">
       <article className="tm-article w-full">
-        <header className="tm-header">
-          <h1 className="tm-title">{feature.title}</h1>
-          <p className="tm-paragraph tm-intro">{feature.description}</p>
-        </header>
+        <FeatureHero feature={feature} title={feature.title} intro={feature.description} />
 
         <div className="tm-body">
           <section className="tm-section">
@@ -59,11 +58,10 @@ function FeaturePlaceholder({ feature }) {
             </p>
           </section>
 
-          <div className="tm-cta-actions">
-            <Link href={MML_APP.stage1} className="site-nav-cta inline-flex no-underline">
-              Get started free
-            </Link>
-          </div>
+          <TeachingMethodCta
+            heading="Start planning today"
+            body="Try Make My Lesson and generate your first curriculum-aligned lesson plan in minutes."
+          />
         </div>
       </article>
     </PageShell>
