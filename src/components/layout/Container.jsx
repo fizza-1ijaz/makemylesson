@@ -1,10 +1,13 @@
 import { cn } from '@/lib/cn'
 
-/** Side gutters on small/medium viewports; flush to edges on xl+ desktops */
-export const containerGutter = 'px-4 sm:px-6 md:px-8 xl:px-0'
+/** Responsive side gutters — aligned with navbar and landing `.W` */
+export const containerGutter = 'px-4 sm:px-6 md:px-8 xl:px-8 2xl:px-10'
+
+/** Max content width — keeps cards and copy off viewport edges on large screens */
+export const containerMaxWidth = 'max-w-[1600px] 2xl:max-w-[1800px]'
 
 /** Full-width shell with responsive gutters — matches landing `.W` */
-export const containerClass = `mx-auto w-full min-w-0 ${containerGutter}`
+export const containerClass = `mx-auto w-full min-w-0 ${containerMaxWidth} ${containerGutter}`
 
 /** Narrow column for policy copy, contact */
 export const containerNarrowClass = `mx-auto w-full min-w-0 max-w-3xl ${containerGutter}`
@@ -22,10 +25,10 @@ export const containerProseClass =
   `mx-auto w-full min-w-0 max-w-2xl ${containerGutter} xl:max-w-5xl`
 
 /** Blog listing and dashboards */
-export const containerWideClass = `mx-auto w-full min-w-0 ${containerGutter}`
+export const containerWideClass = `mx-auto w-full min-w-0 ${containerMaxWidth} ${containerGutter}`
 
 /** Pricing, FAQ, and medium-width app pages */
-export const containerContentClass = `mx-auto w-full min-w-0 ${containerGutter}`
+export const containerContentClass = `mx-auto w-full min-w-0 ${containerMaxWidth} ${containerGutter}`
 
 export const sectionYClass = 'py-12 md:py-16 lg:py-24'
 

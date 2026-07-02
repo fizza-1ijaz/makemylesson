@@ -14,8 +14,7 @@ import {
 import { scrollToTop } from '@/lib/homeScroll'
 import { Menu, X } from 'lucide-react'
 
-/** Keep logo/CTA off viewport edges on xl+ (body containers use flush gutters). */
-const NAV_GUTTER = 'px-4 sm:px-6 md:px-8 xl:px-[5px]'
+const NAV_GUTTER = 'px-4 sm:px-6 md:px-8 xl:px-8 2xl:px-10'
 
 const NAV_CONTAINER =
   `site-nav-container mx-auto flex w-full min-w-0 max-w-[1600px] items-center gap-4 ${NAV_GUTTER}`
