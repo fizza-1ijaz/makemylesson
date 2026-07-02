@@ -11,6 +11,7 @@ import {
   TeachingMethodsDesktopMenu,
   TeachingMethodsMobileMenu,
 } from '@/components/TeachingMethodsMegaMenu'
+import { FeaturesDesktopMenu, FeaturesMobileMenu } from '@/components/FeaturesNavMenu'
 import { scrollToTop } from '@/lib/homeScroll'
 import { Menu, X } from 'lucide-react'
 
@@ -28,7 +29,8 @@ const NAV_MENU_LINK = 'site-nav-link block no-underline'
 function useNavLinks() {
   return useMemo(
     () => [
-      { sectionId: 'features', href: '/', label: 'Features' },
+      { href: '/', label: 'Home', homeLink: true },
+      { type: 'features' },
       { type: 'teaching-methods' },
       { href: '/pricing', label: 'Pricing' },
       { href: '/faq', label: 'FAQs' },
@@ -40,14 +42,23 @@ function useNavLinks() {
   )
 }
 
-function isNavLinkActive(pathname, href) {
-  if (href === '/') return false
-  return pathname === href || pathname.startsWith(`${href}/`)
+function isNavLinkActive(pathname, item) {
+  if (item.homeLink) return pathname === '/'
+  if (item.href === '/') return false
+  return pathname === item.href || pathname.startsWith(`${item.href}/`)
 }
 
 function NavLink({ item, pathname, className, onClick }) {
-  const active = isNavLinkActive(pathname, item.href)
+  const active = isNavLinkActive(pathname, item)
   const linkClass = cn(className, active && 'site-nav-link--active')
+
+  const handleClick = (e) => {
+    if (item.homeLink && pathname === '/') {
+      e.preventDefault()
+      scrollToTop()
+    }
+    onClick?.()
+  }
 
   if (item.sectionId) {
     return (
@@ -63,7 +74,7 @@ function NavLink({ item, pathname, className, onClick }) {
   }
 
   return (
-    <Link href={item.href} className={linkClass} onClick={onClick}>
+    <Link href={item.href} className={linkClass} onClick={handleClick}>
       {item.label}
     </Link>
   )
@@ -112,7 +123,9 @@ export default function Navbar() {
         <div className={NAV_DESKTOP}>
           <div className="site-nav-pill" role="list">
             {navLinks.map((item) =>
-              item.type === 'teaching-methods' ? (
+              item.type === 'features' ? (
+                <FeaturesDesktopMenu key="features" pathname={pathname} />
+              ) : item.type === 'teaching-methods' ? (
                 <TeachingMethodsDesktopMenu key="teaching-methods" pathname={pathname} />
               ) : (
                 <NavLink key={item.label} item={item} pathname={pathname} className={NAV_LINK} />
@@ -145,7 +158,14 @@ export default function Navbar() {
       >
         <div className={cn(NAV_CONTAINER, 'flex flex-col gap-0.5 py-3')}>
           {navLinks.map((item) =>
-            item.type === 'teaching-methods' ? (
+            item.type === 'features' ? (
+              <FeaturesMobileMenu
+                key="features"
+                pathname={pathname}
+                linkClassName={NAV_MENU_LINK}
+                onNavigate={() => setMobileOpen(false)}
+              />
+            ) : item.type === 'teaching-methods' ? (
               <TeachingMethodsMobileMenu
                 key="teaching-methods"
                 pathname={pathname}

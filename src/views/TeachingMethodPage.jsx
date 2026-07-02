@@ -1,7 +1,22 @@
 import { PageShell } from '@/components/layout/Container'
 import TeachingMethodCta from '@/components/teaching-methods/TeachingMethodCta'
 import TeachingMethodFaq from '@/components/teaching-methods/TeachingMethodFaq'
+import TeachingMethodHero from '@/components/teaching-methods/TeachingMethodHero'
+
 const TM_PAGE_SHELL = 'tm-page-shell border-slate-200 bg-white'
+
+function TeachingMethodSection({ section }) {
+  return (
+    <section className="tm-section">
+      <h2 className="tm-section-heading">{section.heading}</h2>
+      {section.paragraphs.map((paragraph) => (
+        <p key={paragraph.slice(0, 48)} className="tm-paragraph">
+          {paragraph}
+        </p>
+      ))}
+    </section>
+  )
+}
 
 function TeachingMethodArticle({ method, content }) {
   const title = content.metaTitle ?? method.label
@@ -10,23 +25,11 @@ function TeachingMethodArticle({ method, content }) {
   return (
     <PageShell variant="policy" className={TM_PAGE_SHELL} contentClassName="pb-24">
       <article className="tm-article w-full">
-        <header className="tm-header">
-          <h1 className="tm-title">{title}</h1>
-          <p className="tm-quick-answer">
-            <strong>Quick answer:</strong> {intro}
-          </p>
-        </header>
+        <TeachingMethodHero method={method} title={title} intro={intro} />
 
         <div className="tm-body">
           {content.sections.map((section) => (
-            <section key={section.heading} className="tm-section">
-              <h2 className="tm-section-heading">{section.heading}</h2>
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 48)} className="tm-paragraph">
-                  {paragraph}
-                </p>
-              ))}
-            </section>
+            <TeachingMethodSection key={section.heading} section={section} />
           ))}
 
           {content.cta && (
@@ -44,10 +47,7 @@ function TeachingMethodPlaceholder({ method }) {
   return (
     <PageShell variant="policy" className={TM_PAGE_SHELL} contentClassName="pb-24">
       <article className="tm-article w-full">
-        <header className="tm-header">
-          <h1 className="tm-title">{method.label}</h1>
-          <p className="tm-paragraph">{method.description}</p>
-        </header>
+        <TeachingMethodHero method={method} title={method.label} intro={method.description} />
 
         <div className="tm-body">
           <section className="tm-section">
