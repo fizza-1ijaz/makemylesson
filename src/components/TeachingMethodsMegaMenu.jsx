@@ -155,7 +155,7 @@ export function TeachingMethodsMobileMenu({ pathname, linkClassName = NAV_MENU_L
         type="button"
         className={cn(
           linkClassName,
-          'site-nav-mobile-mega-trigger flex w-full items-center justify-between border-none bg-transparent text-left font-[inherit]',
+          'site-nav-mobile-mega-trigger flex w-full items-center border-none bg-transparent font-[inherit]',
           active && 'site-nav-link--active',
         )}
         aria-expanded={expanded}
@@ -165,7 +165,10 @@ export function TeachingMethodsMobileMenu({ pathname, linkClassName = NAV_MENU_L
         <ChevronDown
           size={16}
           strokeWidth={2.25}
-          className={cn('shrink-0 transition-transform', expanded && 'rotate-180')}
+          className={cn(
+            'site-nav-mobile-mega-chevron shrink-0 transition-transform',
+            expanded && 'site-nav-mobile-mega-chevron--open',
+          )}
           aria-hidden
         />
       </button>

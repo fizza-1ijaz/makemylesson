@@ -164,7 +164,7 @@ export function FeaturesMobileMenu({ pathname, linkClassName = NAV_MENU_LINK, on
         type="button"
         className={cn(
           linkClassName,
-          'site-nav-mobile-dropdown-trigger flex w-full items-center justify-between border-none bg-transparent text-left font-[inherit]',
+          'site-nav-mobile-dropdown-trigger flex w-full items-center border-none bg-transparent font-[inherit]',
           active && 'site-nav-link--active',
         )}
         aria-expanded={expanded}
@@ -174,7 +174,10 @@ export function FeaturesMobileMenu({ pathname, linkClassName = NAV_MENU_LINK, on
         <ChevronDown
           size={16}
           strokeWidth={2.25}
-          className={cn('shrink-0 transition-transform', expanded && 'rotate-180')}
+          className={cn(
+            'site-nav-mobile-dropdown-chevron shrink-0 transition-transform',
+            expanded && 'site-nav-mobile-dropdown-chevron--open',
+          )}
           aria-hidden
         />
       </button>
