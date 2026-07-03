@@ -4,8 +4,8 @@ import { BookOpen, Compass, GraduationCap, Lightbulb, Sparkles, Target } from 'l
 import { useInView } from '@/landing/hooks'
 import { cn } from '@/lib/cn'
 import { parseParagraphForCard } from '@/lib/teachingMethodCard'
+import BuilderInteractiveLayout from '@/components/teaching-methods/BuilderInteractiveLayout'
 import {
-  builderStepTitle,
   getSectionLayout,
   sectionAnchorId,
 } from '@/lib/teachingMethodLayout'
@@ -105,26 +105,6 @@ function CompareLayout({ section, visible }) {
   )
 }
 
-function BuilderLayout({ section, visible }) {
-  return (
-    <div className="tm-step-list">
-      {section.paragraphs.map((paragraph, index) => (
-        <div
-          key={`${section.heading}-step-${index}`}
-          className={cn('tm-step-mini', visible && 'tm-step-mini--visible')}
-          style={{ transitionDelay: visible ? `${100 + index * 90}ms` : undefined }}
-        >
-          <div className="tm-step-num">{index + 1}</div>
-          <div>
-            <h3 className="tm-step-title">{builderStepTitle(index)}</h3>
-            <p className="tm-step-body">{paragraph}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 function WhenUseLayout({ section, visible, sectionIndex }) {
   return (
     <div className={cn('tm-use-grid', section.paragraphs.length === 1 && 'tm-use-grid--single')}>
@@ -212,7 +192,9 @@ export default function TeachingMethodSection({
         <IntroLayout section={section} visible={visible} sectionIndex={sectionIndex} />
       )}
       {layout === 'compare' && <CompareLayout section={section} visible={visible} />}
-      {layout === 'builder' && <BuilderLayout section={section} visible={visible} />}
+      {layout === 'builder' && (
+        <BuilderInteractiveLayout section={section} sectionIndex={sectionIndex} />
+      )}
       {layout === 'when-use' && (
         <WhenUseLayout section={section} visible={visible} sectionIndex={sectionIndex} />
       )}
