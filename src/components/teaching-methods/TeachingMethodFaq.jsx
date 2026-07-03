@@ -5,11 +5,14 @@ import { ChevronDown } from 'lucide-react'
 import { useInView } from '@/landing/hooks'
 import { cn } from '@/lib/cn'
 
-function FaqCard({ item, index, visible, isOpen, onToggle }) {
+function FaqCard({ item, index, isOpen, onToggle }) {
+  const [ref, visible] = useInView({ threshold: 0.12, rootMargin: '0px 0px -8% 0px' })
+
   return (
     <article
+      ref={ref}
       className={cn('tm-faq-card', visible && 'tm-faq-card--visible', isOpen && 'tm-faq-card--open')}
-      style={{ transitionDelay: visible ? `${index * 90}ms` : undefined }}
+      style={{ transitionDelay: visible ? `${Math.min(index, 4) * 90}ms` : undefined }}
     >
       <button
         type="button"
@@ -33,12 +36,16 @@ function FaqCard({ item, index, visible, isOpen, onToggle }) {
 }
 
 export default function TeachingMethodFaq({ items }) {
-  const [ref, visible] = useInView({ threshold: 0.08 })
+  const [headingRef, headingVisible] = useInView({ threshold: 0.2 })
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section className="tm-faq" aria-labelledby="tm-faq-heading" ref={ref}>
-      <h2 id="tm-faq-heading" className="tm-section-heading">
+    <section className="tm-faq" aria-labelledby="tm-faq-heading">
+      <h2
+        id="tm-faq-heading"
+        ref={headingRef}
+        className={cn('tm-section-heading', headingVisible && 'tm-section-heading--visible')}
+      >
         Frequently Asked Questions
       </h2>
       <div className="tm-faq-list" role="list">
@@ -47,7 +54,6 @@ export default function TeachingMethodFaq({ items }) {
             key={item.q}
             item={item}
             index={index}
-            visible={visible}
             isOpen={openIndex === index}
             onToggle={() => setOpenIndex((current) => (current === index ? null : index))}
           />

@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import { PageShell } from '@/components/layout/Container'
-import {
-  TEACHING_METHOD_COLUMNS,
-  getTeachingMethodPath,
-} from '@/data/teachingMethods'
+import TeachingMethodHubGrid from '@/components/teaching-methods/TeachingMethodHubGrid'
+import { TEACHING_METHOD_COLUMNS } from '@/data/teachingMethods'
 import { MML_APP } from '@/lib/appUrls'
 
 export default function TeachingMethodsHubPage() {
@@ -19,28 +17,7 @@ export default function TeachingMethodsHubPage() {
           </p>
         </header>
 
-        <div className="tm-hub-grid">
-          {TEACHING_METHOD_COLUMNS.map((column) => (
-            <section
-              key={column.id}
-              className="tm-hub-card"
-              aria-labelledby={`hub-col-${column.id}`}
-            >
-              <h2 id={`hub-col-${column.id}`} className="tm-section-heading">
-                {column.heading}
-              </h2>
-              <ul className="tm-hub-list">
-                {column.methods.map((method) => (
-                  <li key={method.slug}>
-                    <Link href={getTeachingMethodPath(method.slug)} className="tm-hub-link">
-                      {method.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+        <TeachingMethodHubGrid columns={TEACHING_METHOD_COLUMNS} />
 
         <div className="tm-cta-actions mt-12">
           <Link href={MML_APP.stage1} className="site-nav-cta inline-flex no-underline">

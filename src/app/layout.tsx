@@ -16,7 +16,7 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   adjustFontFallback: true,
 })
 
@@ -78,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="flex min-h-screen flex-col bg-mml-navy font-sans antialiased">
+      <body className={`${inter.className} flex min-h-screen flex-col bg-mml-navy font-sans antialiased`}>
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="main-content flex min-h-0 flex-1 flex-col pt-16">{children}</main>
