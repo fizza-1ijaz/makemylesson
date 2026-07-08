@@ -67,7 +67,8 @@ export function getSectionLayout(heading, paragraphCount = 0, options = {}) {
   if (pageType === 'feature') {
     if (sectionIndex === 0) return 'intro'
     if (/^how /i.test(h)) return 'builder'
-    if (/^why /i.test(h) || /built by people/i.test(h)) return 'proof'
+    if (/built by people/i.test(h)) return 'proof'
+    if (/^why /i.test(h)) return 'compare'
     if (paragraphCount === 2) return 'compare'
     return 'cards'
   }

@@ -3,8 +3,9 @@
 import { BookOpen, Compass, GraduationCap, Lightbulb, Sparkles, Target } from 'lucide-react'
 import { useInView } from '@/landing/hooks'
 import { cn } from '@/lib/cn'
-import { parseParagraphForCard } from '@/lib/teachingMethodCard'
+import { getCardDisplayParts } from '@/lib/teachingMethodCard'
 import BuilderInteractiveLayout from '@/components/teaching-methods/BuilderInteractiveLayout'
+import TeachingMethodSectionImage from '@/components/teaching-methods/TeachingMethodSectionImage'
 import {
   getSectionLayout,
   sectionAnchorId,
@@ -19,9 +20,8 @@ function SectionHeader({ heading, visible }) {
 }
 
 function ContentCard({ paragraph, index, visible, sectionIndex }) {
-  const { title, body } = parseParagraphForCard(paragraph)
+  const { title, body } = getCardDisplayParts(paragraph)
   const Icon = CARD_ICONS[(sectionIndex + index) % CARD_ICONS.length]
-  const displayBody = title ? body : paragraph
 
   return (
     <article
@@ -32,48 +32,23 @@ function ContentCard({ paragraph, index, visible, sectionIndex }) {
         <Icon size={18} strokeWidth={2} />
       </div>
       {title ? <h3 className="tm-content-card-title">{title}</h3> : null}
-      <p className="tm-content-card-body">{displayBody}</p>
+      <p className="tm-content-card-body">{body}</p>
     </article>
   )
 }
 
-function IntroLayout({ section, visible, sectionIndex }) {
+function IntroLayout({ section, visible }) {
   return (
-    <div className="tm-intro-grid">
-      <div className="tm-section-plain">
-        {section.paragraphs.map((paragraph, index) => (
-          <p
-            key={`${section.heading}-plain-${index}`}
-            className={cn('tm-paragraph', visible && 'tm-paragraph--visible')}
-            style={{ transitionDelay: visible ? `${80 + index * 60}ms` : undefined }}
-          >
-            {paragraph}
-          </p>
-        ))}
-      </div>
-      <div className="tm-definition-panel">
-        <div className="tm-model-flow">
-          {section.paragraphs.map((paragraph, index) => {
-            const { title, body } = parseParagraphForCard(paragraph)
-            const Icon = CARD_ICONS[(sectionIndex + index) % CARD_ICONS.length]
-            return (
-              <div
-                key={`${section.heading}-flow-${index}`}
-                className={cn('tm-flow-item', visible && 'tm-flow-item--visible')}
-                style={{ transitionDelay: visible ? `${140 + index * 80}ms` : undefined }}
-              >
-                <div className="tm-flow-icon" aria-hidden>
-                  <Icon size={22} strokeWidth={2} />
-                </div>
-                <div>
-                  <h3 className="tm-flow-title">{title ?? `Key point ${index + 1}`}</h3>
-                  <p className="tm-flow-body">{body || paragraph}</p>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+    <div className="tm-section-plain">
+      {section.paragraphs.map((paragraph, index) => (
+        <p
+          key={`${section.heading}-plain-${index}`}
+          className={cn('tm-paragraph', visible && 'tm-paragraph--visible')}
+          style={{ transitionDelay: visible ? `${80 + index * 60}ms` : undefined }}
+        >
+          {paragraph}
+        </p>
+      ))}
     </div>
   )
 }
@@ -84,7 +59,7 @@ function CompareLayout({ section, visible }) {
   return (
     <div className="tm-compare-grid">
       {section.paragraphs.map((paragraph, index) => {
-        const { title, body } = parseParagraphForCard(paragraph)
+        const { title, body } = getCardDisplayParts(paragraph)
         return (
           <article
             key={`${section.heading}-compare-${index}`}
@@ -97,7 +72,7 @@ function CompareLayout({ section, visible }) {
           >
             <span className="tm-compare-tag">{tags[index] ?? 'Insight'}</span>
             {title ? <h3 className="tm-compare-title">{title}</h3> : null}
-            <p className="tm-compare-body">{body || paragraph}</p>
+            <p className="tm-compare-body">{body}</p>
           </article>
         )
       })}
@@ -109,7 +84,7 @@ function WhenUseLayout({ section, visible, sectionIndex }) {
   return (
     <div className={cn('tm-use-grid', section.paragraphs.length === 1 && 'tm-use-grid--single')}>
       {section.paragraphs.map((paragraph, index) => {
-        const { title, body } = parseParagraphForCard(paragraph)
+        const { title, body } = getCardDisplayParts(paragraph)
         const Icon = CARD_ICONS[(sectionIndex + index) % CARD_ICONS.length]
         return (
           <article
@@ -121,7 +96,7 @@ function WhenUseLayout({ section, visible, sectionIndex }) {
               <Icon size={22} strokeWidth={2} />
             </div>
             <h3 className="tm-use-title">{title ?? `Guideline ${index + 1}`}</h3>
-            <p className="tm-use-body">{body || paragraph}</p>
+            <p className="tm-use-body">{body}</p>
           </article>
         )
       })}
@@ -135,14 +110,15 @@ function ProofLayout({ section, visible, entity, pageType = 'teaching-method' })
   const pills = [entity?.label, category, 'Australian Curriculum', 'Make My Lesson'].filter(Boolean)
 
   return (
-    <div className="tm-proof-layout">
-      <div className="tm-proof-highlight">
-        <p className="tm-proof-highlight-label">Built for Australian classrooms</p>
-        <p className="tm-proof-highlight-text">
-          Curriculum-aligned lesson structures designed with input from teachers who use this approach
-          every day.
-        </p>
-      </div>
+    <div className={cn('tm-proof-layout', !entity?.sectionImage && 'tm-proof-layout--content-only')}>
+      {entity?.sectionImage ? (
+        <TeachingMethodSectionImage
+          method={entity}
+          imageKey="section"
+          className="tm-proof-visual"
+          imageClassName="tm-proof-img"
+        />
+      ) : null}
       <div className="tm-proof-content">
         {section.paragraphs.map((paragraph, index) => (
           <p
@@ -188,9 +164,7 @@ export default function TeachingMethodSection({
     >
       <SectionHeader heading={section.heading} visible={visible} />
 
-      {layout === 'intro' && (
-        <IntroLayout section={section} visible={visible} sectionIndex={sectionIndex} />
-      )}
+      {layout === 'intro' && <IntroLayout section={section} visible={visible} />}
       {layout === 'compare' && <CompareLayout section={section} visible={visible} />}
       {layout === 'builder' && (
         <BuilderInteractiveLayout section={section} sectionIndex={sectionIndex} />

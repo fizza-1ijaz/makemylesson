@@ -17,3 +17,12 @@ export function parseParagraphForCard(text) {
 
   return { title: null, body: text }
 }
+
+/** Avoid showing a card title plus the full paragraph when only one block of text exists. */
+export function getCardDisplayParts(text) {
+  const { title, body } = parseParagraphForCard(text)
+  if (title && body?.trim()) {
+    return { title, body }
+  }
+  return { title: null, body: text }
+}

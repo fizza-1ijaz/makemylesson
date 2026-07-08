@@ -4,8 +4,6 @@ const testGeneratorContent = {
   metaTitle: 'AI Test Generator for Teachers',
   metaDescription:
     'Make My Lesson is an AI test generator that helps teachers create formative and summative assessments, quizzes, and question papers in minutes, fully aligned with Australian curriculum standards.',
-  quickAnswer:
-    'Make My Lesson is an AI test generator that helps teachers create formative and summative assessments, quizzes, and question papers in minutes, fully aligned with Australian curriculum standards.',
   sections: [
     {
       heading: 'Create Assessments Faster With an AI Test Generator Built for Teachers',

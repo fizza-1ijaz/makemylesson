@@ -4,8 +4,6 @@ const presentationMakerContent = {
   metaTitle: 'AI Presentation Maker for Teachers',
   metaDescription:
     'Make My Lesson is an AI presentation maker for teachers that turns lesson topics into classroom-ready slides in minutes, fully aligned with Australian curriculum content.',
-  quickAnswer:
-    'Make My Lesson is an AI presentation maker for teachers that turns lesson topics into classroom-ready slides in minutes, fully aligned with Australian curriculum content.',
   sections: [
     {
       heading: 'Build Classroom Presentations Faster With an AI Slide Maker for Teachers',

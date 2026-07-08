@@ -6,7 +6,7 @@ import TeachingMethodSection from '@/components/teaching-methods/TeachingMethodS
 
 function FeatureArticle({ feature, content }) {
   const title = content.metaTitle ?? feature.title
-  const intro = content.quickAnswer ?? feature.description
+  const intro = content.quickAnswer ?? content.metaDescription ?? feature.description
 
   return (
     <div className="tm-page-wrap min-h-[calc(100vh-4rem)] border-t border-slate-200 bg-white">

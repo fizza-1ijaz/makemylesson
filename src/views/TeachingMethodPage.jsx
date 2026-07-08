@@ -6,7 +6,7 @@ import TeachingMethodSection from '@/components/teaching-methods/TeachingMethodS
 
 function TeachingMethodArticle({ method, content }) {
   const title = content.metaTitle ?? method.label
-  const intro = content.quickAnswer ?? method.description
+  const intro = content.quickAnswer ?? content.metaDescription ?? method.description
 
   return (
     <div className="tm-page-wrap min-h-[calc(100vh-4rem)] border-t border-slate-200 bg-white">

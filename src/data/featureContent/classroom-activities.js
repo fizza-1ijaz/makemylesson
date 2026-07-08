@@ -4,8 +4,6 @@ const classroomActivitiesContent = {
   metaTitle: 'AI Classroom Activity Generator for Teachers',
   metaDescription:
     'Make My Lesson is an AI classroom activity generator that helps teachers create engaging, curriculum-aligned activities in minutes, designed specifically for Australian classrooms.',
-  quickAnswer:
-    'Make My Lesson is an AI classroom activity generator that helps teachers create engaging, curriculum-aligned activities in minutes, designed specifically for Australian classrooms.',
   sections: [
     {
       heading: 'Plan Engaging Activities Faster With an AI Teaching Activity Generator',

@@ -6858,6 +6858,28 @@ body:has(.landing-page) .cookie-consent-close {
   align-items: start;
 }
 
+.tm-proof-layout--content-only {
+  grid-template-columns: 1fr;
+}
+
+.tm-proof-visual {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow:
+    0 4px 6px -1px rgba(15, 27, 45, 0.06),
+    0 12px 24px -8px rgba(15, 27, 45, 0.12);
+  background: #f8fafc;
+}
+
+.tm-proof-img {
+  object-fit: cover;
+}
+
 .tm-proof-highlight {
   padding: 1.75rem;
   border-radius: 1.5rem;
@@ -6905,6 +6927,10 @@ body:has(.landing-page) .cookie-consent-close {
   .tm-use-grid,
   .tm-proof-layout {
     grid-template-columns: 1fr;
+  }
+
+  .tm-proof-visual {
+    max-width: 100%;
   }
 }
 
