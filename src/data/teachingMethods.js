@@ -1,4 +1,4 @@
-/** Teaching methods mega-menu columns and per-method SEO pages. */
+/** Teaching methods catalog for the hub page and shared lookups. */
 
 export const TEACHING_METHODS_BASE = '/teaching-methods'
 
@@ -157,7 +157,7 @@ export const TEACHING_METHOD_COLUMNS = [
   },
 ]
 
-/** Flat list of all methods for routes, sitemap, and lookups. */
+/** Flat list of all methods for the hub page and lookups. */
 export const ALL_TEACHING_METHODS = TEACHING_METHOD_COLUMNS.flatMap((col) =>
   col.methods.map((method) => ({
     ...method,
@@ -165,14 +165,6 @@ export const ALL_TEACHING_METHODS = TEACHING_METHOD_COLUMNS.flatMap((col) =>
     columnHeading: col.heading,
   })),
 )
-
-export function getTeachingMethodBySlug(slug) {
-  return ALL_TEACHING_METHODS.find((m) => m.slug === slug) ?? null
-}
-
-export function getTeachingMethodPath(slug) {
-  return `${TEACHING_METHODS_BASE}/${slug}`
-}
 
 export function getTeachingMethodHeroImagePath(method) {
   if (!method?.heroImage) return null

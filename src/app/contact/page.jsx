@@ -1,4 +1,20 @@
 import ContactPage from '@/views/ContactPage'
+import { SITE_URL } from '@/lib/siteUrl'
+
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Make My Lesson',
+  description:
+    'Contact Make My Lesson support for help with AI lesson planning, curriculum-aligned teaching packs, billing, and school plans.',
+  url: `${SITE_URL}/contact`,
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'Make My Lesson',
+    email: 'support@makemylesson.ai',
+    url: SITE_URL,
+  },
+}
 
 export const metadata = {
   title: 'Contact Us — Support for Teachers | Make My Lesson',
@@ -22,5 +38,13 @@ export const metadata = {
 }
 
 export default function ContactRoutePage() {
-  return <ContactPage />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+      />
+      <ContactPage />
+    </>
+  )
 }

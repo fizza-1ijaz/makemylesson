@@ -1,6 +1,26 @@
-/** Feature pages linked from the navbar Features dropdown. */
+/** Feature pages for teaching-pack stages. */
 
 export const FEATURES_BASE = '/features'
+
+/** Selector bar order under the navbar on feature pages. */
+export const FEATURE_STAGE_ITEMS = [
+  {
+    slug: 'lesson-plan-generator',
+    stageLabel: 'Lesson Plan',
+  },
+  {
+    slug: 'presentation-maker',
+    stageLabel: 'Slide Deck',
+  },
+  {
+    slug: 'classroom-activities',
+    stageLabel: 'Activity',
+  },
+  {
+    slug: 'test-generator',
+    stageLabel: 'Assessment',
+  },
+]
 
 export const FEATURE_ITEMS = [
   {
@@ -11,15 +31,6 @@ export const FEATURE_ITEMS = [
     sectionImage: 'Built by People Who Understand Teaching.png',
     description:
       "Make My Lesson is an AI lesson plan generator that helps teachers create curriculum-aligned lesson plans in minutes instead of hours. It's built for Australian classrooms and aligns automatically with the Australian Curriculum.",
-  },
-  {
-    slug: 'test-generator',
-    label: 'AI Test Generator',
-    title: 'AI Test Generator for Teachers',
-    heroImage: 'Ai test.png',
-    sectionImage: 'Built by People Who Understand Assessment Design.png',
-    description:
-      'Make My Lesson is an AI test generator that helps teachers create formative and summative assessments, quizzes, and question papers in minutes, fully aligned with Australian curriculum standards.',
   },
   {
     slug: 'presentation-maker',
@@ -39,14 +50,27 @@ export const FEATURE_ITEMS = [
     description:
       'Make My Lesson is an AI classroom activity generator that helps teachers create engaging, curriculum-aligned activities in minutes, designed specifically for Australian classrooms.',
   },
+  {
+    slug: 'test-generator',
+    label: 'AI Test Generator',
+    title: 'AI Test Generator for Teachers',
+    heroImage: 'Ai test.png',
+    sectionImage: 'Built by People Who Understand Assessment Design.png',
+    description:
+      'Make My Lesson is an AI test generator that helps teachers create formative and summative assessments, quizzes, and question papers in minutes, fully aligned with Australian curriculum standards.',
+  },
 ]
 
 export function getFeatureBySlug(slug) {
   return FEATURE_ITEMS.find((item) => item.slug === slug) ?? null
 }
 
+/** Deep-link into a stage on the single Features page. */
 export function getFeaturePath(slug) {
-  return `${FEATURES_BASE}/${slug}`
+  if (!slug || slug === FEATURE_STAGE_ITEMS[0]?.slug) {
+    return FEATURES_BASE
+  }
+  return `${FEATURES_BASE}?stage=${encodeURIComponent(slug)}`
 }
 
 export function isFeaturesPath(pathname) {

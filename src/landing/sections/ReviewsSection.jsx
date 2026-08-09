@@ -6,7 +6,7 @@ export default function ReviewsSection() {
   const doubled2 = [...REVIEWS_2, ...REVIEWS_2]
 
   return (
-    <section id="faqs" className="reviews">
+    <section id="reviews" className="reviews">
       <div className="W">
         <Reveal className="section-head reviews-head">
           <Label center>Reviews</Label>

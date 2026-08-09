@@ -1,4 +1,4 @@
-import { ALL_TEACHING_METHODS, TEACHING_METHODS_BASE } from '@/data/teachingMethods'
+import { TEACHING_METHODS_BASE } from '@/data/teachingMethods'
 import { getBlogSlugsForConfiguredSite } from '@/lib/blogs'
 import { SITE_URL } from '@/lib/siteUrl'
 
@@ -12,6 +12,7 @@ const STATIC_PATHS = [
   { path: '/faq', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.85 },
   { path: TEACHING_METHODS_BASE, changeFrequency: 'monthly', priority: 0.88 },
+  { path: '/features', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.5 },
   { path: '/terms-of-service', changeFrequency: 'yearly', priority: 0.5 },
   { path: '/acceptable-use-policy', changeFrequency: 'yearly', priority: 0.5 },
@@ -47,12 +48,5 @@ export default async function sitemap() {
     }
   }
 
-  const teachingMethodEntries = ALL_TEACHING_METHODS.map((method) => ({
-    url: `${base}${TEACHING_METHODS_BASE}/${method.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }))
-
-  return [...staticEntries, ...teachingMethodEntries, ...blogEntries]
+  return [...staticEntries, ...blogEntries]
 }

@@ -5,10 +5,10 @@ module.exports = {
     extend: {
       colors: {
         mml: {
-          navy: '#0F1B2D',
-          'navy-mid': '#1A2B42',
-          'navy-light': '#243450',
-          'navy-card': '#1E2F47',
+          navy: '#1A1E3A',
+          'navy-mid': '#242845',
+          'navy-light': '#2E3355',
+          'navy-card': '#222640',
           teal: '#7DD3E8',
           'teal-dark': '#4BA8C4',
           'teal-light': '#B5E8F4',
@@ -23,7 +23,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-manrope)', 'Manrope', 'system-ui', 'sans-serif'],
         mono: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {

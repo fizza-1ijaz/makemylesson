@@ -5,9 +5,11 @@
  * Set NEXT_PUBLIC_MML_FLUTTER_HOSTING_ORIGIN for the iframe target (e.g. http://localhost:8080 in dev).
  */
 export const MML_APP = {
-  pricing: '/app/pricing',
+  pricing: '/pricing',
   stage1: '/app/stage1',
   ayla: '/app/ayla',
+  signIn: '/login',
+  signUp: '/signup',
 }
 
 export const APP_STORE_URL = 'https://apps.apple.com/app/id6762620632'

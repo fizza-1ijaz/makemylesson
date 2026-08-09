@@ -5,22 +5,15 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/cn'
 import { MML_APP } from '@/lib/appUrls'
-import BrandMark from '@/components/BrandMark'
 import SectionLink from '@/components/SectionLink'
-import {
-  TeachingMethodsDesktopMenu,
-  TeachingMethodsMobileMenu,
-} from '@/components/TeachingMethodsMegaMenu'
-import { FeaturesDesktopMenu, FeaturesMobileMenu } from '@/components/FeaturesNavMenu'
 import { scrollToTop } from '@/lib/homeScroll'
 import { Menu, X } from 'lucide-react'
 
 const NAV_GUTTER = 'px-4 sm:px-6 md:px-8 xl:px-8 2xl:px-10'
 
 const NAV_CONTAINER =
-  `site-nav-container mx-auto flex w-full min-w-0 max-w-[1600px] items-center gap-4 ${NAV_GUTTER}`
+  `site-nav-container mx-auto flex w-full min-w-0 max-w-[1600px] items-center gap-3 ${NAV_GUTTER}`
 const NAV_BAR = 'site-nav-bar flex h-16 min-h-16 w-full items-center'
-const NAV_BRAND_MARK = 'site-nav-brand-mark h-[1.875rem] w-[1.875rem] shrink-0 object-contain 2xl:h-8 2xl:w-8'
 const NAV_LINK = 'site-nav-link shrink-0 no-underline'
 const NAV_DESKTOP =
   'site-nav-desktop hidden min-w-0 flex-1 items-center justify-center min-[901px]:flex'
@@ -30,8 +23,8 @@ function useNavLinks() {
   return useMemo(
     () => [
       { href: '/', label: 'Home', homeLink: true },
-      { type: 'features' },
-      { type: 'teaching-methods' },
+      { href: '/features', label: 'Features', matchPrefix: '/features' },
+      { href: '/teaching-methods', label: 'Teaching Methods' },
       { href: '/pricing', label: 'Pricing' },
       { href: '/faq', label: 'FAQs' },
       { href: '/blog', label: 'Blog' },
@@ -44,6 +37,9 @@ function useNavLinks() {
 
 function isNavLinkActive(pathname, item) {
   if (item.homeLink) return pathname === '/'
+  if (item.matchPrefix) {
+    return pathname === item.matchPrefix || pathname.startsWith(`${item.matchPrefix}/`)
+  }
   if (item.href === '/') return false
   return pathname === item.href || pathname.startsWith(`${item.href}/`)
 }
@@ -114,28 +110,22 @@ export default function Navbar() {
             }
           }}
         >
-          <BrandMark className={NAV_BRAND_MARK} />
-          <span className="site-nav-brand-text font-sans">
-            Make My <span className="site-nav-brand-accent">Lesson</span>
-          </span>
+          <span className="site-nav-brand-text font-sans">Make My Lesson</span>
         </Link>
 
         <div className={NAV_DESKTOP}>
-          <div className="site-nav-pill" role="list">
-            {navLinks.map((item) =>
-              item.type === 'features' ? (
-                <FeaturesDesktopMenu key="features" pathname={pathname} />
-              ) : item.type === 'teaching-methods' ? (
-                <TeachingMethodsDesktopMenu key="teaching-methods" pathname={pathname} />
-              ) : (
-                <NavLink key={item.label} item={item} pathname={pathname} className={NAV_LINK} />
-              ),
-            )}
+          <div className="site-nav-links" role="list">
+            {navLinks.map((item) => (
+              <NavLink key={item.label} item={item} pathname={pathname} className={NAV_LINK} />
+            ))}
           </div>
         </div>
 
         <div className="site-nav-actions">
-          <Link href={MML_APP.stage1} className="site-nav-cta">
+          <Link href={MML_APP.signIn || '/login'} className="site-nav-signin max-[900px]:hidden">
+            Sign In
+          </Link>
+          <Link href={MML_APP.signUp || MML_APP.stage1} className="site-nav-cta">
             Get Started
           </Link>
           <button
@@ -157,33 +147,28 @@ export default function Navbar() {
         )}
       >
         <div className={cn(NAV_CONTAINER, 'flex flex-col gap-0.5 py-3')}>
-          {navLinks.map((item) =>
-            item.type === 'features' ? (
-              <FeaturesMobileMenu
-                key="features"
-                pathname={pathname}
-                linkClassName={NAV_MENU_LINK}
-                onNavigate={() => setMobileOpen(false)}
-              />
-            ) : item.type === 'teaching-methods' ? (
-              <TeachingMethodsMobileMenu
-                key="teaching-methods"
-                pathname={pathname}
-                linkClassName={NAV_MENU_LINK}
-                onNavigate={() => setMobileOpen(false)}
-              />
-            ) : (
-              <NavLink
-                key={item.label}
-                item={item}
-                pathname={pathname}
-                className={NAV_MENU_LINK}
-                onClick={() => setMobileOpen(false)}
-              />
-            ),
-          )}
+          {navLinks.map((item) => (
+            <NavLink
+              key={item.label}
+              item={item}
+              pathname={pathname}
+              className={NAV_MENU_LINK}
+              onClick={() => setMobileOpen(false)}
+            />
+          ))}
           <div className="site-nav-drawer-cta">
-            <Link href={MML_APP.stage1} className="site-nav-cta" onClick={() => setMobileOpen(false)}>
+            <Link
+              href={MML_APP.signIn || '/login'}
+              className="site-nav-signin"
+              onClick={() => setMobileOpen(false)}
+            >
+              Sign In
+            </Link>
+            <Link
+              href={MML_APP.signUp || MML_APP.stage1}
+              className="site-nav-cta"
+              onClick={() => setMobileOpen(false)}
+            >
               Get Started
             </Link>
           </div>

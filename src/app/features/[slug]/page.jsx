@@ -1,56 +1,12 @@
-import { notFound } from 'next/navigation'
-import FeaturePage from '@/views/FeaturePage'
-import { FEATURE_ITEMS, FEATURES_BASE, getFeatureBySlug } from '@/data/features'
-import { getFeatureContent } from '@/data/featureContent'
-import { SITE_URL } from '@/lib/siteUrl'
+import { permanentRedirect } from 'next/navigation'
+import { FEATURE_ITEMS, getFeatureBySlug, getFeaturePath } from '@/data/features'
 
 export function generateStaticParams() {
   return FEATURE_ITEMS.map((feature) => ({ slug: feature.slug }))
 }
 
-export async function generateMetadata({ params }) {
+export default function FeatureSlugRedirectPage({ params }) {
   const slug = params?.slug
-  if (!slug) return { title: 'Feature' }
-
-  const feature = getFeatureBySlug(slug)
-  if (!feature) return { title: 'Feature' }
-
-  const content = getFeatureContent(slug)
-  const title = content?.metaTitle
-    ? `${content.metaTitle} | Make My Lesson`
-    : `${feature.title} | Make My Lesson`
-  const description = content?.metaDescription ?? feature.description
-  const canonical = `${SITE_URL}${FEATURES_BASE}/${feature.slug}`
-
-  return {
-    title,
-    description,
-    alternates: { canonical },
-    openGraph: {
-      type: 'website',
-      title,
-      description,
-      url: canonical,
-      siteName: 'Make My Lesson',
-      locale: 'en_US',
-    },
-    twitter: {
-      card: 'summary',
-      title,
-      description,
-    },
-    robots: { index: true, follow: true },
-  }
-}
-
-export default function FeatureRoutePage({ params }) {
-  const slug = params?.slug
-  if (!slug) notFound()
-
-  const feature = getFeatureBySlug(slug)
-  if (!feature) notFound()
-
-  const content = getFeatureContent(slug)
-
-  return <FeaturePage feature={feature} content={content} />
+  const feature = slug ? getFeatureBySlug(slug) : null
+  permanentRedirect(feature ? getFeaturePath(feature.slug) : '/features')
 }

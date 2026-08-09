@@ -41,7 +41,7 @@ function buildHtmlEmail({ name, email, company, subjectLabel, message, submitted
 <body style="margin:0;padding:24px;background:#f3f4f6;font-family:system-ui,-apple-system,sans-serif;">
   <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;">
     <tr>
-      <td style="padding:20px 24px;background:#0f1b2d;color:#f0f6ff;">
+      <td style="padding:20px 24px;background:#1A1E3A;color:#f0f6ff;">
         <p style="margin:0;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7dd3e8;">Make My Lesson</p>
         <h1 style="margin:8px 0 0;font-size:20px;font-weight:600;">New contact message</h1>
       </td>

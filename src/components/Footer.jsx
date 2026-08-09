@@ -1,118 +1,193 @@
 'use client'
 
+import { Suspense } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import BrandMark from '@/components/BrandMark'
+import { usePathname, useSearchParams } from 'next/navigation'
 import Container from '@/components/layout/Container'
+import { isFeaturesPath } from '@/data/features'
+import { MML_APP } from '@/lib/appUrls'
 
-const STUDIELY_URL = 'https://www.studiely.com'
-const LINGUATUDE_URL = 'https://linguatude.com'
-const SKYEN_SYSTEMS_URL = 'https://skyensystems.com'
-
-/** Compliance and legal — matches indexable policy routes in sitemap. */
-const FOOTER_NAV = [
-  { href: '/privacy-policy', label: 'Privacy Policy' },
-  { href: '/terms-of-service', label: 'Terms of Service' },
-  { href: '/acceptable-use-policy', label: 'Acceptable Use Policy' },
-  { href: '/cookie-policy', label: 'Cookie Policy' },
-  { href: '/disclaimer', label: 'Disclaimer' },
-  { href: '/refund-payments-policy', label: 'Refund & Payments Policy' },
-  { href: '/account-data-deletion', label: 'Account & Data Deletion' },
+const PRODUCT_LINKS = [
+  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/features', label: 'Teaching Pack' },
+  { href: MML_APP.ayla, label: 'Ayla' },
+  { href: '/pricing', label: 'Pricing' },
 ]
 
-export default function Footer() {
+const TEACHING_LINKS = [
+  { href: '/teaching-methods', label: 'Teaching Methods' },
+  { href: '/#curriculum', label: 'Curriculums' },
+  { href: '/blog', label: 'Resources' },
+]
+
+const COMPANY_LINKS = [
+  { href: '/contact', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/blog', label: 'Blog' },
+]
+
+const LEGAL_LINKS = [
+  { href: '/privacy-policy', label: 'Privacy' },
+  { href: '/terms-of-service', label: 'Terms' },
+  { href: '/acceptable-use-policy', label: 'Acceptable Use' },
+  { href: '/cookie-policy', label: 'Cookies' },
+]
+
+const FEATURES_LEGAL_LINKS = [
+  { href: '/privacy-policy', label: 'Privacy' },
+  { href: '/terms-of-service', label: 'Terms' },
+  { href: '/acceptable-use-policy', label: 'Acceptable Use' },
+  { href: '/cookie-policy', label: 'Cookies' },
+  { href: '/refund-payments-policy', label: 'Refunds' },
+  { href: '/contact', label: 'Contact' },
+]
+
+function FooterLink({ href, label }) {
+  return (
+    <Link
+      href={href}
+      className="block text-[14px] font-medium text-white/70 no-underline transition-colors hover:text-white"
+    >
+      {label}
+    </Link>
+  )
+}
+
+function FooterColumn({ title, links }) {
+  return (
+    <div>
+      <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/35">
+        {title}
+      </p>
+      <ul className="space-y-3">
+        {links.map((item) => (
+          <li key={`${title}-${item.label}`}>
+            <FooterLink href={item.href} label={item.label} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function FeaturesFooter() {
+  return (
+    <>
+      <div className="h-10 bg-white sm:h-14" aria-hidden />
+      <footer className="mt-auto w-full min-w-0 border-t border-white/10 bg-[#1A1E3A] text-white">
+        <Container className="py-8 sm:py-10">
+          <nav aria-label="Legal and contact">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:gap-x-8">
+              {FEATURES_LEGAL_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-[14px] font-semibold text-white no-underline transition-colors hover:text-white/80"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <p className="mt-4 max-w-4xl text-[12px] leading-relaxed text-white/45 sm:text-[13px]">
+            Make My Lesson is a product of{' '}
+            <a
+              href="https://skyensolutions.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/55 transition-colors hover:text-white/80"
+            >
+              Skyen Solutions
+            </a>
+            , a trade name of Qismat Ventures W.L.L. (CR 190698-1), Bahrain. © 2026{' '}
+            Qismat Ventures W.L.L.
+          </p>
+        </Container>
+      </footer>
+    </>
+  )
+}
+
+function SiteFooter() {
+  return (
+    <>
+      <div className="h-10 bg-white sm:h-14" aria-hidden />
+      <footer className="mt-auto w-full min-w-0 bg-[#1A1E3A] text-white">
+        <Container className="py-14 sm:py-16 lg:py-20">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_0.7fr_0.7fr_0.7fr_0.7fr] lg:gap-10">
+            <div className="max-w-sm sm:col-span-2 lg:col-span-1">
+              <Link
+                href="/"
+                className="inline-block text-[1.15rem] font-bold tracking-tight text-white no-underline"
+              >
+                Make My Lesson
+              </Link>
+              <p className="mt-4 text-[14px] leading-relaxed text-white/50 sm:text-[15px]">
+                AI-powered lesson planning and classroom-ready teaching packs for educators across
+                multiple curriculum systems.
+              </p>
+            </div>
+
+            <FooterColumn title="Product" links={PRODUCT_LINKS} />
+            <FooterColumn title="Teaching" links={TEACHING_LINKS} />
+            <FooterColumn title="Company" links={COMPANY_LINKS} />
+            <FooterColumn title="Legal" links={LEGAL_LINKS} />
+          </div>
+
+          <div className="mt-12 border-t border-white/10 pt-6 sm:mt-14 sm:pt-7">
+            <p className="text-[12px] leading-relaxed text-white/40 sm:text-[13px]">
+              Make My Lesson is a product of{' '}
+              <a
+                href="https://skyensolutions.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/55 transition-colors hover:text-white/80"
+              >
+                Skyen Solutions
+              </a>
+              , a trade name of Qismat Ventures W.L.L. (CR 190698-1), Bahrain.
+            </p>
+          </div>
+        </Container>
+      </footer>
+    </>
+  )
+}
+
+function FooterInner() {
   const pathname = usePathname()
-  const year = new Date().getFullYear()
+  const searchParams = useSearchParams()
 
   if (pathname?.startsWith('/app')) {
     return null
   }
 
+  if (isFeaturesPath(pathname)) {
+    const stage = searchParams.get('stage')
+    // Stage 4 uses the full multi-column footer (text brand, no icon).
+    if (stage === 'test-generator') {
+      return <SiteFooter />
+    }
+    return <FeaturesFooter />
+  }
+
+  if (
+    pathname === '/faq' ||
+    pathname?.startsWith('/faq/') ||
+    pathname === '/contact' ||
+    pathname?.startsWith('/contact/')
+  ) {
+    return <FeaturesFooter />
+  }
+
+  return <SiteFooter />
+}
+
+export default function Footer() {
   return (
-    <footer id="contact" className="mt-auto w-full min-w-0 border-t border-white/10 bg-mml-navy text-white">
-      <Container className="py-6 sm:py-7">
-        <div className="flex w-full flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:pb-5">
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-2 no-underline"
-            aria-label="Make My Lesson home"
-          >
-            <BrandMark className="h-8 w-8 shrink-0 object-contain" />
-            <span className="font-sans text-[0.9375rem] font-medium leading-[1.35] text-white">
-              Make My <strong className="font-bold text-mml-teal">Lesson</strong>
-            </span>
-          </Link>
-
-          <nav
-            className="flex w-full flex-wrap items-center gap-x-5 gap-y-2 sm:w-auto sm:justify-end"
-            aria-label="Compliance and legal documents"
-          >
-            {FOOTER_NAV.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="whitespace-nowrap font-sans text-sm font-medium leading-[1.35] text-white no-underline transition-colors hover:text-mml-teal"
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-
-        <div className="mt-4 grid w-full grid-cols-1 gap-x-10 gap-y-2 font-sans text-sm leading-[1.35] text-white sm:mt-5 lg:grid-cols-2 lg:gap-y-0">
-          <div className="space-y-2 text-center lg:text-left">
-            <p>
-              AI-powered lesson planning for teachers across Australia, United Kingdom, Canada, International Baccalaureate and
-              United States.
-            </p>
-            <p>
-              Make My Lesson is a product of Skyen Solutions, a trade name of Qismat Ventures W.L.L. (CR 190698-1) — Office 501,
-              Building 1025, Road 3621, Block 436, Al Seef, Bahrain.
-            </p>
-          </div>
-
-          <div className="space-y-2 text-center lg:text-left">
-            <p>
-              Make My Lesson is a sister platform of{' '}
-              <a
-                href={STUDIELY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
-              >
-                Studiely
-              </a>{' '}
-              and{' '}
-              <a
-                href={LINGUATUDE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
-              >
-                Linguatude
-              </a>
-              .
-            </p>
-            <p>
-              Make My Lesson is part of the Skyen Solutions family of EdTech products. For custom software development,
-              websites, and mobile applications, visit{' '}
-              <a
-                href={SKYEN_SYSTEMS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mml-teal underline decoration-white/20 underline-offset-2 transition-colors hover:decoration-mml-teal"
-              >
-                Skyen Systems
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-
-        <p className="mt-4 text-center font-sans text-sm leading-[1.35] text-white sm:mt-5">
-          © {year} Qismat Ventures W.L.L. All rights reserved.
-        </p>
-      </Container>
-    </footer>
+    <Suspense fallback={<SiteFooter />}>
+      <FooterInner />
+    </Suspense>
   )
 }
